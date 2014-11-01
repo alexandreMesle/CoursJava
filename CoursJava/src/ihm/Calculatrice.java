@@ -111,7 +111,7 @@ public class Calculatrice extends JFrame
 		buttons[12] = makeOperatorButton('*');
 		buttons[13] = makeOperatorButton('/');
 		buttons[14] = makeOperatorButton('=');
-		for (int i = 0; i < 10 + 4 + 1; i++)
+		for (int i = 1; i <= 10 + 5; i++)
 			buttonsPanel.add(buttons[i]);
 		return buttonsPanel;
 
