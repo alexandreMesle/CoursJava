@@ -1,4 +1,4 @@
-package persistance;
+package persistance.rememberMyName;
 
 import java.io.BufferedReader;
 import java.io.IOException;

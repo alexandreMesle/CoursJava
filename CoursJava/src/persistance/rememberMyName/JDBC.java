@@ -1,4 +1,4 @@
-package persistance;
+package persistance.rememberMyName;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 
-public class RememberMyNameJDBC extends RememberMyName
+public class JDBC extends RememberMyName
 {
 	private static final String URL = "jdbc:mysql://localhost/rememberMyName",
 			USER = "rememberMyUser",
@@ -90,7 +90,7 @@ public class RememberMyNameJDBC extends RememberMyName
 
 	public static void main(String[] args)
 	{
-		RememberMyName rmn = new RememberMyNameJDBC();
+		RememberMyName rmn = new JDBC();
 		rmn.printName();
 	}
 }

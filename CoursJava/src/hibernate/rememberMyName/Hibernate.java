@@ -1,6 +1,6 @@
-package hibernate.tpHibernate;
+package hibernate.rememberMyName;
 
-import persistance.RememberMyName;
+import persistance.rememberMyName.RememberMyName;
 
 import java.util.List;
 
@@ -45,11 +45,11 @@ class MyName
 	}
 }
 
-public class RememberMyNameHibernate extends RememberMyName
+public class Hibernate extends RememberMyName
 {
 	public static final String FIELD = "userField",
 			TABLE = "userTable",
-			CONF_FILE = "hibernate/tpHibernate/hibernateRememberMyName.cfg.xml";
+			CONF_FILE = "hibernate/rememberMyName/Hibernate.cfg.xml";
 
 	private static Session getSession() throws HibernateException
 	{
@@ -89,7 +89,7 @@ public class RememberMyNameHibernate extends RememberMyName
 
 	public static void main(String[] args)
 	{
-		RememberMyName rmn = new RememberMyNameHibernate();
+		RememberMyName rmn = new Hibernate();
 		rmn.printName();
 	}
 }

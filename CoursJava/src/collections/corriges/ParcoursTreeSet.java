@@ -1,4 +1,4 @@
-package collections;
+package collections.corriges;
 
 import java.util.TreeSet;
 import java.util.Random;

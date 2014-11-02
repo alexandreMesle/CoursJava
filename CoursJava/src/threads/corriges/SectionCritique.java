@@ -1,4 +1,4 @@
-package threads;
+package threads.corriges;
 
 public class SectionCritique extends Thread
 {
@@ -53,4 +53,3 @@ public class SectionCritique extends Thread
     }
 
 }
-

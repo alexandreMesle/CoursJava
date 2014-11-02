@@ -1,4 +1,4 @@
-package persistance;
+package persistance.rememberMyName;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class RememberMyNameFichier extends RememberMyName
+public class Fichier extends RememberMyName
 {
 	private static final String FILE_NAME = "myName.txt";
 	
@@ -69,7 +69,7 @@ public class RememberMyNameFichier extends RememberMyName
 
 	public static void main(String[] args)
 	{
-		RememberMyName rmn = new RememberMyNameFichier();
+		RememberMyName rmn = new Fichier();
 		rmn.printName();
 	}
 }

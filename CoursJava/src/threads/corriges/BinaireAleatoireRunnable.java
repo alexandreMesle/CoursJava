@@ -1,4 +1,4 @@
-package threads;
+package threads.corriges;
 public class BinaireAleatoireRunnable implements Runnable
 {
     private int value;

@@ -1,4 +1,4 @@
-package collections;
+package collections.corriges;
 
 public class DeuxObjets<T extends Comparable<T>> 
     implements Comparable<DeuxObjets<T>> 

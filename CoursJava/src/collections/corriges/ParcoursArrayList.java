@@ -1,4 +1,4 @@
-package collections;
+package collections.corriges;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package persistance;
+package persistance.rememberMyName;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class RememberMyNameSerialization extends RememberMyName
+public class Serialization extends RememberMyName
 {
 	private static final String FILE_NAME = "myName.serialization";
 
@@ -69,7 +69,7 @@ public class RememberMyNameSerialization extends RememberMyName
 
 	public static void main(String[] args)
 	{
-		RememberMyName rmn = new RememberMyNameSerialization();
+		RememberMyName rmn = new Serialization();
 		rmn.printName();
 	}
 }

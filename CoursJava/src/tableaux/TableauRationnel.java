@@ -4,7 +4,7 @@ import java.util.Random;
 import java.lang.Math;
 import classes.Rationnel;
 
-public class RatTab
+public class TableauRationnel
 {
     Rationnel[] t;
     
@@ -93,7 +93,7 @@ public class RatTab
     
     /*-----------------------------------------------*/
 
-    public void initTab(RatTab other)
+    public void initTab(TableauRationnel other)
     {
 	t = new Rationnel[other.t.length];
 	for (int i = 0 ; i < t.length ; i++)
@@ -102,16 +102,16 @@ public class RatTab
     
     /*-----------------------------------------------*/
 
-    public RatTab copie()
+    public TableauRationnel copie()
     {
-	RatTab other = new RatTab();
+	TableauRationnel other = new TableauRationnel();
 	other.initTab(this);
 	return other;
     }
     
     /*-----------------------------------------------*/
 
-    public void interclasse(RatTab t1, RatTab t2)
+    public void interclasse(TableauRationnel t1, TableauRationnel t2)
     {
 	t = new Rationnel[t1.t.length + t2.t.length];
 	int i1 = 0, i2 = 0, i = 0;
@@ -132,7 +132,7 @@ public class RatTab
     
     public static void main(String[] args)
     {
-	RatTab t = new RatTab();
+	TableauRationnel t = new TableauRationnel();
 	t.init(10);
 	System.out.println(t);
 	t.triInsertion();
@@ -141,14 +141,14 @@ public class RatTab
 	System.out.println(t);
 	t.triBulle();
 	System.out.println(t);
-	RatTab tBis = new RatTab();
+	TableauRationnel tBis = new TableauRationnel();
 	tBis.initTab(t);
 	System.out.println(tBis);
 	tBis = t.copie();
 	System.out.println(tBis);
 	tBis.init(10);
 	System.out.println(tBis);
-	RatTab tTer = new RatTab();
+	TableauRationnel tTer = new TableauRationnel();
 	tBis.triInsertion();
 	System.out.println(tBis);
 	tTer.interclasse(t, tBis);

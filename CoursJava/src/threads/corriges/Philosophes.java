@@ -1,4 +1,4 @@
-package threads;
+package threads.corriges;
 import java.util.Random;
 
 public class Philosophes extends Thread
