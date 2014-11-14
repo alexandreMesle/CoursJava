@@ -1,4 +1,4 @@
-package collections;
+package procedural;
 
 public class ExemplePackage
 {
