@@ -1,8 +1,8 @@
-package collections;
+package collections.exemples;
 
 import java.util.HashMap;
 
-public class ExempleHashMap
+public class HashMapSalaires
 {
 	public static void main(String[] args)
 	{

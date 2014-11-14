@@ -1,10 +1,10 @@
-package collections;
+package collections.exemples;
 
-public class ExempleComparable implements Comparable<ExempleComparable>
+public class StringWrapper implements Comparable<StringWrapper>
 {
 	private String data;
 	
-	public ExempleComparable(String data)
+	public StringWrapper(String data)
 	{
 		this.data = data;
 	}
@@ -20,15 +20,15 @@ public class ExempleComparable implements Comparable<ExempleComparable>
 	}
 
 	@Override
-	public int compareTo(ExempleComparable autre)
+	public int compareTo(StringWrapper autre)
 	{
 		return data.compareTo(autre.getData());
 	}
 
 	public static void main(String[] args)
 	{
-		ExempleComparable e1 = new ExempleComparable("toto"),
-				e2 = new ExempleComparable("tutu");
+		StringWrapper e1 = new StringWrapper("toto"),
+				e2 = new StringWrapper("tutu");
 		System.out.println(e1.compareTo(e2));
 	}
 }

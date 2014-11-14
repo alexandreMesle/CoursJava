@@ -1,8 +1,8 @@
-package collections;
+package collections.exemples;
 
 import java.util.ArrayList;
 
-public class ExempleCast
+public class Cast
 {
 	public static void main(String[] args)
 	{

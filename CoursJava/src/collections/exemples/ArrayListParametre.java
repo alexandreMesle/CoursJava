@@ -1,12 +1,12 @@
-package collections;
+package collections.exemples;
 
 import java.util.ArrayList;
 
-public class ExempleArrayList
+public class ArrayListParametre
 {
 	public static void main(String[] args)
 	{
-		ArrayList a = new ArrayList();
+		ArrayList<Integer> a = new ArrayList<>();
 		for (int value = 2 ; value < 50 ; value+=3)
 			a.add(value);
 		for (int index = 0 ; index < a.size(); index++)

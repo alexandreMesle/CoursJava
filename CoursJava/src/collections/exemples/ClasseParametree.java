@@ -1,10 +1,10 @@
-package collections;
+package collections.exemples;
 
-public class ExempleClasseParametree<T>
+public class ClasseParametree<T>
 {
 	T data;
 
-	public ExempleClasseParametree(T data)
+	public ClasseParametree(T data)
 	{
 		this.data = data;
 	}
@@ -21,11 +21,11 @@ public class ExempleClasseParametree<T>
 	
 	public static void main(String[] args)
 	{
-		ExempleClasseParametree<String> conteneurString = new ExempleClasseParametree<>("toto");
+		ClasseParametree<String> conteneurString = new ClasseParametree<>("toto");
 		String chaine = conteneurString.get();
 		System.out.println(chaine);
 		
-		ExempleClasseParametree<Integer> conteneurInt = new ExempleClasseParametree<>(5);
+		ClasseParametree<Integer> conteneurInt = new ClasseParametree<>(5);
 		int entier = conteneurInt.get();
 		System.out.println(entier);		
 	}

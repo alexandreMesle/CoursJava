@@ -1,6 +1,6 @@
-package collections;
+package collections.exemples;
 
-public class ExempleTableau
+public class Tableau
 {
 	public static void main(String[] args)
 	{
