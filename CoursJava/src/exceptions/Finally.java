@@ -12,7 +12,6 @@ public class Finally
 {
     public static void main(String[] args)
     {
-	Finally f  = new Finally();
 	try
 	    {
 		try
