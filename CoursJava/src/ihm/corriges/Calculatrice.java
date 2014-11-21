@@ -5,11 +5,11 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class Calculatrice extends JFrame
+public class Calculatrice
 {
-	private JLabel resultLabel;
-	private JButton[] buttons;
-
+	private JLabel resultLabel = new JLabel("0");
+	private JButton[] buttons = new JButton[10 + 4 + 1];
+	private JFrame frame = new JFrame();
 	private double left = 0;
 	private double right = 0;
 	private char operator;
@@ -27,12 +27,10 @@ public class Calculatrice extends JFrame
 			right = 10 * right + i;
 			updateScreen(right);
 		}
-		System.out.println(i);
 	}
 
 	private void addOperator(char operator)
 	{
-		System.out.println(operator);
 		if (firstNumber)
 			firstNumber = false;
 		else
@@ -65,14 +63,13 @@ public class Calculatrice extends JFrame
 	{
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
-		resultLabel = new JLabel("0");
 		panel.add(resultLabel, BorderLayout.NORTH);
 		panel.add(getButtonsPanel(), BorderLayout.SOUTH);
 		return panel;
 	}
 	
 	
-	private ActionListener addDigitEvent(final int j)
+	private ActionListener addDigitListener(final int j)
 	{
 		return new ActionListener()
 		{
@@ -84,7 +81,7 @@ public class Calculatrice extends JFrame
 		};
 	}
 	
-	private JButton makeOperatorButton(final char operator)
+	private JButton getOperatorButton(final char operator)
 	{
 		JButton button = new JButton("" + operator);
 		button.addActionListener(new ActionListener()
@@ -100,18 +97,17 @@ public class Calculatrice extends JFrame
 	private JPanel getButtonsPanel()
 	{
 		JPanel buttonsPanel = new JPanel();
-		buttons = new JButton[10 + 4 + 1];
 		buttonsPanel.setLayout(new GridLayout(5, 3));
 		for (int i = 0; i < 10; i++)
 			buttons[i] = new JButton("" + i);
 		for (int i = 0; i < 10; i++)
-			buttons[i].addActionListener(addDigitEvent(i));
-		buttons[10] = makeOperatorButton('+');
-		buttons[11] = makeOperatorButton('-');
-		buttons[12] = makeOperatorButton('*');
-		buttons[13] = makeOperatorButton('/');
-		buttons[14] = makeOperatorButton('=');
-		for (int i = 1; i <= 10 + 5; i++)
+			buttons[i].addActionListener(addDigitListener(i));
+		buttons[10] = getOperatorButton('+');
+		buttons[11] = getOperatorButton('-');
+		buttons[12] = getOperatorButton('*');
+		buttons[13] = getOperatorButton('/');
+		buttons[14] = getOperatorButton('=');
+		for (int i = 1; i < buttons.length; i++)
 			buttonsPanel.add(buttons[i]);
 		return buttonsPanel;
 
@@ -119,12 +115,12 @@ public class Calculatrice extends JFrame
 	
 	public Calculatrice()
 	{
-		setTitle("Calculatrice");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
-		setContentPane(getMainPanel());
-		setVisible(true);
-		pack();
+		frame.setTitle("Calculatrice");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setContentPane(getMainPanel());
+		frame.setVisible(true);
+		frame.pack();
 	}
 
 	private void updateScreen(double value)

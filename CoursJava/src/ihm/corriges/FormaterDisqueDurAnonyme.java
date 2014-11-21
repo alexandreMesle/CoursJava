@@ -1,33 +1,29 @@
 package ihm.corriges;
 
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class FormaterDisqueDurAnonyme extends JFrame
+public class FormaterDisqueDurAnonyme extends FormaterDisqueDur
 {
-    
-    
-    public FormaterDisqueDurAnonyme()
-    {
-	setTitle("Gestionnaire du disque dur");
-	setSize(100, 100);
-	setDefaultCloseOperation(EXIT_ON_CLOSE);
-	JButton formater = new JButton("Formater le disque dur");
-	getContentPane().add(formater);
-	formater.addActionListener(new ActionListener()
-	    {
-		public void actionPerformed(ActionEvent e)
-		{
-		    System.out.println("Formatage en cours.");	
-		}
-	    }
-	    );
-	setVisible(true);
-    }
-    
-    public static void main(String[] args)
-    {
-	FormaterDisqueDurAnonyme f = new FormaterDisqueDurAnonyme();
-    }
-}
+	public FormaterDisqueDurAnonyme()
+	{
+		super();
+		ajouterListener(getActionListener());
+	}
 
+	private ActionListener getActionListener()
+	{
+		return new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("Formatage en cours.");
+			}
+		}; 
+	}
+	
+	public static void main(String[] args)
+	{
+		new FormaterDisqueDurAnonyme();
+	}
+}

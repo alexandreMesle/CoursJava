@@ -1,6 +1,6 @@
 package collections.exemples;
 
-public class Tableau
+public class NativeArray
 {
 	public static void main(String[] args)
 	{

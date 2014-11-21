@@ -3,23 +3,23 @@ package ihm;
 import javax.swing.*;
 import java.awt.*;
 
-public class PremiersJButtons extends JFrame
+public class PremiersJButtons
 {
-    public PremiersJButtons()
-    {
-	super();
-	setTitle("My third window !");
-	setSize(200, 200);
-	setDefaultCloseOperation(EXIT_ON_CLOSE);
-	getContentPane().setLayout(new FlowLayout());
-	getContentPane().add(new JButton("my First JButton"));  
-	getContentPane().add(new JButton("my Second JButton"));
-	getContentPane().add(new JButton("my Third JButton"));
-	setVisible(true);
-    }
+	public PremiersJButtons()
+	{
+		JFrame frame = new JFrame();
+		frame.setTitle("My third window !");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new FlowLayout());
+		frame.getContentPane().add(new JButton("my First JButton"));
+		frame.getContentPane().add(new JButton("my Second JButton"));
+		frame.getContentPane().add(new JButton("my Third JButton"));
+		frame.setVisible(true);
+		frame.pack();
+	}
 
-    public static void main(String[] args)
-    {
-	new PremiersJButtons();
-    }
+	public static void main(String[] args)
+	{
+		new PremiersJButtons();
+	}
 }

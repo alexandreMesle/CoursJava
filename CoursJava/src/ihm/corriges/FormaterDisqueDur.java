@@ -1,24 +1,26 @@
 package ihm.corriges;
 
 import javax.swing.*;
+
 import java.awt.event.*;
 
-public class FormaterDisqueDur extends JFrame implements ActionListener
+public class FormaterDisqueDur
 {
+	JButton formater = new JButton("Formater le disque dur");
+	
+	protected void ajouterListener(ActionListener a)
+	{
+		formater.addActionListener(a);
+	}
+	
 	public FormaterDisqueDur()
 	{
-		setTitle("Gestionnaire du disque dur");
-		setSize(100, 100);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		JButton formater = new JButton("Formater le disque dur");
-		getContentPane().add(formater);
-		formater.addActionListener(this);
-		setVisible(true);
-	}
-
-	public void actionPerformed(ActionEvent e)
-	{
-		System.out.println("Formatage en cours.");
+		JFrame frame = new JFrame();
+		frame.setTitle("Gestionnaire du disque dur");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(formater);
+		frame.setVisible(true);
+		frame.pack();
 	}
 
 	public static void main(String[] args)

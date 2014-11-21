@@ -1,52 +1,65 @@
 package ihm;
 
 import javax.swing.*;
+
 import java.awt.event.*;
 import java.awt.*;
 
-public class Carre extends JFrame implements KeyListener
+public class Carre
 {
-    JTextField operandTextField;
-    JLabel resultTextField;
-
-    public void keyPressed(KeyEvent e){}
-
-    public void keyReleased(KeyEvent e)
-    {
-	try
+	JTextField operand = new JTextField();
+	JLabel result = new JLabel();
+	
+	private void afficheCarre()
 	{
-        int k = Integer.parseInt(operandTextField.getText());
-        k *= k;
-        resultTextField.setText(Integer.toString(k));
+		try
+		{
+			int k = Integer.parseInt(operand.getText());
+			k *= k;
+			result.setText(Integer.toString(k));
+		} 
+		catch (Exception ex)
+		{
+			if (result != null)
+				result.setText("");
+		}
 	}
-	catch(Exception ex)
+	
+	private KeyListener getKeyListener()
 	{
-	if(resultTextField != null)
-		resultTextField.setText("");
+		return new KeyAdapter()
+		{
+			public void keyReleased(KeyEvent e)
+			{
+				afficheCarre();
+			}			
+		};
 	}
-    }
+	
+	private JPanel getMainPanel()
+	{
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(2, 2));
+		panel.add(new JLabel("x = "));
+		operand.addKeyListener(getKeyListener());
+		panel.add(operand);
+		panel.add(new JLabel("x^2 = "));
+		panel.add(result);
+		return panel;		
+	}
+	
+	public Carre()
+	{
+		JFrame frame = new JFrame();
+		frame.setTitle("Square computer !");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setContentPane(getMainPanel());
+		frame.setVisible(true);
+		frame.pack();
+	}
 
-    public void keyTyped(KeyEvent e){}
-
-    public Carre()
-    {
-        super();
-        setSize(200, 200);
-        setTitle("Square computer !");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-	getContentPane().setLayout(new GridLayout(2, 2));
-	getContentPane().add(new JLabel("x = "));
-        operandTextField = new JTextField();
-        operandTextField.addKeyListener(this);
-        getContentPane().add(operandTextField);
-	getContentPane().add(new JLabel("x^2 = "));
-        resultTextField = new JLabel();
-        getContentPane().add(resultTextField);
-        setVisible(true);
-    }
-
-    public static void main(String[] args)
-    {
-        new Carre();
-    }
+	public static void main(String[] args)
+	{
+		new Carre();
+	}
 }
