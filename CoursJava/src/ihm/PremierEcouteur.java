@@ -11,8 +11,7 @@ public class PremierEcouteur implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		int k = 0;
-		while (jButtons[k++] != e.getSource())
-			;
+		while (jButtons[k++] != e.getSource());
 		System.out.println("click on JButton " + k);
 	}
 
@@ -20,7 +19,7 @@ public class PremierEcouteur implements ActionListener
 	{
 		JFrame frame = new JFrame();
 		jButtons = new JButton[3];
-		frame.setTitle("My fourth window !");
+		frame.setTitle("My third window !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FlowLayout());
 		jButtons[0] = new JButton("my First JButton");

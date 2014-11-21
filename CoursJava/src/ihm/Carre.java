@@ -20,6 +20,7 @@ public class Carre
 		} 
 		catch (Exception ex)
 		{
+			System.out.println(ex);
 			if (result != null)
 				result.setText("");
 		}

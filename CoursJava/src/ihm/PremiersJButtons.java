@@ -8,7 +8,7 @@ public class PremiersJButtons
 	public PremiersJButtons()
 	{
 		JFrame frame = new JFrame();
-		frame.setTitle("My third window !");
+		frame.setTitle("My second window !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FlowLayout());
 		frame.getContentPane().add(new JButton("my First JButton"));

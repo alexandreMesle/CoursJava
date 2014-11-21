@@ -30,7 +30,7 @@ public class EcouteurAnonyme
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("click on Second JButton");
-			}
+			}	
 		});
 		jButtons[2].addActionListener(new ActionListener()
 		{
