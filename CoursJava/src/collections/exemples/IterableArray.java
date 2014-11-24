@@ -23,7 +23,8 @@ public class IterableArray implements Iterable<Integer>
 		return tableau[i];
 	}
 	
-	private Iterator<Integer> getIterator()
+	@Override
+	public Iterator<Integer> iterator()
 	{
 		return new Iterator<Integer>()
 		{
@@ -51,12 +52,6 @@ public class IterableArray implements Iterable<Integer>
 				
 			}
 		};
-	}
-	
-	@Override
-	public Iterator<Integer> iterator()
-	{
-		return getIterator();
 	}
 
 	public static void main(String[] args)
