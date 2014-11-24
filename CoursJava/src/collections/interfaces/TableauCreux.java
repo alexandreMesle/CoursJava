@@ -1,4 +1,4 @@
-package collections.Interfaces;
+package collections.interfaces;
 
 public interface TableauCreux<T> extends Iterable<T>
 {

@@ -1,4 +1,4 @@
-package collections.ClientsCommandes;
+package collections.facturesClients;
 
 import java.util.Date;
 
