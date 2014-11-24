@@ -7,10 +7,10 @@ public class ParcoursTreeSet
 {
     public static void main(String[] args)
     {
-	TreeSet<PaireOrdonnee<Integer>> a = new TreeSet<PaireOrdonnee<Integer>>();
+	TreeSet<PaireOrdonneeComparable<Integer>> a = new TreeSet<>();
 	Random r = new Random();
 	for (int i = 1 ; i <= 40 ; i++)
-	    a.add(new PaireOrdonnee<Integer>(r.nextInt(), r.nextInt()));
+	    a.add(new PaireOrdonneeComparable<>(r.nextInt(), r.nextInt()));
 	for(PaireOrdonnee<Integer> i : a)
 	    System.out.println(i);
     }
