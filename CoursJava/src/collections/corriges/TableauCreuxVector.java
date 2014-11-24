@@ -74,11 +74,17 @@ public class TableauCreuxVector<T> implements TableauCreux<T>
 		return res + "]";
 	}
 
-	public static void main(String[] args)
+	public static void affiche(TableauCreux<Integer> tc)
 	{
-		TableauCreux<Integer> tc = new TableauCreuxVector<>(10);
 		tc.set(6, 5);
 		tc.set(2, 90);
+		tc.set(4, 30);
 		System.out.println(tc);
+	}
+	
+	public static void main(String[] args)
+	{
+		affiche(new TableauCreuxVector<Integer>(10));
+		affiche(new TableauCreuxMap<Integer>());
 	}
 }
