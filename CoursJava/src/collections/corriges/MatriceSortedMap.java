@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import collections.Interfaces.Matrice;
+import collections.interfaces.Matrice;
 
 class Coordonnees implements Comparable<Coordonnees>
 {

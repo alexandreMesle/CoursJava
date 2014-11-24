@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import collections.Interfaces.TableauCreux;
+import collections.interfaces.TableauCreux;
 
 public class TableauCreuxMap<T> implements TableauCreux<T>
 {

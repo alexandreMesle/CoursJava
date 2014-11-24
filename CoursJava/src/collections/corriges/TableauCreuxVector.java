@@ -3,7 +3,7 @@ package collections.corriges;
 import java.util.Iterator;
 import java.util.Vector;
 
-import collections.Interfaces.TableauCreux;
+import collections.interfaces.TableauCreux;
 
 public class TableauCreuxVector<T> implements TableauCreux<T>
 {
