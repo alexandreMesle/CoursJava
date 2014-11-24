@@ -2,7 +2,7 @@ package collections.exemples;
 
 public class ClasseParametree<T>
 {
-	T data;
+	private T data;
 
 	public ClasseParametree(T data)
 	{
