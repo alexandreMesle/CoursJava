@@ -24,10 +24,10 @@
         <property name="hibernate.show_sql">false</property>
         <property name="jta.UserTransaction">
         	java:comp/UserTransaction</property>
-        <mapping class="hibernateRelations.Client" />
-        <mapping class="hibernateRelations.Commande" />
-        <mapping class="hibernateRelations.Produit" />
-        <mapping class="hibernateRelations.DetailCommande" />
+        <mapping class="hibernate.hibernateRelations.Client" />
+        <mapping class="hibernate.hibernateRelations.Commande" />
+        <mapping class="hibernate.hibernateRelations.Produit" />
+        <mapping class="hibernate.hibernateRelations.DetailCommande" />
          
     </session-factory>
 </hibernate-configuration>

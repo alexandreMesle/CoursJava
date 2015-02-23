@@ -16,7 +16,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 @Entity
 @Table(name="userTable")
@@ -53,10 +56,12 @@ public class Hibernate extends RememberMyName
 
 	private static Session getSession() throws HibernateException
 	{
-		SessionFactory sf = null;
-			sf = new AnnotationConfiguration().
-					configure(CONF_FILE).buildSessionFactory();
-		return sf.openSession();
+		Configuration configuration = new Configuration().
+				configure(CONF_FILE);
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
+				applySettings(configuration.getProperties()).build();
+		SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);  
+		return sessionFactory.openSession();
 	}
 
 	@Override

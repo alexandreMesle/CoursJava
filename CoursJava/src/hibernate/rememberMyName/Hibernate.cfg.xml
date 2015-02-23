@@ -23,7 +23,7 @@
 
         <property name="jta.UserTransaction">
         	java:comp/UserTransaction</property>
-         <mapping class="tpHibernate.MyName" />
+         <mapping class="hibernate.rememberMyName.MyName" />
          
     </session-factory>
 </hibernate-configuration>

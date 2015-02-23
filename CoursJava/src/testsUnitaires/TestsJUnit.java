@@ -10,7 +10,7 @@ public class TestsJUnit
 	@Test
 	public void testSucc()
 	{
-		assertEquals("succ", 2, p.succ(1));
+		assertEquals("test de la fonction successeur", 2, p.succ(1));
 	}
 
 	@Test

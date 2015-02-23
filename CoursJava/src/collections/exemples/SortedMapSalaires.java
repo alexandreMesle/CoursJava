@@ -9,7 +9,7 @@ public class SortedMapSalaires
 	public static void main(String[] args)
 	{
 		SortedMap<String, Integer> salaires = new TreeMap<>();
-		salaires.put("Dédé", 5000);
+		salaires.put("DÃ©dÃ©", 5000);
 		salaires.put("Marcel", 2000);
 		salaires.put("Ginette", 3000);
 		salaires.put("Lucienne", 1000);

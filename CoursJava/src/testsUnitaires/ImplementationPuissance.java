@@ -14,12 +14,13 @@ public class ImplementationPuissance implements Puissance
 
     public int somme(int a, int b)
     {
-	if (b == 0)
-	    return a;
-	if (b > 0)
-	    return somme(succ(a), pred(b));
-	else
-	    return somme(pred(a), succ(b));
+    	return a + b;
+//	if (b == 0)
+//	    return a;
+//	if (b > 0)
+//	    return somme(succ(a), pred(b));
+//	else
+//	    return somme(pred(a), succ(b));
     }
 
     public int produit(int a, int b)

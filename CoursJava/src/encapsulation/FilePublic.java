@@ -11,7 +11,7 @@ public class FilePublic
     /******************************/
 
     /*
-      Indice de la tete de file et du premier emplacement libre 
+      Indice de la tête de file et du premier emplacement libre 
       dans le tableau.
      */
     
@@ -32,8 +32,8 @@ public class FilePublic
     /******************************/
 
     /*
-      Decale i d'une position vers la droite dans le tableau, 
-      revient au debut si i deborde.
+      Décale i d'une position vers la droite dans le tableau, 
+      revient au debut si i déborde.
      */    
 
     public int incrementeIndice(int i)
@@ -71,7 +71,7 @@ public class FilePublic
     /******************************/
 
     /*
-      Ajoute l'element n dans la file.
+      Ajoute l'élément n dans la file.
      */    
 
     public void enfile(int n)
@@ -86,7 +86,7 @@ public class FilePublic
     /******************************/
 
     /*
-      Supprime la tete de file.
+      Supprime la tête de file.
      */    
 
     public void defile()
@@ -98,7 +98,7 @@ public class FilePublic
     /******************************/
 
     /*
-      Retourne la tete de file.
+      Retourne la tête de file.
      */    
 
     public int premier()

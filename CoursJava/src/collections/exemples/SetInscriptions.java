@@ -11,7 +11,7 @@ public class SetInscriptions
 		inscrits.add("Lucien");
 		inscrits.add("Raymond");
 		inscrits.add("Huguette");
-		System.out.println(inscrits.contains("Gégé"));
+		System.out.println(inscrits.contains("GÃ©gÃ©"));
 		System.out.println(inscrits.contains("Raymond"));
 		for (String nom : inscrits)
 			System.out.println(nom);
