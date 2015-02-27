@@ -1,13 +1,13 @@
 package persistance.injection;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import utilitaires.EntreesSorties;
 
 public class Gruyere
 {
@@ -48,21 +48,14 @@ public class Gruyere
 
 	}
 	
-	protected static String getString() throws IOException
-	{
-		BufferedReader br = new BufferedReader(
-					new InputStreamReader(System.in));
-		return br.readLine();
-	}
-	
 	protected void saisitIdentifiants()
 	{
 		try
 		{
 			System.out.println("login : ");
-			login = getString();
+			login = EntreesSorties.getString();
 			System.out.println("password : ");
-			password = getString(); 
+			password = EntreesSorties.getString(); 
 		} 
 		catch (IOException e)
 		{

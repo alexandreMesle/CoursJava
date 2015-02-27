@@ -1,8 +1,6 @@
 package hibernate.hibernateManagePersonne;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +17,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.Query;
+
+import utilitaires.EntreesSorties;
 
 @Entity
 class Personne
@@ -128,52 +128,6 @@ public abstract class HibernateManagePersonne
 	private final static int SUPPRIMER = 1, MODIFIER = 2, 
 			AJOUTER = 3, QUITTER = 4;
 	
-	public static String getString() throws IOException
-	{
-		BufferedReader br = new BufferedReader(
-					new InputStreamReader(System.in));
-		return br.readLine();
-	}
-	
-	public static int getInt() throws IOException
-	{
-		return Integer.parseInt(getString());
-	}
-	
-	public static int getInt(String message)
-	{
-		do
-		{
-			System.out.print(message);
-			try
-			{
-				return getInt();
-			}
-			catch(Exception e)
-			{
-				System.out.println("Erreur de saisie !");
-			}
-		}
-		while(true);
-	}
-	
-	public static String getString(String message)
-	{
-		do
-		{
-			System.out.print(message);
-			try
-			{
-				return getString();
-			}
-			catch(Exception e)
-			{
-				System.out.println("Erreur de saisie !");
-			}
-		}
-		while(true);
-	}
-	
 	private static void refreshList()
 	{
 		personnes = Passerelle.refreshList();
@@ -194,7 +148,7 @@ public abstract class HibernateManagePersonne
 			+ "* " + MODIFIER + " pour modifier\n"
 			+ "* " + AJOUTER + " pour ajouter\n"
 			+ "* " + QUITTER + " pour quitter\n";
-		return getInt(msg);
+		return EntreesSorties.getInt(msg);
 	}
 			
 	public static void go()
@@ -213,23 +167,25 @@ public abstract class HibernateManagePersonne
 
 	public static void delete()
 	{
-		int index = getInt("Indice : ");
+		int index = EntreesSorties.getInt("Indice : ");
 		Personne personne = personnes.get(index - 1);
 		Passerelle.delete(personne);
 	}
 	
 	public static void update()
 	{
-		int index = getInt("Indice : ");
+		int index = EntreesSorties.getInt("Indice : ");
 		Personne personne = personnes.get(index - 1);
-		personne.setPrenom(getString("Prénom : "));
-		personne.setNom(getString("Nom : "));
+		personne.setPrenom(EntreesSorties.getString("Prénom : "));
+		personne.setNom(EntreesSorties.getString("Nom : "));
 		Passerelle.save(personne);
 	}
 	
 	public static void add()
 	{
-		Personne personne = new Personne(getString("Prénom : "), getString("Nom : "));
+		Personne personne = new Personne(
+				EntreesSorties.getString("Prénom : "), 
+				EntreesSorties.getString("Nom : "));
 		Passerelle.save(personne);
 	}
 	

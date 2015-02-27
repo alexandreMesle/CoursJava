@@ -1,8 +1,7 @@
 package persistance.rememberMyName;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import utilitaires.EntreesSorties;
 
 public abstract class RememberMyName
 {
@@ -30,26 +29,9 @@ public abstract class RememberMyName
 		} 
 		catch (ReadException e)
 		{
-			name = getNameStdIn();
+			name = EntreesSorties.getString("What is your name ? ");
 			writeNameToSupport(name);
 			return name;
-		}
-	}
-
-	public String getNameStdIn() throws IOException 
-	{
-		BufferedReader bufferedStdIn = null;
-		try
-		{
-			System.out.println("What is your name ? ");
-			InputStreamReader stdinInputStream = new InputStreamReader(System.in);
-			bufferedStdIn = new BufferedReader(stdinInputStream);
-			return bufferedStdIn.readLine();
-		}
-		finally
-		{
-			if (bufferedStdIn != null)
-				bufferedStdIn.close();
 		}
 	}
 
