@@ -13,7 +13,7 @@ public class PuissanceAvecLog extends ImplementationPuissance
 	{
 		try
 		{
-			FileHandler handler = new FileHandler("puissance.log");
+			FileHandler handler = new FileHandler("log/puissance.log");
 			LOGGER.addHandler(handler);
 			handler.setFormatter(new SimpleFormatter());
 		} catch (SecurityException e)
