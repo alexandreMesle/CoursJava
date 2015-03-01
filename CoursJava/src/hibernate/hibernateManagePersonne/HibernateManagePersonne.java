@@ -19,6 +19,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.Query;
 
 import utilitaires.EntreesSorties;
+import utilitaires.ligneDeCommande.*;
 
 @Entity
 class Personne
@@ -117,80 +118,95 @@ abstract class Passerelle
 	static List<Personne> refreshList()
 	{
 		Query query = session.createQuery("from Personne");
-		return new ArrayList<Personne>((List<Personne>)query.list());
+		return query.list();
 	}
 }
 
 public abstract class HibernateManagePersonne
 {
-	private static List<Personne> personnes;
-	
-	private final static int SUPPRIMER = 1, MODIFIER = 2, 
-			AJOUTER = 3, QUITTER = 4;
+	private static List<Personne> personnes = new ArrayList<>();
 	
 	private static void refreshList()
 	{
-		personnes = Passerelle.refreshList();
+		personnes.clear();
+		personnes.addAll(Passerelle.refreshList());
 	}
 
-	public static void print()
+	private static Option getAfficher()
 	{
-		int i = 1;
-		refreshList();
-		for (Personne personne : personnes)
-			System.out.println(i++ + " : " + personne);
-	}
-	
-	public static int chooseOption()
-	{
-		print();
-		String msg = "* " + SUPPRIMER + " pour supprimer\n"
-			+ "* " + MODIFIER + " pour modifier\n"
-			+ "* " + AJOUTER + " pour ajouter\n"
-			+ "* " + QUITTER + " pour quitter\n";
-		return EntreesSorties.getInt(msg);
-	}
-			
-	public static void go()
-	{
-		int option;
-		while((option = chooseOption()) != QUITTER)
+		return new Option("Afficher", "l", new Action()
 		{
-			switch(option)
+			@Override
+			public void optionSelectionnee()
 			{
-				case AJOUTER : add() ; break;
-				case SUPPRIMER : delete() ; break;
-				case MODIFIER : update() ; break;
+				refreshList();
+				for (Personne personne : personnes)
+					System.out.println(personne);
 			}
-		}
-	}
-
-	public static void delete()
-	{
-		int index = EntreesSorties.getInt("Indice : ");
-		Personne personne = personnes.get(index - 1);
-		Passerelle.delete(personne);
+		});
 	}
 	
-	public static void update()
+	private static Option getAjouter()
 	{
-		int index = EntreesSorties.getInt("Indice : ");
-		Personne personne = personnes.get(index - 1);
-		personne.setPrenom(EntreesSorties.getString("Prénom : "));
-		personne.setNom(EntreesSorties.getString("Nom : "));
-		Passerelle.save(personne);
+		return new Option("Ajouter", "a", new Action()
+		{
+			@Override
+			public void optionSelectionnee()
+			{
+				Passerelle.save(new Personne(
+						EntreesSorties.getString("Prénom : "), 
+						EntreesSorties.getString("Nom : "))
+				);
+				refreshList();
+			}
+		});
 	}
 	
-	public static void add()
+	private static Option getSupprimer()
 	{
-		Personne personne = new Personne(
-				EntreesSorties.getString("Prénom : "), 
-				EntreesSorties.getString("Nom : "));
-		Passerelle.save(personne);
+		Liste<Personne> supprimer = new Liste<>("Supprimer", personnes, "s");
+		supprimer.setAction(new ActionListe<Personne>()
+		{
+			@Override
+			public void elementSelectionne(int indice, Personne element)
+			{
+				Passerelle.delete(element);
+				refreshList();
+			}
+		});
+		return supprimer;		
+	}
+	
+	private static Option getModifier()
+	{
+		Liste<Personne> modifier = new Liste<>("Modifier", personnes, "m");
+		modifier.setAction(new ActionListe<Personne>()
+		{
+			@Override
+			public void elementSelectionne(int indice, Personne element)
+			{
+				element.setPrenom(EntreesSorties.getString("Prénom : "));
+				element.setNom(EntreesSorties.getString("Nom : "));
+				Passerelle.save(element);
+				refreshList();
+			}
+		});
+		return modifier;		
+	}
+	
+	private static Menu menuPrincipal()
+	{
+		Menu menu = new Menu("Gestionnaire de contacts");
+		menu.ajoute(getAfficher());
+		menu.ajoute(getAjouter());
+		menu.ajoute(getSupprimer());
+		menu.ajoute(getModifier());
+		menu.ajouteQuitter("q");
+		return menu;
 	}
 	
 	public static void main(String[] args)
 	{
-		go();
+		menuPrincipal().start();
 	}
 }

@@ -4,8 +4,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Fonctions de simplification des opérations de saisie.
+ */
+
 public class EntreesSorties
 {
+	/**
+	 * Saisit une chaîne de caractères.
+	 * @return la chaîne saisie.
+	 * @throws IOException En cas d'erreur de saisie.
+	 */
+	
 	public static String getString() throws IOException
 	{
 		BufferedReader br = new BufferedReader(
@@ -13,10 +23,24 @@ public class EntreesSorties
 		return br.readLine();
 	}
 	
+	/**
+	 * Saisit un int.
+	 * @return l'entier saisi.
+	 * @throws IOException En cas d'erreur de saisie.
+	 */
+	
 	public static int getInt() throws IOException
 	{
 		return Integer.parseInt(getString());
 	}
+	
+	/**
+	 * Saisit un int après avoir affiché {@link message}.
+	 * La saisie est démandé itérativement jusqu'à ce que 
+	 * l'utilisateur ait saisi une valeur correcte.
+	 * @param message le message affiché avant la saisie.
+	 * @return l'entier saisi.
+	 */
 	
 	public static int getInt(String message)
 	{
@@ -34,6 +58,14 @@ public class EntreesSorties
 		}
 		while(true);
 	}
+	
+	/**
+	 * Saisit une chaîne de caractères après avoir affiché {@link message}.
+	 * La saisie est demandée jusqu'à ce que l'utilisateur l'ait 
+	 * sans provoquer d'erreur.
+	 * @param message le message affiché avant la saisie.
+	 * @return la chaîne saisie.
+	 */
 	
 	public static String getString(String message)
 	{
