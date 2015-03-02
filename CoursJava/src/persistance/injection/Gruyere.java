@@ -67,9 +67,9 @@ public class Gruyere
 			System.out.println(e);
 		}
 		if (connexionAcceptee)
-			System.out.println("Connexion acceptée");
+			System.out.println("Connexion acceptÃ©e");
 		else
-			System.out.println("Accès refusé");
+			System.out.println("AccÃ©s refusÃ©");
 		return connexionAcceptee;
 	}
 	
