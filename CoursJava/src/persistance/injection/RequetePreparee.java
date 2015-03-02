@@ -18,11 +18,7 @@ public class RequetePreparee extends Gruyere
 	public static void main(String[] args)
 	{
 		Gruyere requetePreparee = new RequetePreparee();
-		requetePreparee.saisitIdentifiants();
-		if (requetePreparee.connect())
-			System.out.println("Connexion acceptée");
-		else
-			System.out.println("Accés refusé");
+		requetePreparee.connect();
 		requetePreparee.close();
 	}
 }

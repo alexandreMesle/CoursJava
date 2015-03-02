@@ -1,9 +1,12 @@
-package persistance.injection;
+package persistance.tp;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import persistance.injection.Gruyere;
+import persistance.injection.RequetePreparee;
 
 public class HachagePassword extends RequetePreparee
 {
@@ -31,11 +34,7 @@ public class HachagePassword extends RequetePreparee
 	public static void main(String[] args)
 	{
 		Gruyere requetePreparee = new HachagePassword();
-		requetePreparee.saisitIdentifiants();
-		if (requetePreparee.connect())
-			System.out.println("Connexion acceptée");
-		else
-			System.out.println("Accès refusé");
+		requetePreparee.connect();
 		requetePreparee.close();
 	}
 }

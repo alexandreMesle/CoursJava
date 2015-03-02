@@ -1,4 +1,4 @@
-package persistance.rememberMyName;
+package persistance.tp.rememberMyName;
 
 import java.io.IOException;
 import utilitaires.EntreesSorties;

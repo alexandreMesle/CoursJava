@@ -1,6 +1,6 @@
 package hibernate.rememberMyName;
 
-import persistance.rememberMyName.RememberMyName;
+import persistance.tp.rememberMyName.RememberMyName;
 
 import java.util.List;
 
