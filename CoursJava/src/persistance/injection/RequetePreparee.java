@@ -20,9 +20,9 @@ public class RequetePreparee extends Gruyere
 		Gruyere requetePreparee = new RequetePreparee();
 		requetePreparee.saisitIdentifiants();
 		if (requetePreparee.connect())
-			System.out.println("Connexion acceptÃ©e");
+			System.out.println("Connexion acceptée");
 		else
-			System.out.println("AccÃ¨s refusÃ©");
+			System.out.println("Accés refusé");
 		requetePreparee.close();
 	}
 }

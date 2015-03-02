@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 public class HachagePassword extends RequetePreparee
 {
-	private String md5(String value)
+	private String sha1(String value)
 	{
 		try
 		{
-			MessageDigest md5 = MessageDigest.getInstance("MD5");
-			return new String(md5.digest(value.getBytes()));
+			MessageDigest sha1 = MessageDigest.getInstance("SHA1");
+			return new String(sha1.digest(value.getBytes()));
 		} 
 		catch (NoSuchAlgorithmException e)
 		{
@@ -24,7 +24,7 @@ public class HachagePassword extends RequetePreparee
 	@Override
 	protected ResultSet executeConnect() throws SQLException
 	{
-		password = md5(password);
+		password = sha1(password);
 		return super.executeConnect();
 	}
 	
@@ -33,9 +33,9 @@ public class HachagePassword extends RequetePreparee
 		Gruyere requetePreparee = new HachagePassword();
 		requetePreparee.saisitIdentifiants();
 		if (requetePreparee.connect())
-			System.out.println("Connexion acceptÃ©e");
+			System.out.println("Connexion acceptée");
 		else
-			System.out.println("AccÃ¨s refusÃ©");
+			System.out.println("Accès refusé");
 		requetePreparee.close();
 	}
 }
