@@ -7,13 +7,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class TestSerialization implements Serializable
+public class Serialization implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
 	private  int value;
 	
-	public TestSerialization(int value)
+	public Serialization(int value)
 	{
 		this.value = value;
 	}
@@ -36,16 +36,16 @@ public class TestSerialization implements Serializable
 
 	public static void main(String[] args)
 	{
-		String fileName = "testSerialization";
-		TestSerialization ts = new TestSerialization(5);
-		System.out.println(ts);
+		String fileName = "serialization.srz";
+		Serialization s = new Serialization(5);
+		System.out.println(s);
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 		try
 		{
 			fos = new FileOutputStream(fileName);
 			oos = new ObjectOutputStream(fos);
-			oos.writeObject(ts);
+			oos.writeObject(s);
 		} 
 		catch (IOException e)
 		{
@@ -66,14 +66,14 @@ public class TestSerialization implements Serializable
 						+ fileName + ".");
 			}
 		}
-		ts.setValue(4);
+		s.setValue(4);
 		ObjectInputStream ois = null;
 		try
 		{
-			FileInputStream fis = new FileInputStream("testSerialization");
+			FileInputStream fis = new FileInputStream(fileName);
 			ois = new ObjectInputStream(fis);
-			TestSerialization tsBis = (TestSerialization)(ois.readObject());
-			System.out.println(tsBis);// 4 ou 5 ?
+			Serialization sBis = (Serialization)(ois.readObject());
+			System.out.println(sBis);// 4 ou 5 ?
 		}
 		catch (IOException | ClassNotFoundException e)
 		{

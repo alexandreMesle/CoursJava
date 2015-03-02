@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class TestJDBC
+public class JDBC
 {
 	public static void main(String[] args)
 	{
