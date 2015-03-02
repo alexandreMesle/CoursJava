@@ -33,9 +33,9 @@ public class HachagePassword extends RequetePreparee
 		Gruyere requetePreparee = new HachagePassword();
 		requetePreparee.saisitIdentifiants();
 		if (requetePreparee.connect())
-			System.out.println("Connexion acceptée");
+			System.out.println("Connexion acceptÃ©e");
 		else
-			System.out.println("Accès refusé");
+			System.out.println("AccÃ©s refusÃ©");
 		requetePreparee.close();
 	}
 }
