@@ -1,6 +1,5 @@
 package persistance.injection;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -48,34 +47,30 @@ public class Gruyere
 
 	}
 	
-	protected void saisitIdentifiants()
+	private void saisitIdentifiants()
 	{
-		try
-		{
-			System.out.println("login : ");
-			login = EntreesSorties.getString();
-			System.out.println("password : ");
-			password = EntreesSorties.getString(); 
-		} 
-		catch (IOException e)
-		{
-			System.out.println("Erreur de saisie !");
-			System.exit(1);
-		}
+		login = EntreesSorties.getString("login : ");
+		password = EntreesSorties.getString("password : "); 
 	}
 	
 	public boolean connect()
 	{
+		saisitIdentifiants();
+		boolean connexionAcceptee = false;
 		try
 		{
 			ResultSet rs = executeConnect();
-			return rs.next();
+			connexionAcceptee = rs.next();
 		}
 		catch (SQLException e)
 		{
 			System.out.println(e);
 		}
-		return false;
+		if (connexionAcceptee)
+			System.out.println("Connexion acceptée");
+		else
+			System.out.println("Accès refusé");
+		return connexionAcceptee;
 	}
 	
 	protected ResultSet executeConnect() throws SQLException
@@ -89,11 +84,7 @@ public class Gruyere
 	public static void main(String[] args)
 	{
 		Gruyere gruyere = new Gruyere();
-		gruyere.saisitIdentifiants();
-		if (gruyere.connect())
-			System.out.println("Connexion acceptÃ©e");
-		else
-			System.out.println("AccÃ¨s refusÃ©");
+		gruyere.connect();
 		gruyere.close();
 	}
 }
