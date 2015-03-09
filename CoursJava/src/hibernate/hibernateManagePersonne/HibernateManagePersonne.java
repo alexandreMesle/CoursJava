@@ -1,7 +1,5 @@
 package hibernate.hibernateManagePersonne;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -124,12 +122,11 @@ abstract class Passerelle
 
 public abstract class HibernateManagePersonne
 {
-	private static List<Personne> personnes = new ArrayList<>();
+	private static List<Personne> personnes;;
 	
 	private static void refreshList()
 	{
-		personnes.clear();
-		personnes.addAll(Passerelle.refreshList());
+		personnes = Passerelle.refreshList();
 	}
 
 	private static Option getAfficher()
@@ -164,33 +161,44 @@ public abstract class HibernateManagePersonne
 	
 	private static Option getSupprimer()
 	{
-		Liste<Personne> supprimer = new Liste<>("Supprimer", personnes, "s");
-		supprimer.setAction(new ActionListe<Personne>()
-		{
-			@Override
-			public void elementSelectionne(int indice, Personne element)
+		Liste<Personne> supprimer = new Liste<>("Supprimer", "s",
+			new ActionListe<Personne>()
 			{
-				Passerelle.delete(element);
-				refreshList();
-			}
-		});
+				@Override
+				public void elementSelectionne(int indice, Personne element)
+				{
+					Passerelle.delete(element);
+					refreshList();
+				}
+
+				@Override
+				public List<Personne> getListe()
+				{
+					return personnes;
+				}
+			});
 		return supprimer;		
 	}
 	
 	private static Option getModifier()
 	{
-		Liste<Personne> modifier = new Liste<>("Modifier", personnes, "m");
-		modifier.setAction(new ActionListe<Personne>()
-		{
-			@Override
-			public void elementSelectionne(int indice, Personne element)
+		Liste<Personne> modifier = new Liste<>("Modifier", "m", 
+			new ActionListe<Personne>()
 			{
-				element.setPrenom(EntreesSorties.getString("Prénom : "));
-				element.setNom(EntreesSorties.getString("Nom : "));
-				Passerelle.save(element);
-				refreshList();
-			}
-		});
+				@Override
+				public void elementSelectionne(int indice, Personne element)
+				{
+					element.setPrenom(EntreesSorties.getString("Prénom : "));
+					element.setNom(EntreesSorties.getString("Nom : "));
+					Passerelle.save(element);
+				}
+				
+				@Override
+				public List<Personne> getListe()
+				{
+					return personnes;
+				}
+			});
 		return modifier;		
 	}
 	

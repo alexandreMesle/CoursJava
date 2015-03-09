@@ -3,6 +3,8 @@ package utilitaires;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 /**
  * Fonctions de simplification des opérations de saisie.
@@ -83,4 +85,18 @@ public class EntreesSorties
 		}
 		while(true);
 	}
+
+	/**
+	 * Affiche une exception, utile pour afficher une exception rattrapée.
+	 * @param e l'exception à afficher.
+	 */
+
+	public static void afficheException(Exception e)
+	{
+		StringWriter sw = new StringWriter();
+		PrintWriter s = new PrintWriter(sw);
+		e.printStackTrace(s);
+		System.out.println(sw);
+	}
+
 }

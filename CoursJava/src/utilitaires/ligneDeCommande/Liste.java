@@ -12,18 +12,17 @@ import java.util.List;
 public class Liste<T> extends Menu
 {
 	private ActionListe<T> action;
-	private List<T> liste;
 	
 	/**
 	 * Créée une liste.
 	 * @param titre intitulé affiché au dessus-de la liste.
-	 * @param liste liste affichée.
+	 * @param action l'objet permettant de gérer la liste.
 	 */
 	
-	public Liste(String titre, List<T> liste)
+	public Liste(String titre, ActionListe<T> action)
 	{
 		super(titre);
-		this.liste = liste;
+		this.action = action;
 		setRetourAuto(true);
 	}
 	
@@ -42,13 +41,13 @@ public class Liste<T> extends Menu
 	/**
 	 * Créée une liste.
 	 * @param titre intitulé affiché au dessus-de la liste.
-	 * @param liste liste affichée.
+	 * @param action l'objet permettant de gérer la liste.
 	 * @param raccourci raccourci utilisé dans le cas où cette liste est utilisé comme option dans un menu.
 	 */
 	
-	public Liste(String titre, List<T> liste, String raccourci)
+	public Liste(String titre, String raccourci, ActionListe<T> action)
 	{
-		this(titre, liste);
+		this(titre, action);
 		this.raccourci = raccourci;
 	}
 	
@@ -70,22 +69,13 @@ public class Liste<T> extends Menu
 	
 	private void actualise()
 	{
+		List<T> liste = action.getListe();
+		clearOptions();
 		for (int i = 0 ; i < liste.size() ; i++)
 		{
 			T element = liste.get(i);
 			ajoute(new Option(element.toString(), "" + (i + 1), getAction(i, element))) ;
 		}				
-	}
-	
-	/**
-	 * Modifie la liste des éléments à sélectionner.
-	 * @param liste la nouvelle liste.
-	 */
-	
-	public void setListe(List<T> liste)
-	{
-		this.liste = liste;
-		actualise();
 	}
 	
 	/**

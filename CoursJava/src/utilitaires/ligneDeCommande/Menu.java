@@ -50,6 +50,12 @@ public class Menu extends Option
 	
 	public void ajoute(Option option)
 	{
+		Option autre = optionsMap.get(option.getRaccourci());
+		if (autre != null)
+			throw new RuntimeException("Collision entre " + autre.getTitre()
+					+ " et " + option.getTitre() + " pour le raccourci" +
+					option.getRaccourci() + " dans le menu " + 
+					getTitre() + ".");
 		optionsMap.put(option.getRaccourci(), option);
 		optionsList.add(option);
 	}
@@ -92,6 +98,11 @@ public class Menu extends Option
 		this.retourAuto = retourAuto;
 	}
 	
+	protected String saisitOption()
+	{
+		return EntreesSorties.getString(this.toString());
+	}
+	
 	/**
 	 * Exécute le menu.	
 	 */
@@ -101,11 +112,14 @@ public class Menu extends Option
 		Option option = null;
 		do
 		{
-			String saisie = EntreesSorties.getString(this.toString());
+			String saisie = saisitOption();
 			option = optionsMap.get(saisie);
-			option.optionSelectionnee();
+			if (option != null)
+				option.optionSelectionnee();
+			else
+				System.out.println("Cette option n'est pas disponible.");
 		}
-		while(!retourAuto && option.getAction() != Action.REVENIR);
+		while(option == null || !retourAuto && option.getAction() != Action.REVENIR);
 	}
 
 	@Override
@@ -121,29 +135,5 @@ public class Menu extends Option
 		for (Option option : optionsList)
 			res += option.stringOfOption() + "\n";
 		return res;
-	}
-	
-	public static void main(String[] args)
-	{
-		Menu principal = new Menu("Menu principal");
-		ArrayList<String> arrayList = new ArrayList<>();
-		arrayList.add("toto");
-		arrayList.add("titi");
-		Liste<String> liste = new Liste<>("Sélectionner un élément", arrayList, "s");
-		liste.setAction(new ActionListe<String>()
-		{
-			@Override
-			public void elementSelectionne(int indice, String element)
-			{
-				System.out.println("Vous avez sélectionné " + element);
-			}
-		});
-		principal.ajoute(liste);
-		principal.ajoute(new Option("menu 2", "2"));
-		Menu sousMenu = new Menu("sous menu 1", "m");
-		principal.ajoute(sousMenu);
-		principal.ajouteQuitter("q");
-		sousMenu.ajouteRevenir("r");
-		principal.start();
 	}
 }
