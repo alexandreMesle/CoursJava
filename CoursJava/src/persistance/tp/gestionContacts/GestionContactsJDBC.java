@@ -1,7 +1,5 @@
 package persistance.tp.gestionContacts;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -69,7 +67,7 @@ class ContactJDBC extends Contact
 	}
 }
 
-public class ListeContactsJDBC extends ListeContacts
+class ListeContactsJDBC extends ListeContacts
 {
 	private static final long serialVersionUID = -8830007898666104116L;
 	private Connection connexion = null;
@@ -212,14 +210,18 @@ public class ListeContactsJDBC extends ListeContacts
 		}
 	}
 	
-	public static void main(String[] args)
-	{
-		new GestionContacts(new ListeContactsJDBC());
-	}
-	
 	@Override
 	public String toString()
 	{
 		return "contacts JDBC :\n" + super.toString();
 	}
 }
+
+public class GestionContactsJDBC
+{
+	public static void main(String[] args)
+	{
+		new GestionContacts(new ListeContactsJDBC());
+	}
+}
+
