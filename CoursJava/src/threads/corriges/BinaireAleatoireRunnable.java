@@ -1,4 +1,5 @@
 package threads.corriges;
+
 public class BinaireAleatoireRunnable implements Runnable
 {
     private int value;
@@ -18,8 +19,8 @@ public class BinaireAleatoireRunnable implements Runnable
     
     public static void main(String[] args)
     {
-	Runnable un = new BinaireAleatoireRunnable(1, 30000);
-	Runnable zero = new BinaireAleatoireRunnable(0, 30000);
+	Runnable un = new BinaireAleatoireRunnable(1, 30);
+	Runnable zero = new BinaireAleatoireRunnable(0, 30);
 	Thread tUn = new Thread(un);
 	Thread tZero = new Thread(zero);
 	tUn.start();

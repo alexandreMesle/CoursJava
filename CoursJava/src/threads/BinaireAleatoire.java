@@ -1,4 +1,5 @@
 package threads;
+
 public class BinaireAleatoire extends Thread
 {
     private int value;
@@ -18,8 +19,8 @@ public class BinaireAleatoire extends Thread
     
     public static void main(String[] args)
     {
-	Thread un = new BinaireAleatoire(1, 30000);
-	Thread zero = new BinaireAleatoire(0, 30000);
+	Thread un = new BinaireAleatoire(1, 30);
+	Thread zero = new BinaireAleatoire(0, 30);
 	un.start();
 	zero.start();
     }

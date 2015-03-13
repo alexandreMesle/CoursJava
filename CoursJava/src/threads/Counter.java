@@ -4,25 +4,27 @@ public class Counter
     private int value = 0;
     private int upperBound;
     private int lowerBound;
+    private static int SLEEP_DURATION = 50;
     
     public Counter(int lowerBound, int upperBound)
     {
-	this.upperBound = upperBound;
-	this.lowerBound = lowerBound;
+		this.upperBound = upperBound;
+		this.lowerBound = lowerBound;
+		value = (upperBound + lowerBound)/2;
     }
     
     public synchronized void increaseCounter() throws InterruptedException
     {
-	if (value == upperBound)
-	    wait();
-	else
-	    {
-		value++;
-		System.out.println("+ 1 = " + value);
-		Thread.sleep(50);
-		if (value == lowerBound + 1)
-		    notify();
-	    }
+		if (value == upperBound)
+		    wait();
+		else
+		    {
+				value++;
+				System.out.println("+ 1 = " + value);
+				Thread.sleep(SLEEP_DURATION);
+				if (value == lowerBound + 1)
+				    notify();
+		    }
     }
     
     public synchronized void decreaseCounter() throws InterruptedException
@@ -31,17 +33,17 @@ public class Counter
 	    wait();
 	else
 	    {
-		value--;
-		System.out.println("- 1 = " + value);
-		Thread.sleep(50);
-		if (value == upperBound - 1)
-		    notify();
+			value--;
+			System.out.println("- 1 = " + value);
+			Thread.sleep(SLEEP_DURATION);
+			if (value == upperBound - 1)
+			    notify();
 	    }
     }
     
     public static void main(String[] args)
     {
-	Counter c = new Counter(-100, 100);
+	Counter c = new Counter(0, 100);
 	Thread p = new Plus(c);
 	Thread m = new Moins(c);
 	p.start();
@@ -55,7 +57,7 @@ class Plus extends Thread
 
     Plus(Counter c)
     {
-	this.c = c;
+    	this.c = c;
     }
     
     public void run()
@@ -75,16 +77,16 @@ class Moins extends Thread
     
     Moins(Counter c)
     {
-	this.c = c;
+    	this.c = c;
     }
     
     public void run()
     {
-	while(true)
-	    try
-		{
-		    c.decreaseCounter();
-		}
-	    catch(InterruptedException e){}
-    }
+		while(true)
+		    try
+			{
+			    c.decreaseCounter();
+			}
+		    catch(InterruptedException e){}
+	    }
 }
