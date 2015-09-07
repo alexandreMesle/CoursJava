@@ -6,37 +6,33 @@ public class Point
     
     Point(double abs, double ord)
     {
-	this.abs = abs;
-	this.ord = ord;
-    }
-
-    Point()
-    {
-	this(0, 0);
+		this.abs = abs;
+		this.ord = ord;
     }
 
     public double getAbs()
     {
-	return abs;
+    	return abs;
     }
 
     public double getOrd()
     {
-	return ord;
+    	return ord;
     }
     
     public void setAbs(double abs)
     {
-	this.abs = abs;
+    	this.abs = abs;
     }
 
     public void setOrd(double ord)
     {
-	this.ord = ord;
+    	this.ord = ord;
     }
     
+    // Exercice 4
     public String toString()
     {
-	return "(" + abs + ", " + ord + ")";
+    	return "(" + abs + ", " + ord + ")";
     }
 }

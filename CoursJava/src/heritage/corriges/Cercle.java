@@ -3,35 +3,33 @@ package heritage.corriges;
 
 public class Cercle extends Point
 {
-    private double radius;
+    private double radius = 0;
     
     public Cercle(double abs, double ord, double radius)
     {
-	super(abs, ord);
-	this.radius = radius;
+		super(abs, ord);
+		setRadius(radius);
     }
 
     public Cercle(Point point, double rayon)
     {
-	this(point.getAbs(), point.getOrd(), 0);
-    }
-
-    public Cercle()
-    {
-	this(0, 0, 0);
+    	this(point.getAbs(), point.getOrd(), 0);
     }
 
     public double getRadius()
     {
-	return radius;
+    	return radius;
     }
 
-    public void setRadius(double abs)
+    public void setRadius(double radius)
     {
-	this.radius = radius;
+    	if (radius > 0)
+    		this.radius = radius;
     }
+
+    // Exercice 4
     public String toString()
     {
-	return "(" + super.toString()+  ", " + radius + ")";
+    	return "(" + super.toString()+  ", " + radius + ")";
     }
 }
