@@ -5,6 +5,8 @@ public interface Animal
     public void setNom(String nom);
     public String getNom();
     public String parle();
+
+// TODO Décommentez le code ci-dessous pour le compléter
     
 //    public static void main(String[] args)
 //    {
