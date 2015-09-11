@@ -6,7 +6,7 @@ public interface Animal
     public String getNom();
     public String parle();
 
-// TODO Décommentez le code ci-dessous pour le compléter
+// TODO DÃ©commentez le code ci-dessous pour le complÃ©ter
     
 //    public static void main(String[] args)
 //    {
