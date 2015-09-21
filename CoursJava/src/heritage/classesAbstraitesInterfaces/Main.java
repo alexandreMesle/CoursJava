@@ -132,7 +132,9 @@ abstract class DeviseComparable implements Comparable
 
     public int compareTo(Comparable other)
     {
-	return (new Double(getSomme())).compareTo(new Double(((DeviseComparable)other).getSomme()));
+    	Double thisDollar = (new DollarsComparable(this)).getSomme(),
+    		otherDollar = (new DollarsComparable((DeviseComparable)other)).getSomme(); 
+    	return thisDollar.compareTo(otherDollar);
     }
 }
 
