@@ -13,7 +13,7 @@ public class FileSurcharge
 
     public FileSurcharge(FileSurcharge other)
     {
-	this(other.entiers.length);
+	this(other.entiers.length - 1);
 	for(int i = 0 ; i < other.entiers.length ; i++)
 	    entiers[i] = other.entiers[i];
 	first = other.first;
