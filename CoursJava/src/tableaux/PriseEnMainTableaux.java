@@ -56,7 +56,7 @@ public class PriseEnMainTableaux
     {
 	int[] t = new int[20];
 	for (int i = 0 ; i < 20 ; i++)
-	    t[i] = i;
+	    t[i] = i + 1;
 	affiche(t);
 	reverse(t);
 	affiche(t);
