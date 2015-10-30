@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="lib/jboss-logging-annotations-1.2.0.Beta1.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.25-bin.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Utilitaires"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
