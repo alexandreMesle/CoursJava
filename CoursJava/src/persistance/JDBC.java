@@ -23,19 +23,23 @@ public class JDBC
 			{
 				System.out.println(rs.getInt(1) + " : " + rs.getString(2));
 			}
-		} catch (ClassNotFoundException e)
+		}
+		catch (ClassNotFoundException e)
 		{
 			System.out.println("Pilote JDBC non installé.");
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println(e);
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				if (c != null)
 					c.close();
-			} catch (SQLException e)
+			}
+			catch (SQLException e)
 			{
 				System.out.println("Impossible de fermer la connection.");
 			}

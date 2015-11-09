@@ -20,16 +20,19 @@ public class Serialization extends RememberMyName
 			ois = new ObjectInputStream(fis);
 			String s = (String) (ois.readObject());
 			return s;
-		} catch (IOException | ClassNotFoundException e)
+		}
+		catch (IOException | ClassNotFoundException e)
 		{
 			throw new ReadException(e);
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				if (ois != null)
 					ois.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				e.printStackTrace();
 			}
@@ -45,16 +48,19 @@ public class Serialization extends RememberMyName
 			FileOutputStream fis = new FileOutputStream(FILE_NAME);
 			oos = new ObjectOutputStream(fis);
 			oos.writeObject(name);
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			throw new WriteException(e);
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				if (oos != null)
 					oos.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				e.printStackTrace();
 			}

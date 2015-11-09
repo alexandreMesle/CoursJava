@@ -92,7 +92,8 @@ abstract class Passerelle
 					.applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 			session = sessionFactory.openSession();
-		} catch (HibernateException ex)
+		}
+		catch (HibernateException ex)
 		{
 			throw new RuntimeException("Probleme de configuration : "
 					+ ex.getMessage(), ex);

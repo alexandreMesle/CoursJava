@@ -32,7 +32,8 @@ public class EuroDollar
 			double k = new Double(source.getText()).doubleValue();
 			k *= rate;
 			target.setText((new Double(k)).toString());
-		} catch (NumberFormatException ex)
+		}
+		catch (NumberFormatException ex)
 		{
 			if (target != null)
 				target.setText("");

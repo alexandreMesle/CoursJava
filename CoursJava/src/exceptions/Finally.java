@@ -17,14 +17,17 @@ public class Finally
 			try
 			{
 				throw new MonException();
-			} catch (MonException e)
+			}
+			catch (MonException e)
 			{
 				throw new MonException();
-			} finally
+			}
+			finally
 			{
 				System.out.println("Tu t'afficheras quoi qu'il advienne !");
 			}
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
 			System.out.println(e);
 		}

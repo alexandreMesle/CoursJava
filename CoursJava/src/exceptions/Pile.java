@@ -72,7 +72,8 @@ public class Pile
 		{
 			l = l.getNext();
 			nbItems--;
-		} else
+		}
+		else
 		{
 			throw new PileVideException();
 		}
@@ -114,7 +115,8 @@ public class Pile
 			try
 			{
 				p.depile();
-			} catch (PileVideException e)
+			}
+			catch (PileVideException e)
 			{
 				System.out.println(e);
 			}

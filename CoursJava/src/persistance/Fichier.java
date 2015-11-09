@@ -20,17 +20,20 @@ public class Fichier
 			String line;
 			while ((line = br.readLine()) != null)
 				System.out.println(line);
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			System.out.println("Impossible d'ouvrir le fichier " + fileName
 					+ ".");
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				if (br != null)
 					br.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				e.printStackTrace();
 			}

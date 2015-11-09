@@ -48,15 +48,18 @@ public class JDBC extends RememberMyName
 				return rs.getString(1);
 			else
 				throw new ReadException(null);
-		} catch (SQLException | ClassNotFoundException e)
+		}
+		catch (SQLException | ClassNotFoundException e)
 		{
 			throw new ReadException(e);
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				closeJDBCConnection();
-			} catch (SQLException e)
+			}
+			catch (SQLException e)
 			{
 				System.out.println("Error while closing database connection");
 			}
@@ -80,15 +83,18 @@ public class JDBC extends RememberMyName
 			Statement s = c.createStatement();
 			s.execute(CREATE_SCRIPT);
 			writeNameToDb(name);
-		} catch (SQLException | ClassNotFoundException e)
+		}
+		catch (SQLException | ClassNotFoundException e)
 		{
 			throw new WriteException(e);
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				closeJDBCConnection();
-			} catch (SQLException e)
+			}
+			catch (SQLException e)
 			{
 				System.out.println("Error while closing database connection");
 			}

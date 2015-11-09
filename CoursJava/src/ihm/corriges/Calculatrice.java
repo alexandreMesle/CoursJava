@@ -21,7 +21,8 @@ public class Calculatrice
 		{
 			left = 10 * left + i;
 			updateScreen(left);
-		} else
+		}
+		else
 		{
 			right = 10 * right + i;
 			updateScreen(right);

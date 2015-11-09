@@ -17,7 +17,8 @@ public class PuissanceAvecLog extends ImplementationPuissance
 			FileHandler handler = new FileHandler("log/puissance.log");
 			LOGGER.addHandler(handler);
 			handler.setFormatter(new SimpleFormatter());
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}

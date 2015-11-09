@@ -44,7 +44,8 @@ public class PileIterable<T> extends Pile<T>
 			try
 			{
 				System.out.println(p.sommet());
-			} catch (PileVideException e)
+			}
+			catch (PileVideException e)
 			{
 				System.out.println(e);
 			}

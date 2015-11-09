@@ -13,7 +13,8 @@ public class ClasseInutile
 		try
 		{
 			o.nePasInvoquer();
-		} catch (ExceptionInutile e)
+		}
+		catch (ExceptionInutile e)
 		{
 			System.out.println(e);
 		}

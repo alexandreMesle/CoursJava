@@ -44,7 +44,8 @@ class ContactJDBC extends Contact
 			s.setInt(2, getNumContact());
 			s.executeUpdate();
 			super.setNom(nom);
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println("Connexion perdue !");
 		}
@@ -61,7 +62,8 @@ class ContactJDBC extends Contact
 			s.setInt(2, getNumContact());
 			s.executeUpdate();
 			super.setEMail(email);
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println("Connexion perdue !");
 		}
@@ -101,17 +103,20 @@ class ListeContactsJDBC extends ListeContacts
 			while (rs.next())
 				super.ajouter(new ContactJDBC(rs.getInt(1), rs.getString(2), rs
 						.getString(3), connexion));
-		} catch (ClassNotFoundException e)
+		}
+		catch (ClassNotFoundException e)
 		{
 			System.out.println("Pilote JDBC non installé.");
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			try
 			{
 				System.out.println("Création de la base de données.");
 				initialiserDB();
 				lire();
-			} catch (SQLException e1)
+			}
+			catch (SQLException e1)
 			{
 				System.out.println("Impossible de créer les données : ");
 				e1.printStackTrace();
@@ -134,7 +139,8 @@ class ListeContactsJDBC extends ListeContacts
 			ResultSet rs = s.getGeneratedKeys();
 			rs.next();
 			super.ajouter(new ContactJDBC(rs.getInt(1), nom, email, connexion));
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println("Connexion perdue !");
 		}
@@ -150,7 +156,8 @@ class ListeContactsJDBC extends ListeContacts
 			s.executeUpdate();
 			super.supprimer(contact);
 			System.out.println("Suppression !");
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println("Connexion perdue !");
 			EntreesSorties.afficheException(e);
@@ -163,7 +170,8 @@ class ListeContactsJDBC extends ListeContacts
 		{
 			if (connexion != null)
 				connexion.close();
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println("Impossible de fermer la connection.");
 		}
@@ -175,10 +183,12 @@ class ListeContactsJDBC extends ListeContacts
 		try
 		{
 			connexion.commit();
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println("Impossible d'enregistrer les modifications.");
-		} finally
+		}
+		finally
 		{
 			fermer();
 		}
@@ -190,10 +200,12 @@ class ListeContactsJDBC extends ListeContacts
 		try
 		{
 			connexion.rollback();
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println("Impossible d'annuler les modifications.");
-		} finally
+		}
+		finally
 		{
 			fermer();
 		}

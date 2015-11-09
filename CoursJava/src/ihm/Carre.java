@@ -17,7 +17,8 @@ public class Carre
 			int k = Integer.parseInt(operand.getText());
 			k *= k;
 			result.setText(Integer.toString(k));
-		} catch (Exception ex)
+		}
+		catch (Exception ex)
 		{
 			if (result != null)
 				result.setText("");

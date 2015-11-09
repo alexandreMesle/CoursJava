@@ -39,7 +39,8 @@ class Producteur extends Thread
 				try
 				{
 					sleep(100);
-				} catch (InterruptedException e)
+				}
+				catch (InterruptedException e)
 				{
 					System.out.println(e);
 				}
@@ -50,17 +51,20 @@ class Producteur extends Thread
 					try
 					{
 						file.add(r.nextInt());
-					} catch (Exception e)
+					}
+					catch (Exception e)
 					{
 						System.out.println(e);
 					}
 					if (empty)
 						file.notifyAll();
-				} else
+				}
+				else
 					try
 					{
 						file.wait();
-					} catch (InterruptedException e)
+					}
+					catch (InterruptedException e)
 					{
 						System.out.println(e);
 					}
@@ -89,7 +93,8 @@ class Consommateur extends Thread
 				try
 				{
 					sleep(100);
-				} catch (InterruptedException e)
+				}
+				catch (InterruptedException e)
 				{
 					System.out.println(e);
 				}
@@ -102,18 +107,21 @@ class Consommateur extends Thread
 					{
 						first = file.getFirst();
 						file.removeFirst();
-					} catch (Exception e)
+					}
+					catch (Exception e)
 					{
 						System.out.println(e);
 					}
 					System.out.println(first);
 					if (full)
 						file.notifyAll();
-				} else
+				}
+				else
 					try
 					{
 						file.wait();
-					} catch (InterruptedException e)
+					}
+					catch (InterruptedException e)
 					{
 						System.out.println(e);
 					}
@@ -198,7 +206,8 @@ class File<T>
 		if (isEmpty())
 		{
 			first = last = new List<T>(data);
-		} else
+		}
+		else
 		{
 			last.setNext(new List<T>(data));
 			last = last.getNext();

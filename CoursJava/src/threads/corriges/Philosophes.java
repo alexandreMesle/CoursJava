@@ -29,7 +29,8 @@ public class Philosophes extends Thread
 			try
 			{
 				sleep(200);
-			} catch (InterruptedException e)
+			}
+			catch (InterruptedException e)
 			{
 			}
 		}
@@ -80,7 +81,8 @@ class Place
 				try
 				{
 					Thread.sleep(500);
-				} catch (Exception e)
+				}
+				catch (Exception e)
 				{
 				}
 				System.out.println(philosophe + " a fini de manger a " + this);

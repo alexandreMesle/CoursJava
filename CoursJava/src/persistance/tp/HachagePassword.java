@@ -16,7 +16,8 @@ public class HachagePassword extends RequetePreparee
 		{
 			MessageDigest sha1 = MessageDigest.getInstance("SHA1");
 			return new String(sha1.digest(value.getBytes()));
-		} catch (NoSuchAlgorithmException e)
+		}
+		catch (NoSuchAlgorithmException e)
 		{
 			e.printStackTrace();
 		}

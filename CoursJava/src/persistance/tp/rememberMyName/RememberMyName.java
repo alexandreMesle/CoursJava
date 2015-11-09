@@ -14,7 +14,8 @@ public abstract class RememberMyName
 		try
 		{
 			System.out.println("Bonjour, " + getName() + ".");
-		} catch (IOException | WriteException e)
+		}
+		catch (IOException | WriteException e)
 		{
 			e.printStackTrace();
 		}
@@ -26,7 +27,8 @@ public abstract class RememberMyName
 		try
 		{
 			return getNameFromSupport();
-		} catch (ReadException e)
+		}
+		catch (ReadException e)
 		{
 			name = EntreesSorties.getString("What is your name ? ");
 			writeNameToSupport(name);

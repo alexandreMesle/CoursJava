@@ -67,7 +67,8 @@ class Plus extends Thread
 			try
 			{
 				c.increaseCounter();
-			} catch (InterruptedException e)
+			}
+			catch (InterruptedException e)
 			{
 			}
 	}
@@ -88,7 +89,8 @@ class Moins extends Thread
 			try
 			{
 				c.decreaseCounter();
-			} catch (InterruptedException e)
+			}
+			catch (InterruptedException e)
 			{
 			}
 	}

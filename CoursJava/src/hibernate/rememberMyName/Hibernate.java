@@ -75,7 +75,8 @@ public class Hibernate extends RememberMyName
 		{
 			MyName myName = list.get(0);
 			return myName.getName();
-		} else
+		}
+		else
 			throw new ReadException(null);
 	}
 

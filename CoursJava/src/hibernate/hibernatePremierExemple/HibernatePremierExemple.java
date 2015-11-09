@@ -60,7 +60,8 @@ public class HibernatePremierExemple
 			s.persist(joffrey);
 			t.commit();
 			s.close();
-		} catch (HibernateException ex)
+		}
+		catch (HibernateException ex)
 		{
 			throw new RuntimeException("Probleme de configuration : "
 					+ ex.getMessage(), ex);

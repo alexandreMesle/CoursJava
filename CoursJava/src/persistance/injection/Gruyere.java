@@ -20,10 +20,12 @@ public class Gruyere
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost/test", user = "", password = "";
 			c = DriverManager.getConnection(url, user, password);
-		} catch (ClassNotFoundException e)
+		}
+		catch (ClassNotFoundException e)
 		{
 			System.out.println("Pilote JDBC non installé.");
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println(e);
 		}
@@ -35,7 +37,8 @@ public class Gruyere
 		{
 			if (c != null)
 				c.close();
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println("Impossible de fermer la connection.");
 		}
@@ -56,7 +59,8 @@ public class Gruyere
 		{
 			ResultSet rs = executeConnect();
 			connexionAcceptee = rs.next();
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			System.out.println(e);
 		}

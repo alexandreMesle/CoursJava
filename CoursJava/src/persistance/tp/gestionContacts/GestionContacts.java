@@ -124,10 +124,12 @@ class ListeContacts implements Serializable
 			fos = new FileOutputStream(FILE);
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(this);
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
-		} finally
+		}
+		finally
 		{
 			try
 			{
@@ -135,7 +137,8 @@ class ListeContacts implements Serializable
 					fos.close();
 				if (oos != null)
 					oos.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				System.out.println("Impossible de fermer le fichier " + FILE
 						+ ".");
@@ -156,16 +159,19 @@ class ListeContacts implements Serializable
 			FileInputStream fis = new FileInputStream(FILE);
 			ois = new ObjectInputStream(fis);
 			return (ListeContacts) (ois.readObject());
-		} catch (IOException | ClassNotFoundException e)
+		}
+		catch (IOException | ClassNotFoundException e)
 		{
 			return null;
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				if (ois != null)
 					ois.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				System.out.println("Impossible de fermer le fichier " + FILE
 						+ ".");

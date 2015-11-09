@@ -46,10 +46,12 @@ public class Serialization implements Serializable
 			fos = new FileOutputStream(fileName);
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(s);
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
-		} finally
+		}
+		finally
 		{
 			try
 			{
@@ -57,7 +59,8 @@ public class Serialization implements Serializable
 					fos.close();
 				if (oos != null)
 					oos.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				System.out.println("Impossible de fermer le fichier "
 						+ fileName + ".");
@@ -71,16 +74,19 @@ public class Serialization implements Serializable
 			ois = new ObjectInputStream(fis);
 			Serialization sBis = (Serialization) (ois.readObject());
 			System.out.println(sBis);// 4 ou 5 ?
-		} catch (IOException | ClassNotFoundException e)
+		}
+		catch (IOException | ClassNotFoundException e)
 		{
 			e.printStackTrace();
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				if (ois != null)
 					ois.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				System.out.println("Impossible de fermer le fichier "
 						+ fileName + ".");

@@ -33,7 +33,8 @@ public class TestFonctionsAutomatique
 			teste("puissance", p.puissance(5, 1), 5);
 			teste("puissance", p.puissance(3, 2), 9);
 			teste("puissance", p.puissance(2, 10), 1024);
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
 			ok = false;
 			System.out.println(e);

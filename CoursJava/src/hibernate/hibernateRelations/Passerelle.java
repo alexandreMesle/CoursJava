@@ -27,7 +27,8 @@ public class Passerelle
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-		} catch (HibernateException ex)
+		}
+		catch (HibernateException ex)
 		{
 			throw new RuntimeException("Probleme de configuration : "
 					+ ex.getMessage(), ex);

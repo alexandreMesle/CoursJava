@@ -27,7 +27,8 @@ public class CopieFichier
 			isr = new InputStreamReader(source);
 			osr = new OutputStreamWriter(destination);
 			copie(isr, osr);
-		} finally
+		}
+		finally
 		{
 			isr.close();
 			osr.close();
@@ -44,24 +45,29 @@ public class CopieFichier
 			fos = new FileOutputStream(destination);
 			copie(fis, fos);
 			return true;
-		} catch (FileNotFoundException e)
+		}
+		catch (FileNotFoundException e)
 		{
 			System.out.println(e.getMessage());
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			System.out.println("Erreur d'entrée/sortie.");
-		} finally
+		}
+		finally
 		{
 			try
 			{
 				fis.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 			}
 			try
 			{
 				fos.close();
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 			}
 		}
