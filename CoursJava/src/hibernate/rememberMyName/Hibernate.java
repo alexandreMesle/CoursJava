@@ -22,22 +22,22 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 @Entity
-@Table(name="userTable")
+@Table(name = "userTable")
 class MyName
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="userNum")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "userNum")
 	private int num;
-	
-	@Column(name="userField")
+
+	@Column(name = "userField")
 	private String name;
-	
+
 	public String getName()
 	{
 		return name;
 	}
-	
+
 	public MyName()
 	{
 	}
@@ -50,17 +50,16 @@ class MyName
 
 public class Hibernate extends RememberMyName
 {
-	public static final String FIELD = "userField",
-			TABLE = "userTable",
+	public static final String FIELD = "userField", TABLE = "userTable",
 			CONF_FILE = "hibernate/rememberMyName/Hibernate.cfg.xml";
 
 	private static Session getSession() throws HibernateException
 	{
-		Configuration configuration = new Configuration().
-				configure(CONF_FILE);
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
-				applySettings(configuration.getProperties()).build();
-		SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);  
+		Configuration configuration = new Configuration().configure(CONF_FILE);
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+				.applySettings(configuration.getProperties()).build();
+		SessionFactory sessionFactory = configuration
+				.buildSessionFactory(serviceRegistry);
 		return sessionFactory.openSession();
 	}
 
@@ -76,8 +75,7 @@ public class Hibernate extends RememberMyName
 		{
 			MyName myName = list.get(0);
 			return myName.getName();
-		}
-		else
+		} else
 			throw new ReadException(null);
 	}
 

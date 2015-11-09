@@ -16,21 +16,20 @@ public class HachagePassword extends RequetePreparee
 		{
 			MessageDigest sha1 = MessageDigest.getInstance("SHA1");
 			return new String(sha1.digest(value.getBytes()));
-		} 
-		catch (NoSuchAlgorithmException e)
+		} catch (NoSuchAlgorithmException e)
 		{
 			e.printStackTrace();
 		}
 		return value;
 	}
-	
+
 	@Override
 	protected ResultSet executeConnect() throws SQLException
 	{
 		password = sha1(password);
 		return super.executeConnect();
 	}
-	
+
 	public static void main(String[] args)
 	{
 		Gruyere requetePreparee = new HachagePassword();

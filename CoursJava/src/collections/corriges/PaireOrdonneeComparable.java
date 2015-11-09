@@ -1,8 +1,7 @@
 package collections.corriges;
 
-public class PaireOrdonneeComparable<T extends Comparable<T>> 
-	extends PaireOrdonnee<T>
-	implements Comparable<PaireOrdonnee<T>>
+public class PaireOrdonneeComparable<T extends Comparable<T>> extends
+		PaireOrdonnee<T> implements Comparable<PaireOrdonnee<T>>
 {
 	public PaireOrdonneeComparable(T first, T second)
 	{

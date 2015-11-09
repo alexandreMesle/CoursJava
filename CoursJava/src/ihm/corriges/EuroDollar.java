@@ -12,8 +12,8 @@ public class EuroDollar
 			euroText = new JTextField();
 	private final JLabel dollarLabel = new JLabel("Dollars"),
 			euroLabel = new JLabel("Euros");
-		
-	private KeyListener getKeyListener(final JTextField source, 
+
+	private KeyListener getKeyListener(final JTextField source,
 			final JTextField target, final double rate)
 	{
 		return new KeyAdapter()
@@ -21,20 +21,18 @@ public class EuroDollar
 			public void keyReleased(KeyEvent e)
 			{
 				convert(source, target, rate);
-			}			
+			}
 		};
 	}
 
-	private void convert(JTextField source, JTextField target, 
-			double rate)
+	private void convert(JTextField source, JTextField target, double rate)
 	{
 		try
 		{
 			double k = new Double(source.getText()).doubleValue();
 			k *= rate;
 			target.setText((new Double(k)).toString());
-		} 
-		catch (NumberFormatException ex)
+		} catch (NumberFormatException ex)
 		{
 			if (target != null)
 				target.setText("");
@@ -51,7 +49,7 @@ public class EuroDollar
 		panel.add(euroText);
 		return panel;
 	}
-	
+
 	public EuroDollar()
 	{
 		JFrame frame = new JFrame();
@@ -59,8 +57,10 @@ public class EuroDollar
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setContentPane(getMainPanel());
-		euroText.addKeyListener(getKeyListener(euroText, dollarText, OneDollarInEuro));
-		dollarText.addKeyListener(getKeyListener(dollarText, euroText, 1/OneDollarInEuro));
+		euroText.addKeyListener(getKeyListener(euroText, dollarText,
+				OneDollarInEuro));
+		dollarText.addKeyListener(getKeyListener(dollarText, euroText,
+				1 / OneDollarInEuro));
 		frame.pack();
 	}
 

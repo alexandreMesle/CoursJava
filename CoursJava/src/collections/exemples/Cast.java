@@ -8,10 +8,10 @@ public class Cast
 	{
 		ArrayList a = new ArrayList();
 		a.add("toto");
-		String s = (String)a.get(0);
+		String s = (String) a.get(0);
 		System.out.println(s);
 		a.add(5);
-		int i = (int)a.get(1);
+		int i = (int) a.get(1);
 		System.out.println(i);
 	}
 }

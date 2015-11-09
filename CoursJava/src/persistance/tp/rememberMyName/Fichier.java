@@ -11,7 +11,7 @@ import java.io.OutputStreamWriter;
 public class Fichier extends RememberMyName
 {
 	private static final String FILE_NAME = "myName.txt";
-	
+
 	public String getNameFromSupport() throws ReadException
 	{
 		BufferedReader bufferedReader = null;
@@ -21,24 +21,21 @@ public class Fichier extends RememberMyName
 			InputStreamReader fileReader = new InputStreamReader(file);
 			bufferedReader = new BufferedReader(fileReader);
 			return bufferedReader.readLine();
-		} 
-		catch (IOException e)
+		} catch (IOException e)
 		{
 			throw new ReadException(e);
-		}
-		finally
+		} finally
 		{
 			try
 			{
 				if (bufferedReader != null)
 					bufferedReader.close();
-			}
-			catch(Exception e)
+			} catch (Exception e)
 			{
 			}
 		}
 	}
-	
+
 	@Override
 	public void writeNameToSupport(String name) throws WriteException
 	{
@@ -49,19 +46,16 @@ public class Fichier extends RememberMyName
 			OutputStreamWriter writer = new OutputStreamWriter(outputFile);
 			bufferedWriter = new BufferedWriter(writer);
 			bufferedWriter.write(name);
-		} 
-		catch (IOException e)
+		} catch (IOException e)
 		{
 			throw new WriteException(e);
-		}
-		finally
+		} finally
 		{
 			try
 			{
 				if (bufferedWriter != null)
 					bufferedWriter.close();
-			} 
-			catch (Exception e)
+			} catch (Exception e)
 			{
 			}
 		}

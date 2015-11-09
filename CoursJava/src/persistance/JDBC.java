@@ -14,35 +14,28 @@ public class JDBC
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost/test",
-					user = "",
-					password = "";
+			String url = "jdbc:mysql://localhost/test", user = "", password = "";
 			c = DriverManager.getConnection(url, user, password);
 			String req = "select * from test";
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(req);
 			while (rs.next())
 			{
-				System.out.println(rs.getInt(1) + " : " + 
-						rs.getString(2));
+				System.out.println(rs.getInt(1) + " : " + rs.getString(2));
 			}
-		} 
-		catch (ClassNotFoundException e)
+		} catch (ClassNotFoundException e)
 		{
 			System.out.println("Pilote JDBC non installé.");
-		}
-		catch (SQLException e)
+		} catch (SQLException e)
 		{
 			System.out.println(e);
-		}
-		finally
+		} finally
 		{
 			try
 			{
 				if (c != null)
 					c.close();
-			}
-			catch(SQLException e)
+			} catch (SQLException e)
 			{
 				System.out.println("Impossible de fermer la connection.");
 			}

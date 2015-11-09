@@ -21,8 +21,7 @@ public class Calculatrice
 		{
 			left = 10 * left + i;
 			updateScreen(left);
-		} 
-		else
+		} else
 		{
 			right = 10 * right + i;
 			updateScreen(right);
@@ -67,8 +66,7 @@ public class Calculatrice
 		panel.add(getButtonsPanel(), BorderLayout.SOUTH);
 		return panel;
 	}
-	
-	
+
 	private ActionListener addDigitListener(final int j)
 	{
 		return new ActionListener()
@@ -80,7 +78,7 @@ public class Calculatrice
 			}
 		};
 	}
-	
+
 	private JButton getOperatorButton(final char operator)
 	{
 		JButton button = new JButton("" + operator);
@@ -93,7 +91,7 @@ public class Calculatrice
 		});
 		return button;
 	}
-	
+
 	private JPanel getButtonsPanel()
 	{
 		JPanel buttonsPanel = new JPanel();
@@ -112,7 +110,7 @@ public class Calculatrice
 		return buttonsPanel;
 
 	}
-	
+
 	public Calculatrice()
 	{
 		frame.setTitle("Calculatrice");

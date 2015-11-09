@@ -19,9 +19,9 @@ public class FormaterDisqueDurAnonyme extends FormaterDisqueDur
 			{
 				System.out.println("Formatage en cours.");
 			}
-		}; 
+		};
 	}
-	
+
 	public static void main(String[] args)
 	{
 		new FormaterDisqueDurAnonyme();

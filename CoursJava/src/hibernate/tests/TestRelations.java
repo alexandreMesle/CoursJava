@@ -27,7 +27,7 @@ public class TestRelations
 		tearDown();
 		setUp();
 	}
-	
+
 	@Test
 	public void all() throws Exception
 	{
@@ -36,14 +36,14 @@ public class TestRelations
 		testDeleteClientCommande();
 		testDeleteProduit();
 	}
-	
+
 	public void testClientCommande() throws Exception
 	{
 		Client joff = new Client("Joffrey"), cersei = new Client("Cersei");
-		Commande joffCmd = joff.createCommande(); 
+		Commande joffCmd = joff.createCommande();
 		Commande cerseiCommande = cersei.createCommande();
 		joff.save();
-		// vérifie Joffrey et sa commande  
+		// vérifie Joffrey et sa commande
 		assertTrue(joff == getData("Client", 1));
 		assertTrue(joffCmd == getData("Commande", 1));
 		assertTrue(count("Client") == 1);
@@ -55,22 +55,23 @@ public class TestRelations
 		assertTrue(count("Client") == 2);
 		assertTrue(count("Commande") == 2);
 		reset();
-		// Re-vérification avec un reset 
+		// Re-vérification avec un reset
 		assertTrue(count("Client") == 2);
 		assertTrue(count("Commande") == 2);
-		joff = Passerelle.<Client>getData("Client", 1);
-		cersei = Passerelle.<Client>getData("Client", 2);
-		assertTrue("Joffrey != " + joff.getNom(), 
+		joff = Passerelle.<Client> getData("Client", 1);
+		cersei = Passerelle.<Client> getData("Client", 2);
+		assertTrue("Joffrey != " + joff.getNom(),
 				joff.getNom().equals("Joffrey"));
 		assertTrue(joff.getCommandes().size() == 1);
-		assertTrue(cersei.getCommandes().size() == 1);		
+		assertTrue(cersei.getCommandes().size() == 1);
 		assertTrue(joff.getCommandes().first().getClient() == joff);
 		assertTrue(cersei.getCommandes().first().getClient() == cersei);
 	}
 
 	public void testProduit() throws Exception
 	{
-		Produit arb = new Produit("Arbalète", 600), hachoir = new Produit("Hachoir", 150);
+		Produit arb = new Produit("Arbalète", 600), hachoir = new Produit(
+				"Hachoir", 150);
 		arb.save();
 		// vérification arbalète et hachoir
 		assertTrue(count("Produit") == 1);
@@ -80,13 +81,14 @@ public class TestRelations
 		cmd.addProduit(arb, 10);
 		cmd.addProduit(hachoir, 5);
 		// Vérification commande de joffrey
-		assertTrue("2 != " + cmd.getProduits().size(), cmd.getProduits().size() == 2); 
+		assertTrue("2 != " + cmd.getProduits().size(),
+				cmd.getProduits().size() == 2);
 		assertTrue(cmd.getProduits().contains(arb));
 		assertTrue(cmd.getProduits().contains(hachoir));
 		cmd.save();
 		// hachoir inséré en cascade
 		assertTrue(hachoir == getData("Produit", 2));
-		//*******************************************
+		// *******************************************
 		reset();
 		arb = getData("Produit", 1);
 		hachoir = getData("Produit", 2);
@@ -97,7 +99,9 @@ public class TestRelations
 		joff = getData("Client", 1);
 		cmd = joff.getCommandes().first();
 		// épreuve du reset
-		assertTrue("2 != " + cmd.getProduits().size() + " " + cmd.getProduits(), cmd.getProduits().size()==2); 
+		assertTrue(
+				"2 != " + cmd.getProduits().size() + " " + cmd.getProduits(),
+				cmd.getProduits().size() == 2);
 		// arb insérée directement
 		assertTrue(cmd.getProduits().contains(arb));
 		assertTrue(10 == cmd.getQuantite(arb));
@@ -107,7 +111,7 @@ public class TestRelations
 		cmd = cersei.getCommandes().first();
 		cmd.addProduit(hachoir, 2);
 		cmd.save();
-		//*******************************************
+		// *******************************************
 		reset();
 		cersei = getData("Client", 2);
 		cmd = getData("Commande", 2);
@@ -115,7 +119,8 @@ public class TestRelations
 		cmd = cersei.getCommandes().first();
 		hachoir = getData("Produit", 2);
 		// vérification commande cersei
-		assertTrue("1 != " + cmd.getProduits().size(), cmd.getProduits().size()==1); 
+		assertTrue("1 != " + cmd.getProduits().size(),
+				cmd.getProduits().size() == 1);
 		assertTrue(cmd.getProduits().contains(hachoir));
 		assertTrue(2 == cmd.getQuantite(hachoir));
 		// vérification lignes de detailCommande
@@ -123,7 +128,7 @@ public class TestRelations
 		// vérification du produit
 		assertTrue(2 == hachoir.getNbCommandes());
 	}
-	
+
 	public void testDeleteClientCommande() throws Exception
 	{
 		Client joff = getData("Client", 1);
@@ -133,7 +138,8 @@ public class TestRelations
 		assertTrue(!getData("Client").contains(joff));
 		assertTrue(count("Commande") == 1);
 		// vérification lignes de detailCommande
-		assertTrue("1 != " + count("DetailCommande"), 1 == count("DetailCommande"));
+		assertTrue("1 != " + count("DetailCommande"),
+				1 == count("DetailCommande"));
 		Client cersei = getData("Client", 2);
 		Commande cmd = cersei.getCommandes().first();
 		assertTrue(cmd.getClient() == cersei);
@@ -145,15 +151,16 @@ public class TestRelations
 		assertTrue(cersei == getData("Client", 2));
 		assertTrue(count("Produit") == 2);
 		// vérification lignes de detailCommande
-		assertTrue("0 != " + count("DetailCommande"), 0 == count("DetailCommande"));
+		assertTrue("0 != " + count("DetailCommande"),
+				0 == count("DetailCommande"));
 	}
-	
+
 	public void testDeleteProduit() throws Exception
 	{
 		Produit arb = getData("Produit", 1), hachoir = getData("Produit", 2);
 		// réinsertion des données
 		Client joff = new Client("Joffrey"), cersei = new Client("Cersei");
-		Commande joffCmd = joff.createCommande(); 
+		Commande joffCmd = joff.createCommande();
 		joffCmd.addProduit(arb, 10);
 		joffCmd.addProduit(hachoir, 10);
 		Commande cerseiCommande = cersei.createCommande();
@@ -167,6 +174,7 @@ public class TestRelations
 		assertTrue(!getData("Produit").contains(arb));
 		// vérification des commandes
 		assertTrue(count("Commande") == 2);
-		assertTrue("2 != " + count("DetailCommande"), count("DetailCommande") == 2);
+		assertTrue("2 != " + count("DetailCommande"),
+				count("DetailCommande") == 2);
 	}
 }

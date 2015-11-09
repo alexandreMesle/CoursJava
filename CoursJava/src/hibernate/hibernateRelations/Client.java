@@ -19,63 +19,65 @@ import org.hibernate.annotations.SortNatural;
 public class Client
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int num;
-	
+
 	private String nom;
-	
-	@OneToMany(mappedBy="client")
-	@Cascade(value={CascadeType.SAVE_UPDATE})
+
+	@OneToMany(mappedBy = "client")
+	@Cascade(value = { CascadeType.SAVE_UPDATE })
 	@SortNatural
 	private SortedSet<Commande> commandes = new TreeSet<>();
-	
+
 	@SuppressWarnings("unused")
-	private Client(){}
-	
+	private Client()
+	{
+	}
+
 	public Client(String nom)
 	{
 		this.nom = nom;
 	}
-	
+
 	public String getNom()
 	{
 		return nom;
 	}
-	
+
 	public void delete()
 	{
-		for (Iterator<Commande> it = commandes.iterator() ; it.hasNext() ;)
+		for (Iterator<Commande> it = commandes.iterator(); it.hasNext();)
 		{
 			Commande commande = it.next();
-			it.remove(); 
+			it.remove();
 			commande.delete();
 		}
 		Passerelle.delete(this);
 	}
-	
+
 	public void save()
 	{
 		Passerelle.save(this);
 	}
-	
+
 	@Override
 	public String toString()
 	{
-		return nom + "(" + getCommandes().size() + " commande(s))" ;
+		return nom + "(" + getCommandes().size() + " commande(s))";
 	}
-	
+
 	public Commande createCommande()
 	{
 		Commande commande = new Commande(this);
 		commandes.add(commande);
 		return commande;
 	}
-	
+
 	void remove(Commande commande)
 	{
 		commandes.remove(commande);
 	}
-	
+
 	public SortedSet<Commande> getCommandes()
 	{
 		return Collections.unmodifiableSortedSet(commandes);

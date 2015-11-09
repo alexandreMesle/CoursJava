@@ -9,27 +9,28 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-
 @Entity
 class DetailCommande implements Comparable<DetailCommande>
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int num;
-	
+
 	@ManyToOne
-	@Cascade(value={CascadeType.SAVE_UPDATE})
+	@Cascade(value = { CascadeType.SAVE_UPDATE })
 	private Commande commande;
-	
+
 	@ManyToOne
-	@Cascade(value={CascadeType.SAVE_UPDATE})
+	@Cascade(value = { CascadeType.SAVE_UPDATE })
 	private Produit produit;
-	
+
 	private int quantite;
-	
+
 	@SuppressWarnings("unused")
-	private DetailCommande(){}
-	
+	private DetailCommande()
+	{
+	}
+
 	DetailCommande(Commande commande, Produit produit, int quantite)
 	{
 		this.commande = commande;
@@ -42,17 +43,17 @@ class DetailCommande implements Comparable<DetailCommande>
 	{
 		return quantite;
 	}
-	
+
 	Commande getCommande()
 	{
 		return commande;
 	}
-	
+
 	Produit getProduit()
 	{
 		return produit;
 	}
-	
+
 	@Override
 	public String toString()
 	{
@@ -62,20 +63,20 @@ class DetailCommande implements Comparable<DetailCommande>
 	void delete()
 	{
 		if (commande != null)
-		{	
-			Commande commande = this.commande; 
+		{
+			Commande commande = this.commande;
 			this.commande = null;
 			commande.remove(this.getProduit());
 		}
 		if (produit != null)
 		{
-			Produit produit = this.produit; 
+			Produit produit = this.produit;
 			this.produit = null;
 			produit.remove(this);
 		}
 		Passerelle.delete(this);
 	}
-	
+
 	@Override
 	public int compareTo(DetailCommande autre)
 	{

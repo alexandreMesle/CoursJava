@@ -2,44 +2,43 @@ package heritage;
 
 interface Saluer
 {
-    public void saluer();
+	public void saluer();
 }
 
 class Bonjour implements Saluer
 {
-    public void saluer()
-    {
-	System.out.println("Bonjour");
-    }
+	public void saluer()
+	{
+		System.out.println("Bonjour");
+	}
 }
 
 class Hello implements Saluer
 {
-    public void saluer()
-    {
-	System.out.println("Hello");
-    }
+	public void saluer()
+	{
+		System.out.println("Hello");
+	}
 }
 
 class GutenTag implements Saluer
 {
-    public void saluer()
-    {
-	System.out.println("Guten tag");
-    }
+	public void saluer()
+	{
+		System.out.println("Guten tag");
+	}
 }
 
 public class ExempleInterface
 {
-    public static void main(String[] args)
-    {
-	Saluer s = new Bonjour();
-	s.saluer();
-	s = new Hello();
-	s.saluer();
-	Saluer [] t = new Saluer[]
-	    {new Bonjour(), new Hello(), new GutenTag()};
-	for (int i = 0 ; i < 3 ; i++)
-	    t[i].saluer();
-    }
+	public static void main(String[] args)
+	{
+		Saluer s = new Bonjour();
+		s.saluer();
+		s = new Hello();
+		s.saluer();
+		Saluer[] t = new Saluer[] { new Bonjour(), new Hello(), new GutenTag() };
+		for (int i = 0; i < 3; i++)
+			t[i].saluer();
+	}
 }

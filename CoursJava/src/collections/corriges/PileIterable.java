@@ -27,32 +27,31 @@ public class PileIterable<T> extends Pile<T>
 	public String toString()
 	{
 		String res = "";
-		for(T m : (ListeIterable<T>)l)
+		for (T m : (ListeIterable<T>) l)
 			res += m + " ";
-		return res;	
+		return res;
 	}
 
 	public static void main(String[] args)
 	{
-		Pile<Integer> p = new PileIterable<Integer> ();
+		Pile<Integer> p = new PileIterable<Integer>();
 		int i = 0;
-		while(i < 20)
+		while (i < 20)
 			p.empile(i++);
 		System.out.println(p);
-		while(!p.estVide())
+		while (!p.estVide())
 		{
 			try
 			{
 				System.out.println(p.sommet());
-			}
-			catch(PileVideException e)
+			} catch (PileVideException e)
 			{
 				System.out.println(e);
 			}
 			p.depile();
 		}
 	}
-}	
+}
 
 class ListeIterable<T> extends Liste<T> implements Iterable<T>
 {

@@ -2,22 +2,22 @@ package testsUnitaires;
 
 public class TestFonctionsAutomatique
 {
-    private boolean ok = true;
+	private boolean ok = true;
 
-    private void teste(String fonction, int obtenu, int attendu)
-    {
-	if (attendu == obtenu)
-	    System.out.println("test OK");
-	else
-	    {
-		System.out.println("test " + fonction + " échoué : "
-			       + obtenu + " != " + attendu);
-		ok = false;
-	    }
-    }
-    
-    public boolean teste(Puissance p)
-    {
+	private void teste(String fonction, int obtenu, int attendu)
+	{
+		if (attendu == obtenu)
+			System.out.println("test OK");
+		else
+		{
+			System.out.println("test " + fonction + " échoué : " + obtenu
+					+ " != " + attendu);
+			ok = false;
+		}
+	}
+
+	public boolean teste(Puissance p)
+	{
 		ok = true;
 		try
 		{
@@ -33,23 +33,22 @@ public class TestFonctionsAutomatique
 			teste("puissance", p.puissance(5, 1), 5);
 			teste("puissance", p.puissance(3, 2), 9);
 			teste("puissance", p.puissance(2, 10), 1024);
-		}
-		catch(Exception e)
+		} catch (Exception e)
 		{
 			ok = false;
 			System.out.println(e);
 		}
-		if(ok)
-		    System.out.println("----> Soooo goood");
+		if (ok)
+			System.out.println("----> Soooo goood");
 		else
-		    System.out.println("----> Au moins un test a échoué.");
+			System.out.println("----> Au moins un test a échoué.");
 		return ok;
-    }
+	}
 
-    public static void main(String[] args)
-    {
-	Puissance p = new ImplementationPuissance();
-	TestFonctionsAutomatique t = new TestFonctionsAutomatique();
-	t.teste(p);
-    } 
+	public static void main(String[] args)
+	{
+		Puissance p = new ImplementationPuissance();
+		TestFonctionsAutomatique t = new TestFonctionsAutomatique();
+		t.teste(p);
+	}
 }

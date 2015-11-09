@@ -6,8 +6,10 @@ import org.junit.Test;
 
 public class TestPoint
 {
-	// Pour pouvoir connecter cette classe de tests à n'importe quelle implémentation.
-	// Il vous suffit de remplacer l'instanciation ici par celle de votre classe point.
+	// Pour pouvoir connecter cette classe de tests à n'importe quelle
+	// implémentation.
+	// Il vous suffit de remplacer l'instanciation ici par celle de votre classe
+	// point.
 	private static InterfacePoint getPoint()
 	{
 		return new ImplementPoint();
@@ -20,7 +22,7 @@ public class TestPoint
 		p.setOrd(ord);
 		return p;
 	}
-	
+
 	@Test
 	public void testPointIntInt()
 	{

@@ -7,11 +7,12 @@ import java.awt.*;
 public class PremierEcouteur implements ActionListener
 {
 	JButton[] jButtons;
-	
+
 	public void actionPerformed(ActionEvent e)
 	{
 		int k = 0;
-		while (jButtons[k++] != e.getSource());
+		while (jButtons[k++] != e.getSource())
+			;
 		System.out.println("click on JButton " + k);
 	}
 

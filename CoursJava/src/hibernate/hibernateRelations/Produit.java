@@ -17,22 +17,22 @@ import org.hibernate.annotations.CascadeType;
 public class Produit implements Comparable<Produit>
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int num; 
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int num;
+
 	private String nom;
-	
+
 	private double prix;
 
-	@OneToMany(mappedBy="produit")
-	@Cascade(value={CascadeType.SAVE_UPDATE})
+	@OneToMany(mappedBy = "produit")
+	@Cascade(value = { CascadeType.SAVE_UPDATE })
 	private Set<DetailCommande> detailsCommandes = new HashSet<>();
 
 	void add(DetailCommande detailCommande)
 	{
 		detailsCommandes.add(detailCommande);
 	}
-	
+
 	void remove(DetailCommande detailCommande)
 	{
 		detailsCommandes.remove(detailCommande);
@@ -42,10 +42,12 @@ public class Produit implements Comparable<Produit>
 	{
 		return detailsCommandes.size();
 	}
-	
+
 	@SuppressWarnings("unused")
-	private Produit(){}
-	
+	private Produit()
+	{
+	}
+
 	public Produit(String nom, double prix)
 	{
 		this.nom = nom;
@@ -54,26 +56,26 @@ public class Produit implements Comparable<Produit>
 
 	public String getNom()
 	{
-		return nom; 
+		return nom;
 	}
-	
+
 	public void delete()
 	{
-		for (Iterator<DetailCommande> it = detailsCommandes.iterator() ; 
-				it.hasNext() ;)
+		for (Iterator<DetailCommande> it = detailsCommandes.iterator(); it
+				.hasNext();)
 		{
 			DetailCommande detailCommande = it.next();
-			it.remove(); 
+			it.remove();
 			detailCommande.delete();
 		}
 		Passerelle.delete(this);
 	}
-	
+
 	public void save()
 	{
 		Passerelle.save(this);
 	}
-	
+
 	@Override
 	public String toString()
 	{

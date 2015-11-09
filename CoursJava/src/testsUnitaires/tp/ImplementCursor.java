@@ -3,16 +3,16 @@ package testsUnitaires.tp;
 public class ImplementCursor implements InterfaceCursor
 {
 	private InterfacePoint position, direction;
-	
+
 	public ImplementCursor(InterfacePoint position, InterfacePoint direction)
 	{
 		setPosition(position);
 		setDirection(direction);
 	}
-	
+
 	public void setDirection(InterfacePoint direction)
 	{
-		this.direction = direction;		
+		this.direction = direction;
 	}
 
 	public void setPosition(InterfacePoint position)
@@ -24,7 +24,7 @@ public class ImplementCursor implements InterfaceCursor
 	{
 		reset();
 	}
-	
+
 	@Override
 	public InterfacePoint getPosition()
 	{
@@ -53,12 +53,14 @@ public class ImplementCursor implements InterfaceCursor
 	@Override
 	public void turnRight()
 	{
-		setDirection(new ImplementPoint(getDirection().getOrd(), -getDirection().getAbs()));
+		setDirection(new ImplementPoint(getDirection().getOrd(),
+				-getDirection().getAbs()));
 	}
 
 	@Override
 	public void turnLeft()
 	{
-		setDirection(new ImplementPoint(-getDirection().getOrd(), getDirection().getAbs()));
+		setDirection(new ImplementPoint(-getDirection().getOrd(),
+				getDirection().getAbs()));
 	}
 }

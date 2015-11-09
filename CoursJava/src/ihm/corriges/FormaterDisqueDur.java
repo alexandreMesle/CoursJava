@@ -7,12 +7,12 @@ import java.awt.event.*;
 public class FormaterDisqueDur
 {
 	JButton formater = new JButton("Formater le disque dur");
-	
+
 	protected void ajouterListener(ActionListener a)
 	{
 		formater.addActionListener(a);
 	}
-	
+
 	public FormaterDisqueDur()
 	{
 		JFrame frame = new JFrame();

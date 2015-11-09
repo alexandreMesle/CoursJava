@@ -23,93 +23,96 @@ import org.hibernate.annotations.SortNatural;
 public class Commande implements Comparable<Commande>
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int num; 
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int num;
+
 	private Date date;
-	
+
 	@ManyToOne
-	@Cascade(value={CascadeType.SAVE_UPDATE})
+	@Cascade(value = { CascadeType.SAVE_UPDATE })
 	private Client client;
-	
-	@OneToMany(mappedBy="commande")
-	@Cascade(value={CascadeType.SAVE_UPDATE})
+
+	@OneToMany(mappedBy = "commande")
+	@Cascade(value = { CascadeType.SAVE_UPDATE })
 	@SortNatural
-	@MapKey(name="produit")
+	@MapKey(name = "produit")
 	private SortedMap<Produit, DetailCommande> detailsCommandes = new TreeMap<>();
 
 	@SuppressWarnings("unused")
-	private Commande(){}
-	
+	private Commande()
+	{
+	}
+
 	Commande(Client client)
 	{
 		this.date = new Date();
 		this.client = client;
 	}
-	
+
 	public Client getClient()
 	{
 		return client;
 	}
-	
+
 	public Date getDate()
 	{
 		return date;
 	}
-	
+
 	public void delete()
 	{
 		client.remove(this);
 		client = null;
-		for (Iterator<DetailCommande> it = detailsCommandes.values().iterator() ; 
-				it.hasNext() ;)
+		for (Iterator<DetailCommande> it = detailsCommandes.values().iterator(); it
+				.hasNext();)
 		{
 			DetailCommande detailCommande = it.next();
-			it.remove(); 
+			it.remove();
 			detailCommande.delete();
 		}
 		Passerelle.delete(this);
 	}
-	
+
 	public void save()
 	{
 		Passerelle.save(this);
 	}
-	
+
 	public void addProduit(Produit produit, int quantite)
 	{
-		detailsCommandes.put(produit, new DetailCommande(this, produit, quantite));
+		detailsCommandes.put(produit, new DetailCommande(this, produit,
+				quantite));
 	}
 
 	public void remove(Produit produit)
 	{
-		detailsCommandes.remove(produit);			
+		detailsCommandes.remove(produit);
 	}
-	
+
 	public SortedSet<Produit> getProduits()
 	{
 		return new TreeSet<Produit>(detailsCommandes.keySet());
 	}
-	
+
 	SortedSet<DetailCommande> getDetailsCommande()
 	{
 		return new TreeSet<DetailCommande>(detailsCommandes.values());
 	}
-	
+
 	public int getNbProduits()
 	{
 		return detailsCommandes.size();
 	}
-	
+
 	public int getQuantite(Produit produit)
 	{
 		return detailsCommandes.get(produit).getQuantite();
 	}
-	
+
 	@Override
 	public String toString()
 	{
-		String s = client.getNom() + "::" + num + " " ;
+		String s = client.getNom() + "::" + num + " ";
 		for (DetailCommande detailCommande : detailsCommandes.values())
 			s += detailCommande + " -> ";
 		s += "\n";

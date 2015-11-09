@@ -10,7 +10,7 @@ public class HashMapSalaires
 		salaires.put("Jojo", 1000);
 		salaires.put("Marcel", 2000);
 		salaires.put("Ursule", 3000);
-		System.out.println("Le salaire de Marcel est " + 
-				salaires.get("Marcel") + " euros.");
+		System.out.println("Le salaire de Marcel est " + salaires.get("Marcel")
+				+ " euros.");
 	}
 }

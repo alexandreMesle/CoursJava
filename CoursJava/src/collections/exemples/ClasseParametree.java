@@ -12,21 +12,22 @@ public class ClasseParametree<T>
 	public T get()
 	{
 		return data;
-	}    
+	}
 
 	public void set(T data)
 	{
 		this.data = data;
 	}
-	
+
 	public static void main(String[] args)
 	{
-		ClasseParametree<String> conteneurString = new ClasseParametree<>("toto");
+		ClasseParametree<String> conteneurString = new ClasseParametree<>(
+				"toto");
 		String chaine = conteneurString.get();
 		System.out.println(chaine);
-		
+
 		ClasseParametree<Integer> conteneurInt = new ClasseParametree<>(5);
 		int entier = conteneurInt.get();
-		System.out.println(entier);		
+		System.out.println(entier);
 	}
 }

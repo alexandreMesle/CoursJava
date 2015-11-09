@@ -31,7 +31,7 @@ public class FormaterDisqueDurGridLayout
 			}
 		};
 	}
-	
+
 	public static void main(String[] args)
 	{
 		new FormaterDisqueDurGridLayout();

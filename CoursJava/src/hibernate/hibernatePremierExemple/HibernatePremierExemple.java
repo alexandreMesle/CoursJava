@@ -16,18 +16,18 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 @Entity
-@Table(name="personne")
+@Table(name = "personne")
 class Personne
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="num")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "num")
 	private int num;
 
-	@Column(name="nom")
+	@Column(name = "nom")
 	private String nom;
-	
-	@Column(name="prenom")
+
+	@Column(name = "prenom")
 	private String prenom;
 
 	public Personne(String prenom, String nom)
@@ -40,18 +40,19 @@ class Personne
 public class HibernatePremierExemple
 {
 	private static Session getSession() throws HibernateException
-	{			
-		Configuration configuration = new Configuration().
-				configure("hibernate/hibernatePremierExemple/hibernatePremierExemple.cfg.xml");
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
-				applySettings(configuration.getProperties()).build();
-		SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);  
+	{
+		Configuration configuration = new Configuration()
+				.configure("hibernate/hibernatePremierExemple/hibernatePremierExemple.cfg.xml");
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+				.applySettings(configuration.getProperties()).build();
+		SessionFactory sessionFactory = configuration
+				.buildSessionFactory(serviceRegistry);
 		return sessionFactory.openSession();
 	}
-	
+
 	public static void main(String[] args)
 	{
-		try 
+		try
 		{
 			Session s = getSession();
 			Personne joffrey = new Personne("Joffrey", "Baratheon");
@@ -59,10 +60,9 @@ public class HibernatePremierExemple
 			s.persist(joffrey);
 			t.commit();
 			s.close();
-		}
-		catch (HibernateException ex)
+		} catch (HibernateException ex)
 		{
-			throw new RuntimeException("Probleme de configuration : " 
+			throw new RuntimeException("Probleme de configuration : "
 					+ ex.getMessage(), ex);
 		}
 	}

@@ -23,15 +23,17 @@ import utilitaires.ligneDeCommande.*;
 class Personne
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int num;
 
 	private String nom;
-	
+
 	private String prenom;
 
-	Personne(){}
-	
+	Personne()
+	{
+	}
+
 	public Personne(String prenom, String nom)
 	{
 		this.nom = nom;
@@ -67,7 +69,7 @@ class Personne
 	{
 		this.prenom = prenom;
 	}
-	
+
 	@Override
 	public String toString()
 	{
@@ -82,18 +84,17 @@ abstract class Passerelle
 	static
 	{
 		SessionFactory sessionFactory = null;
-		try 
+		try
 		{
-			Configuration configuration = new Configuration().
-					configure("hibernate/hibernateManagePersonne/hibernateManagePersonne.cfg.xml");
-			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
-					applySettings(configuration.getProperties()).build();
-			sessionFactory = configuration.buildSessionFactory(serviceRegistry);  
+			Configuration configuration = new Configuration()
+					.configure("hibernate/hibernateManagePersonne/hibernateManagePersonne.cfg.xml");
+			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+					.applySettings(configuration.getProperties()).build();
+			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 			session = sessionFactory.openSession();
-		} 
-		catch (HibernateException ex)
+		} catch (HibernateException ex)
 		{
-			throw new RuntimeException("Probleme de configuration : " 
+			throw new RuntimeException("Probleme de configuration : "
 					+ ex.getMessage(), ex);
 		}
 	}
@@ -104,7 +105,7 @@ abstract class Passerelle
 		session.delete(personne);
 		tx.commit();
 	}
-	
+
 	public static void save(Personne personne)
 	{
 		Transaction tx = session.beginTransaction();
@@ -123,7 +124,7 @@ abstract class Passerelle
 public abstract class HibernateManagePersonne
 {
 	private static List<Personne> personnes;;
-	
+
 	private static void refreshList()
 	{
 		personnes = Passerelle.refreshList();
@@ -142,7 +143,7 @@ public abstract class HibernateManagePersonne
 			}
 		});
 	}
-	
+
 	private static Option getAjouter()
 	{
 		return new Option("Ajouter", "a", new Action()
@@ -150,58 +151,58 @@ public abstract class HibernateManagePersonne
 			@Override
 			public void optionSelectionnee()
 			{
-				Passerelle.save(new Personne(
-						EntreesSorties.getString("Prénom : "), 
-						EntreesSorties.getString("Nom : "))
-				);
+				Passerelle.save(new Personne(EntreesSorties
+						.getString("Prénom : "), EntreesSorties
+						.getString("Nom : ")));
 				refreshList();
 			}
 		});
 	}
-	
+
 	private static Option getSupprimer()
 	{
 		Liste<Personne> supprimer = new Liste<>("Supprimer", "s",
-			new ActionListe<Personne>()
-			{
-				@Override
-				public void elementSelectionne(int indice, Personne element)
+				new ActionListe<Personne>()
 				{
-					Passerelle.delete(element);
-					refreshList();
-				}
+					@Override
+					public void elementSelectionne(int indice, Personne element)
+					{
+						Passerelle.delete(element);
+						refreshList();
+					}
 
-				@Override
-				public List<Personne> getListe()
-				{
-					return personnes;
-				}
-			});
-		return supprimer;		
+					@Override
+					public List<Personne> getListe()
+					{
+						return personnes;
+					}
+				});
+		return supprimer;
 	}
-	
+
 	private static Option getModifier()
 	{
-		Liste<Personne> modifier = new Liste<>("Modifier", "m", 
-			new ActionListe<Personne>()
-			{
-				@Override
-				public void elementSelectionne(int indice, Personne element)
+		Liste<Personne> modifier = new Liste<>("Modifier", "m",
+				new ActionListe<Personne>()
 				{
-					element.setPrenom(EntreesSorties.getString("Prénom : "));
-					element.setNom(EntreesSorties.getString("Nom : "));
-					Passerelle.save(element);
-				}
-				
-				@Override
-				public List<Personne> getListe()
-				{
-					return personnes;
-				}
-			});
-		return modifier;		
+					@Override
+					public void elementSelectionne(int indice, Personne element)
+					{
+						element.setPrenom(EntreesSorties
+								.getString("Prénom : "));
+						element.setNom(EntreesSorties.getString("Nom : "));
+						Passerelle.save(element);
+					}
+
+					@Override
+					public List<Personne> getListe()
+					{
+						return personnes;
+					}
+				});
+		return modifier;
 	}
-	
+
 	private static Menu menuPrincipal()
 	{
 		Menu menu = new Menu("Gestionnaire de contacts");
@@ -212,7 +213,7 @@ public abstract class HibernateManagePersonne
 		menu.ajouteQuitter("q");
 		return menu;
 	}
-	
+
 	public static void main(String[] args)
 	{
 		menuPrincipal().start();

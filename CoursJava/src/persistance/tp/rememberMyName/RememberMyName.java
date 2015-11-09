@@ -6,6 +6,7 @@ import utilitaires.EntreesSorties;
 public abstract class RememberMyName
 {
 	public abstract String getNameFromSupport() throws ReadException;
+
 	public abstract void writeNameToSupport(String name) throws WriteException;
 
 	public void printName()
@@ -13,21 +14,19 @@ public abstract class RememberMyName
 		try
 		{
 			System.out.println("Bonjour, " + getName() + ".");
-		} 
-		catch (IOException | WriteException e)
+		} catch (IOException | WriteException e)
 		{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String getName() throws IOException, WriteException
 	{
 		String name = "";
 		try
 		{
 			return getNameFromSupport();
-		} 
-		catch (ReadException e)
+		} catch (ReadException e)
 		{
 			name = EntreesSorties.getString("What is your name ? ");
 			writeNameToSupport(name);
@@ -39,16 +38,18 @@ public abstract class RememberMyName
 	{
 		private static final long serialVersionUID = 1L;
 		Exception e;
+
 		public ReadException(Exception e)
 		{
 			this.e = e;
 		}
 	}
-	
+
 	public static class WriteException extends Exception
 	{
 		private static final long serialVersionUID = 1L;
 		Exception e;
+
 		public WriteException(Exception e)
 		{
 			this.e = e;

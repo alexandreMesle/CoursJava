@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class FormaterDisqueDurNonAnonyme extends FormaterDisqueDur
 {
 	public FormaterDisqueDurNonAnonyme()
-	{	
+	{
 		super();
 		ajouterListener(new AffichageFormatage());
 	}

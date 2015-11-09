@@ -14,7 +14,7 @@ public class RequetePreparee extends Gruyere
 		s.setString(2, password);
 		return s.executeQuery();
 	}
-	
+
 	public static void main(String[] args)
 	{
 		Gruyere requetePreparee = new RequetePreparee();

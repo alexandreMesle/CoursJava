@@ -81,7 +81,7 @@ public class TableauCreuxVector<T> implements TableauCreux<T>
 		tc.set(4, 30);
 		System.out.println(tc);
 	}
-	
+
 	public static void main(String[] args)
 	{
 		affiche(new TableauCreuxVector<Integer>(10));

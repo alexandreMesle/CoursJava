@@ -3,12 +3,12 @@ package collections.exemples;
 public class StringWrapper implements Comparable<StringWrapper>
 {
 	private String data;
-	
+
 	public StringWrapper(String data)
 	{
 		this.data = data;
 	}
-	
+
 	protected String getData()
 	{
 		return data;
@@ -27,8 +27,8 @@ public class StringWrapper implements Comparable<StringWrapper>
 
 	public static void main(String[] args)
 	{
-		StringWrapper e1 = new StringWrapper("toto"),
-				e2 = new StringWrapper("tutu");
+		StringWrapper e1 = new StringWrapper("toto"), e2 = new StringWrapper(
+				"tutu");
 		System.out.println(e1.compareTo(e2));
 	}
 }

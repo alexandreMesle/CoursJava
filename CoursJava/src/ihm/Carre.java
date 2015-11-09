@@ -9,7 +9,7 @@ public class Carre
 {
 	JTextField operand = new JTextField();
 	JLabel result = new JLabel();
-	
+
 	private void afficheCarre()
 	{
 		try
@@ -17,14 +17,13 @@ public class Carre
 			int k = Integer.parseInt(operand.getText());
 			k *= k;
 			result.setText(Integer.toString(k));
-		} 
-		catch (Exception ex)
+		} catch (Exception ex)
 		{
 			if (result != null)
 				result.setText("");
 		}
 	}
-	
+
 	private KeyListener getKeyListener()
 	{
 		return new KeyAdapter()
@@ -32,10 +31,10 @@ public class Carre
 			public void keyReleased(KeyEvent e)
 			{
 				afficheCarre();
-			}			
+			}
 		};
 	}
-	
+
 	private JPanel getMainPanel()
 	{
 		JPanel panel = new JPanel();
@@ -45,9 +44,9 @@ public class Carre
 		panel.add(operand);
 		panel.add(new JLabel("x^2 = "));
 		panel.add(result);
-		return panel;		
+		return panel;
 	}
-	
+
 	public Carre()
 	{
 		JFrame frame = new JFrame();

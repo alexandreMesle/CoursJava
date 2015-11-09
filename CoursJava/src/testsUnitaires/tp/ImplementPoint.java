@@ -3,19 +3,18 @@ package testsUnitaires.tp;
 public class ImplementPoint implements InterfacePoint
 {
 	private int abs, ord;
-	
+
 	public ImplementPoint(int abs, int ord)
 	{
 		setAbs(abs);
 		setOrd(ord);
 	}
-	
+
 	public ImplementPoint()
 	{
 		this(0, 0);
 	}
 
-	
 	@Override
 	public int getOrd()
 	{
@@ -39,7 +38,6 @@ public class ImplementPoint implements InterfacePoint
 	{
 		this.abs = abs;
 	}
-	
 
 	@Override
 	public InterfacePoint add(InterfacePoint p)

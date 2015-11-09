@@ -10,32 +10,33 @@ public class TestCursor
 	{
 		return TestPoint.getPoint(abs, ord);
 	}
-	
-	// Idem, remplacez l'instantiacion par celle de votre implémentation de la 
+
+	// Idem, remplacez l'instantiacion par celle de votre implémentation de la
 	// classe cursor.
 	private InterfaceCursor getCursor()
 	{
 		return new ImplementCursor();
 	}
-	
+
 	private InterfaceCursor getCursor(InterfacePoint pos, InterfacePoint dir)
 	{
-		InterfaceCursor i = getCursor(); 
+		InterfaceCursor i = getCursor();
 		i.setPosition(pos);
 		i.setDirection(dir);
 		return i;
 	}
-	
+
 	private boolean equals(InterfaceCursor c, InterfaceCursor d)
 	{
-		return c.getPosition().equals(d.getPosition()) && c.getDirection().equals(d.getDirection());
+		return c.getPosition().equals(d.getPosition())
+				&& c.getDirection().equals(d.getDirection());
 	}
-	
+
 	@Test
 	public void testCursorInterfacePointInterfacePoint()
 	{
 		InterfaceCursor c = getCursor(getPoint(1, 2), getPoint(5, 4));
-		assertTrue(equals(c, getCursor(getPoint(1, 2), getPoint(5, 4))));		
+		assertTrue(equals(c, getCursor(getPoint(1, 2), getPoint(5, 4))));
 	}
 
 	@Test

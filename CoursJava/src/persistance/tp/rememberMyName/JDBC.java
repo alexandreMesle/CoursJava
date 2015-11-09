@@ -14,16 +14,18 @@ public class JDBC extends RememberMyName
 			PASSWORD = "rememberMyPassword",
 			FIELD = "userField",
 			TABLE = "userTable",
-			CREATE_SCRIPT = "CREATE TABLE " + TABLE + "(" + FIELD + " varchar(64))"; 
+			CREATE_SCRIPT = "CREATE TABLE " + TABLE + "(" + FIELD
+					+ " varchar(64))";
 	protected Connection c;
-	
-	protected void openJDBCConnection() throws ClassNotFoundException, SQLException
+
+	protected void openJDBCConnection() throws ClassNotFoundException,
+			SQLException
 	{
 		Class.forName("com.mysql.jdbc.Driver");
 		c = DriverManager.getConnection(URL, USER, PASSWORD);
 	}
 
-	protected void closeJDBCConnection() throws SQLException 
+	protected void closeJDBCConnection() throws SQLException
 	{
 		if (c != null)
 			c.close();
@@ -32,9 +34,9 @@ public class JDBC extends RememberMyName
 	protected ResultSet readNameFromDb() throws SQLException
 	{
 		Statement s = c.createStatement();
-		return s.executeQuery("select " + FIELD + " from " + TABLE);		
+		return s.executeQuery("select " + FIELD + " from " + TABLE);
 	}
-	
+
 	@Override
 	public String getNameFromSupport() throws ReadException
 	{
@@ -46,18 +48,15 @@ public class JDBC extends RememberMyName
 				return rs.getString(1);
 			else
 				throw new ReadException(null);
-		}
-		catch(SQLException | ClassNotFoundException e)
+		} catch (SQLException | ClassNotFoundException e)
 		{
 			throw new ReadException(e);
-		}
-		finally
+		} finally
 		{
 			try
 			{
 				closeJDBCConnection();
-			} 
-			catch (SQLException e)
+			} catch (SQLException e)
 			{
 				System.out.println("Error while closing database connection");
 			}
@@ -66,11 +65,12 @@ public class JDBC extends RememberMyName
 
 	protected void writeNameToDb(String name) throws SQLException
 	{
-		PreparedStatement ps = c.prepareStatement("insert into " + TABLE + " values (name)");
+		PreparedStatement ps = c.prepareStatement("insert into " + TABLE
+				+ " values (name)");
 		ps.setString(1, name);
 		ps.executeUpdate();
 	}
-	
+
 	@Override
 	public void writeNameToSupport(String name) throws WriteException
 	{
@@ -80,18 +80,15 @@ public class JDBC extends RememberMyName
 			Statement s = c.createStatement();
 			s.execute(CREATE_SCRIPT);
 			writeNameToDb(name);
-		}
-		catch(SQLException | ClassNotFoundException e)
+		} catch (SQLException | ClassNotFoundException e)
 		{
 			throw new WriteException(e);
-		}
-		finally
+		} finally
 		{
 			try
 			{
 				closeJDBCConnection();
-			} 
-			catch (SQLException e)
+			} catch (SQLException e)
 			{
 				System.out.println("Error while closing database connection");
 			}
