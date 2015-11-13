@@ -10,9 +10,9 @@ public class Cercle extends Point
 		setRadius(radius);
 	}
 
-	public Cercle(Point point, double rayon)
+	public Cercle(Point centre, double rayon)
 	{
-		this(point.getAbs(), point.getOrd(), 0);
+		this(centre.getAbs(), centre.getOrd(), 0);
 	}
 
 	public double getRadius()
