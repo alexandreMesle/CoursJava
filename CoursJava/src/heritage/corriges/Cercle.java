@@ -26,9 +26,13 @@ public class Cercle extends Point
 			this.radius = radius;
 	}
 
-	// Exercice 4
+	// exercice 4
+	
+	@Override
 	public String toString()
 	{
-		return "(" + super.toString() + ", " + radius + ")";
+		return "( centre = " + super.toString() +
+				"; rayon = " + getRadius() + ")";
 	}
+	
 }
