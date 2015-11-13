@@ -90,6 +90,7 @@ public class ListeObjets
 	 * Retourne une représentation sous forme de chaine de la liste.
 	 */
 
+	@Override
 	public String toString()
 	{
 		String res = "" + data;

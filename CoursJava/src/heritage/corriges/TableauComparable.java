@@ -34,6 +34,7 @@ public class TableauComparable
 
 	/*-----------------------------------------------*/
 
+	@Override
 	public String toString()
 	{
 		String res = "[";
