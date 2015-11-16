@@ -2,12 +2,10 @@ package collections.corriges;
 
 import java.util.Iterator;
 
-import collections.corriges.Pile.PileVideException;
-
 public class PileIterable<T> extends Pile<T>
 {
 	/*
-	 * Retourne un iterateur sur la pile.
+	 * Retourne un itérateur sur la pile.
 	 */
 
 	public Iterator<T> iterator()
@@ -21,7 +19,7 @@ public class PileIterable<T> extends Pile<T>
 	}
 
 	/*
-	 * Retourne une representation de la pile au format chaine de caracteres.
+	 * Retourne une représentation de la pile au format chaîne de caractères.
 	 */
 
 	public String toString()
@@ -52,6 +50,17 @@ public class PileIterable<T> extends Pile<T>
 			p.depile();
 		}
 	}
+	
+	public static class SuppressionInterditeException extends RuntimeException
+	{
+		private static final long serialVersionUID = -5787906244873409640L;
+		
+		@Override
+		public String toString()
+		{
+			return "Il est formellement interdit de supprimer de la pile un élément autre que le sommet, utilisez depile() pour ce faire.";
+		}
+	}
 }
 
 class ListeIterable<T> extends Liste<T> implements Iterable<T>
@@ -67,7 +76,7 @@ class ListeIterable<T> extends Liste<T> implements Iterable<T>
 	}
 
 	/*
-	 * Retourne un iterateur sur la liste.
+	 * Retourne un itérateur sur la liste.
 	 */
 
 	public Iterator<T> iterator()
@@ -76,7 +85,7 @@ class ListeIterable<T> extends Liste<T> implements Iterable<T>
 	}
 
 	/*
-	 * Retourne une representation de la pile au format chaine de caracteres.
+	 * Retourne une représentation de la pile au format chaîne de caractères.
 	 */
 
 	public String toString()
@@ -111,5 +120,6 @@ class MyIterator<T> implements Iterator<T>
 
 	public void remove()
 	{
+		throw new PileIterable.SuppressionInterditeException();
 	}
 }
