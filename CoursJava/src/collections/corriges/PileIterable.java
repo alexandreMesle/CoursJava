@@ -2,17 +2,19 @@ package collections.corriges;
 
 import java.util.Iterator;
 
-public class PileIterable<T> extends Pile<T>
+public class PileIterable<T> extends Pile<T> implements Iterable<T>
 {
 	/*
 	 * Retourne un itérateur sur la pile.
 	 */
 
+	@Override
 	public Iterator<T> iterator()
 	{
 		return ((ListeIterable<T>) l).iterator();
 	}
 
+	@Override
 	public void empile(T data)
 	{
 		l = new ListeIterable<T>(data, l);
@@ -22,6 +24,7 @@ public class PileIterable<T> extends Pile<T>
 	 * Retourne une représentation de la pile au format chaîne de caractères.
 	 */
 
+	@Override
 	public String toString()
 	{
 		String res = "";
@@ -79,6 +82,7 @@ class ListeIterable<T> extends Liste<T> implements Iterable<T>
 	 * Retourne un itérateur sur la liste.
 	 */
 
+	@Override
 	public Iterator<T> iterator()
 	{
 		return new MyIterator<T>(this);
@@ -88,6 +92,7 @@ class ListeIterable<T> extends Liste<T> implements Iterable<T>
 	 * Retourne une représentation de la pile au format chaîne de caractères.
 	 */
 
+	@Override
 	public String toString()
 	{
 		String res = "";
@@ -106,11 +111,13 @@ class MyIterator<T> implements Iterator<T>
 		this.l = l;
 	}
 
+	@Override
 	public boolean hasNext()
 	{
 		return l != null;
 	}
 
+	@Override
 	public T next()
 	{
 		Liste<T> temp = l;
@@ -118,6 +125,7 @@ class MyIterator<T> implements Iterator<T>
 		return temp.getData();
 	}
 
+	@Override
 	public void remove()
 	{
 		throw new PileIterable.SuppressionInterditeException();
