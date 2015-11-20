@@ -1,24 +1,24 @@
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 4^0 = 1
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 5^1 = 5*(5^0)
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 5^0 = 1
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 3^2 = 9^1
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 9^1 = 9*(9^0)
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 9^0 = 1
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 2^10 = 4^5
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 4^5 = 4*(4^4)
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 4^4 = 16^2
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 16^2 = 256^1
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 256^1 = 256*(256^0)
-nov. 09, 2015 9:50:25 AM testsUnitaires.PuissanceAvecLog puissance
+nov. 13, 2015 1:03:18 PM testsUnitaires.PuissanceAvecLog puissance
 INFOS: Call to puissance : 256^0 = 1
