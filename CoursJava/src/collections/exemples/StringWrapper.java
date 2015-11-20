@@ -9,12 +9,12 @@ public class StringWrapper implements Comparable<StringWrapper>
 		this.data = data;
 	}
 
-	protected String getData()
+	public String getData()
 	{
 		return data;
 	}
 
-	protected void setData(String data)
+	public void setData(String data)
 	{
 		this.data = data;
 	}

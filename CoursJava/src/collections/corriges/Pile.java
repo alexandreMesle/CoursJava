@@ -1,7 +1,5 @@
 package collections.corriges;
 
-import java.util.Iterator;
-
 public class Pile<T>
 {
 	/*
@@ -166,6 +164,7 @@ class Liste<T>
 	 * Retourne une représentation sous forme de chaine de la liste.
 	 */
 
+	@Override
 	public String toString()
 	{
 		String res = "" + data;

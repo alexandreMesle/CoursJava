@@ -16,11 +16,13 @@ public class TableauCreuxVector<T> implements TableauCreux<T>
 			tableauCreux.add(null);
 	}
 
+	@Override
 	public T get(int i)
 	{
 		return tableauCreux.get(i);
 	}
 
+	@Override
 	public void set(int i, T item)
 	{
 		tableauCreux.set(i, item);
