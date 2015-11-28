@@ -10,12 +10,12 @@ public class ComparableWrapper<T extends Comparable<T>> implements
 		this.data = data;
 	}
 
-	protected T getData()
+	public T getData()
 	{
 		return data;
 	}
 
-	protected void setData(T data)
+	public void setData(T data)
 	{
 		this.data = data;
 	}

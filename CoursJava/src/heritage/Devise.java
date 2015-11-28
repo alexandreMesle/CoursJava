@@ -16,6 +16,11 @@ public abstract class Devise
 		this.somme = somme;
 	}
 
+	public double getSomme()
+	{
+		return somme;
+	}
+	
 	public String toString()
 	{
 		return "somme = " + somme + " ";
@@ -44,6 +49,7 @@ class Livres extends Devise
 		setSomme(somme);
 	}
 
+	@Override
 	public double getCours()
 	{
 		return 1.95842;
@@ -67,6 +73,7 @@ class Euros extends Devise
 		setSomme(somme);
 	}
 
+	@Override
 	public double getCours()
 	{
 		return 1.4625;
@@ -90,6 +97,7 @@ class Dollars extends Devise
 		setSomme(somme);
 	}
 
+	@Override
 	public double getCours()
 	{
 		return 1.;

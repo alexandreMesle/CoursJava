@@ -80,16 +80,19 @@ class Div extends BinaryOperator
 		super(leftSon, rightSon);
 	}
 
+	@Override
 	public char toChar()
 	{
 		return '/';
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
 		return leftSon.evaluate(x) / rightSon.evaluate(x);
 	}
 
+	@Override
 	public Function derivate()
 	{
 		return new Div(new Minus(new Times(leftSon.derivate(), rightSon),
@@ -97,6 +100,7 @@ class Div extends BinaryOperator
 				rightSon));
 	}
 
+	@Override
 	public Function simplify()
 	{
 		Function f = simplifySubTrees();
@@ -125,36 +129,43 @@ class Constant extends Function
 		this.value = value;
 	}
 
+	@Override
 	public boolean isZero()
 	{
 		return value == 0;
 	}
 
+	@Override
 	public boolean isOne()
 	{
 		return value == 1;
 	}
 
+	@Override
 	public boolean isConstant()
 	{
 		return true;
 	}
 
+	@Override
 	public Function derivate()
 	{
 		return new Constant(0);
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
 		return value;
 	}
 
+	@Override
 	public Function simplify()
 	{
 		return this;
 	}
 
+	@Override
 	public String toString()
 	{
 		return "" + value;
@@ -172,21 +183,25 @@ class Minus extends BinaryOperator
 		super(leftSon, rightSon);
 	}
 
+	@Override
 	public char toChar()
 	{
 		return '-';
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
 		return leftSon.evaluate(x) - rightSon.evaluate(x);
 	}
 
+	@Override
 	public Function derivate()
 	{
 		return new Minus(leftSon.derivate(), rightSon.derivate());
 	}
 
+	@Override
 	public Function simplify()
 	{
 		Function f = simplifySubTrees();
@@ -211,21 +226,25 @@ class Plus extends BinaryOperator
 		super(leftSon, rightSon);
 	}
 
+	@Override
 	public char toChar()
 	{
 		return '+';
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
 		return leftSon.evaluate(x) + rightSon.evaluate(x);
 	}
 
+	@Override
 	public Function derivate()
 	{
 		return new Plus(leftSon.derivate(), rightSon.derivate());
 	}
 
+	@Override
 	public Function simplify()
 	{
 		Function f = simplifySubTrees();
@@ -250,36 +269,43 @@ class Variable extends Function
 	{
 	}
 
+	@Override
 	public boolean isZero()
 	{
 		return false;
 	}
 
+	@Override
 	public boolean isOne()
 	{
 		return false;
 	}
 
+	@Override
 	public boolean isConstant()
 	{
 		return false;
 	}
 
+	@Override
 	public Function derivate()
 	{
 		return new Constant(1);
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
 		return x;
 	}
 
+	@Override
 	public Function simplify()
 	{
 		return this;
 	}
 
+	@Override
 	public String toString()
 	{
 		return "x";
@@ -308,21 +334,25 @@ abstract class BinaryOperator extends Function
 	 */
 	public abstract char toChar();
 
+	@Override
 	public String toString()
 	{
 		return "(" + leftSon + " " + toChar() + " " + rightSon + ")";
 	}
 
+	@Override
 	public boolean isZero()
 	{
 		return false;
 	}
 
+	@Override
 	public boolean isOne()
 	{
 		return false;
 	}
 
+	@Override
 	public boolean isConstant()
 	{
 		return leftSon.isConstant() && rightSon.isConstant();
@@ -354,22 +384,26 @@ class Times extends BinaryOperator
 		super(leftSon, rightSon);
 	}
 
+	@Override
 	public char toChar()
 	{
 		return '*';
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
 		return leftSon.evaluate(x) * rightSon.evaluate(x);
 	}
 
+	@Override
 	public Function derivate()
 	{
 		return new Plus(new Times(leftSon.derivate(), rightSon), new Times(
 				leftSon, rightSon.derivate()));
 	}
 
+	@Override
 	public Function simplify()
 	{
 		Function f = simplifySubTrees();

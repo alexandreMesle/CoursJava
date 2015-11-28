@@ -107,6 +107,7 @@ public class PileObjets
 	 * Retourne une representation de la pile au format chaine de caracteres.
 	 */
 
+	@Override
 	public String toString()
 	{
 		return l.toString();

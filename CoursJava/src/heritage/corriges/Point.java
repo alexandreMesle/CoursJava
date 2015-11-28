@@ -30,9 +30,11 @@ public class Point
 		this.ord = ord;
 	}
 
-	// Exercice 4
+	// exercice 4
+	
+	@Override
 	public String toString()
 	{
-		return "(" + abs + ", " + ord + ")";
+		return "(abs = " + abs + " ; ord = " + ord + ")";
 	}
 }

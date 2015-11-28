@@ -2,28 +2,29 @@ package collections.corriges;
 
 import java.util.Iterator;
 
-import collections.corriges.Pile.PileVideException;
-
-public class PileIterable<T> extends Pile<T>
+public class PileIterable<T> extends Pile<T> implements Iterable<T>
 {
 	/*
-	 * Retourne un iterateur sur la pile.
+	 * Retourne un itérateur sur la pile.
 	 */
 
+	@Override
 	public Iterator<T> iterator()
 	{
 		return ((ListeIterable<T>) l).iterator();
 	}
 
+	@Override
 	public void empile(T data)
 	{
 		l = new ListeIterable<T>(data, l);
 	}
 
 	/*
-	 * Retourne une representation de la pile au format chaine de caracteres.
+	 * Retourne une représentation de la pile au format chaîne de caractères.
 	 */
 
+	@Override
 	public String toString()
 	{
 		String res = "";
@@ -52,6 +53,17 @@ public class PileIterable<T> extends Pile<T>
 			p.depile();
 		}
 	}
+	
+	public static class SuppressionInterditeException extends RuntimeException
+	{
+		private static final long serialVersionUID = -5787906244873409640L;
+		
+		@Override
+		public String toString()
+		{
+			return "Il est formellement interdit de supprimer de la pile un élément autre que le sommet, utilisez depile() pour ce faire.";
+		}
+	}
 }
 
 class ListeIterable<T> extends Liste<T> implements Iterable<T>
@@ -67,18 +79,20 @@ class ListeIterable<T> extends Liste<T> implements Iterable<T>
 	}
 
 	/*
-	 * Retourne un iterateur sur la liste.
+	 * Retourne un itérateur sur la liste.
 	 */
 
+	@Override
 	public Iterator<T> iterator()
 	{
 		return new MyIterator<T>(this);
 	}
 
 	/*
-	 * Retourne une representation de la pile au format chaine de caracteres.
+	 * Retourne une représentation de la pile au format chaîne de caractères.
 	 */
 
+	@Override
 	public String toString()
 	{
 		String res = "";
@@ -97,11 +111,13 @@ class MyIterator<T> implements Iterator<T>
 		this.l = l;
 	}
 
+	@Override
 	public boolean hasNext()
 	{
 		return l != null;
 	}
 
+	@Override
 	public T next()
 	{
 		Liste<T> temp = l;
@@ -109,7 +125,9 @@ class MyIterator<T> implements Iterator<T>
 		return temp.getData();
 	}
 
+	@Override
 	public void remove()
 	{
+		throw new PileIterable.SuppressionInterditeException();
 	}
 }

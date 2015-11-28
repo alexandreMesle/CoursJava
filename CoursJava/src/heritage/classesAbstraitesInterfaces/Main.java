@@ -8,29 +8,29 @@ public class Main
 	public static void main(String[] args)
 	{
 		TableauComparable t = new TableauComparable(3);
-		t.set(0, new ChatComparable("Ronron"));
-		t.set(1, new ChienComparable("Médor"));
-		t.set(2, new VacheComparable("Huguette"));
+		t.set(0, new Chat("Ronron"));
+		t.set(1, new Chien("Médor"));
+		t.set(2, new Vache("Huguette"));
 		System.out.println(t);
 		t.triSelection();
 		System.out.println(t);
 
 		t = new TableauComparable(4);
-		t.set(0, new EurosComparable(5));
-		t.set(1, new DollarsComparable(5));
-		t.set(2, new LivresComparable(5));
-		t.set(3, new EurosComparable(2));
+		t.set(0, new Euros(5));
+		t.set(1, new Dollars(5));
+		t.set(2, new Livres(5));
+		t.set(3, new Euros(2));
 		System.out.println(t);
 		t.triSelection();
 		System.out.println(t);
 	}
 }
 
-abstract class AnimalComparable implements Comparable
+abstract class Animal implements Comparable
 {
 	private String nom;
 
-	public AnimalComparable(String nom)
+	public Animal(String nom)
 	{
 		setNom(nom);
 	}
@@ -49,24 +49,26 @@ abstract class AnimalComparable implements Comparable
 
 	public int compareTo(Comparable other)
 	{
-		return nom.compareTo(((AnimalComparable) other).getNom());
+		return nom.compareTo(((Animal) other).getNom());
 	}
 
+	@Override
 	public String toString()
 	{
 		return getNom();
 	}
 }
 
-class ChatComparable extends AnimalComparable
+class Chat extends Animal
 {
 	private String nom;
 
-	public ChatComparable(String nom)
+	public Chat(String nom)
 	{
 		super(nom);
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Miaou !";
@@ -74,13 +76,14 @@ class ChatComparable extends AnimalComparable
 
 }
 
-class ChienComparable extends AnimalComparable
+class Chien extends Animal
 {
-	public ChienComparable(String nom)
+	public Chien(String nom)
 	{
 		super(nom);
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Waf !";
@@ -88,15 +91,16 @@ class ChienComparable extends AnimalComparable
 
 }
 
-class VacheComparable extends AnimalComparable
+class Vache extends Animal
 {
 	private String nom;
 
-	public VacheComparable(String nom)
+	public Vache(String nom)
 	{
 		super(nom);
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Meuh !";
@@ -104,13 +108,13 @@ class VacheComparable extends AnimalComparable
 
 }
 
-abstract class DeviseComparable implements Comparable
+abstract class Devise implements Comparable
 {
 	private double somme = 0;
 
 	public abstract double getCours();
 
-	public void setSomme(DeviseComparable d)
+	public void setSomme(Devise d)
 	{
 		this.somme = d.getSomme() * d.getCours() / this.getCours();
 	}
@@ -125,82 +129,90 @@ abstract class DeviseComparable implements Comparable
 		return somme;
 	}
 
+	@Override
 	public String toString()
 	{
 		return "somme = " + somme + " ";
 	}
 
+	@Override
 	public int compareTo(Comparable other)
 	{
-		Double thisDollar = (new DollarsComparable(this)).getSomme(), otherDollar = (new DollarsComparable(
-				(DeviseComparable) other)).getSomme();
+		Double thisDollar = (new Dollars(this)).getSomme(), otherDollar = (new Dollars(
+				(Devise) other)).getSomme();
 		return thisDollar.compareTo(otherDollar);
 	}
 }
 
-class LivresComparable extends DeviseComparable
+class Livres extends Devise
 {
-	public LivresComparable(DeviseComparable d)
+	public Livres(Devise d)
 	{
 		setSomme(d);
 	}
 
-	public LivresComparable(double somme)
+	public Livres(double somme)
 	{
 		setSomme(somme);
 	}
 
+	@Override
 	public double getCours()
 	{
 		return 1.95842;
 	}
 
+	@Override
 	public String toString()
 	{
 		return super.toString() + " Livres";
 	}
 }
 
-class EurosComparable extends DeviseComparable
+class Euros extends Devise
 {
-	public EurosComparable(DeviseComparable d)
+	public Euros(Devise d)
 	{
 		setSomme(d);
 	}
 
-	public EurosComparable(double somme)
+	public Euros(double somme)
 	{
 		setSomme(somme);
 	}
 
+	@Override
 	public double getCours()
 	{
 		return 1.4625;
 	}
 
+	@Override
 	public String toString()
 	{
 		return super.toString() + " Euros";
 	}
 }
 
-class DollarsComparable extends DeviseComparable
+class Dollars extends Devise
 {
-	public DollarsComparable(DeviseComparable d)
+	public Dollars(Devise d)
 	{
 		setSomme(d);
 	}
 
-	public DollarsComparable(double somme)
+	public Dollars(double somme)
 	{
 		setSomme(somme);
 	}
 
+	@Override
 	public double getCours()
 	{
 		return 1.;
 	}
 
+	@Override
 	public String toString()
 	{
 		return super.toString() + " Dollars";

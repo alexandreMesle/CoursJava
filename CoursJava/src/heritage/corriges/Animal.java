@@ -32,16 +32,19 @@ class Chat implements Animal
 		this.nom = nom;
 	}
 
+	@Override
 	public void setNom(String nom)
 	{
 		this.nom = nom;
 	}
 
+	@Override
 	public String getNom()
 	{
 		return nom;
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Miaou !";
@@ -58,16 +61,19 @@ class Vache implements Animal
 		this.nom = nom;
 	}
 
+	@Override
 	public void setNom(String nom)
 	{
 		this.nom = nom;
 	}
 
+	@Override
 	public String getNom()
 	{
 		return nom;
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Meuh !";
@@ -83,16 +89,19 @@ class Chien implements Animal
 		this.nom = nom;
 	}
 
+	@Override
 	public void setNom(String nom)
 	{
 		this.nom = nom;
 	}
 
+	@Override
 	public String getNom()
 	{
 		return nom;
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Waf !";

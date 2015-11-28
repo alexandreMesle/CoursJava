@@ -39,6 +39,7 @@ class Chat extends Animal
 		super(nom);
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Miaou !";
@@ -53,6 +54,7 @@ class Chien extends Animal
 		super(nom);
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Waf !";
@@ -67,6 +69,7 @@ class Vache extends Animal
 		super(nom);
 	}
 
+	@Override
 	public String parle()
 	{
 		return "Meuh !";

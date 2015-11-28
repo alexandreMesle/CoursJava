@@ -7,6 +7,7 @@ interface Saluer
 
 class Bonjour implements Saluer
 {
+	@Override
 	public void saluer()
 	{
 		System.out.println("Bonjour");
@@ -15,6 +16,7 @@ class Bonjour implements Saluer
 
 class Hello implements Saluer
 {
+	@Override
 	public void saluer()
 	{
 		System.out.println("Hello");
@@ -23,6 +25,7 @@ class Hello implements Saluer
 
 class GutenTag implements Saluer
 {
+	@Override
 	public void saluer()
 	{
 		System.out.println("Guten tag");

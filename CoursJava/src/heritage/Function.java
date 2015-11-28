@@ -62,39 +62,46 @@ class Variable extends Function
 	{
 	}
 
+	@Override
 	public boolean isZero()
 	{
-		// à vérifier
+		// TODO à compléter
 		return true;
 	}
 
+	@Override
 	public boolean isOne()
 	{
-		// à vérifier
+		// TODO à compléter
 		return true;
 	}
 
+	@Override
 	public boolean isConstant()
 	{
-		// à vérifier
+		// TODO à compléter
 		return true;
 	}
 
+	@Override
 	public Function derivate()
 	{
 		return null;
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
 		return 0;
 	}
 
+	@Override
 	public Function simplify()
 	{
 		return null;
 	}
 
+	@Override
 	public String toString()
 	{
 		return "";
@@ -121,26 +128,30 @@ abstract class BinaryOperator extends Function
 	 */
 	public abstract char toChar();
 
+	@Override
 	public String toString()
 	{
 		return "(" + leftSon + " " + toChar() + " " + rightSon + ")";
 	}
 
+	@Override
 	public boolean isZero()
 	{
-		// à vérifier !
+		// TODO à compléter !
 		return true;
 	}
 
+	@Override
 	public boolean isOne()
 	{
-		// à vérifier !
+		// TODO à compléter !
 		return true;
 	}
 
+	@Override
 	public boolean isConstant()
 	{
-		// à vérifier !
+		// TODO à compléter !
 		return true;
 	}
 
@@ -167,41 +178,52 @@ class Constant extends Function
 	{
 	}
 
+	@Override
 	public boolean isZero()
 	{
-		// à vérifier
+		// TODO à compléter
 		return true;
 	}
 
+	@Override
 	public boolean isOne()
 	{
-		// à vérifier
+		// TODO à compléter
 		return true;
 	}
 
+	@Override
 	public boolean isConstant()
 	{
-		// à vérifier
+		// TODO à compléter
 		return true;
 	}
 
+	@Override
 	public Function derivate()
 	{
+		// TODO à compléter
 		return null;
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
+		// TODO à compléter
 		return 0;
 	}
 
+	@Override
 	public Function simplify()
 	{
+		// TODO à compléter
 		return null;
 	}
 
+	@Override
 	public String toString()
 	{
+		// TODO à compléter
 		return "";
 	}
 }
@@ -217,23 +239,31 @@ class Minus extends BinaryOperator
 		super(leftSon, rightSon);
 	}
 
+	@Override
 	public char toChar()
 	{
+		// TODO à compléter
 		return '?';
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
+		// TODO à compléter
 		return 0;
 	}
 
+	@Override
 	public Function derivate()
 	{
+		// TODO à compléter
 		return null;
 	}
 
+	@Override
 	public Function simplify()
 	{
+		// TODO à compléter
 		return null;
 	}
 }
@@ -249,23 +279,31 @@ class Plus extends BinaryOperator
 		super(leftSon, rightSon);
 	}
 
+	@Override
 	public char toChar()
 	{
+		// TODO à compléter
 		return '?';
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
+		// TODO à compléter
 		return 0;
 	}
 
+	@Override
 	public Function derivate()
 	{
+		// TODO à compléter
 		return null;
 	}
 
+	@Override
 	public Function simplify()
 	{
+		// TODO à compléter
 		return null;
 	}
 }
@@ -281,26 +319,33 @@ class Times extends BinaryOperator
 		super(leftSon, rightSon);
 	}
 
+	@Override
 	public char toChar()
 	{
+		// TODO à compléter
 		return '?';
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
+		// TODO à compléter
 		return 0;
 	}
 
+	@Override
 	public Function derivate()
 	{
+		// TODO à compléter
 		return null;
 	}
 
+	@Override
 	public Function simplify()
 	{
+		// TODO à compléter
 		return null;
 	}
-
 }
 
 /**
@@ -314,23 +359,31 @@ class Div extends BinaryOperator
 		super(leftSon, rightSon);
 	}
 
+	@Override
 	public char toChar()
 	{
+		// TODO à compléter
 		return '?';
 	}
 
+	@Override
 	public double evaluate(double x)
 	{
+		// TODO à compléter
 		return 0;
 	}
 
+	@Override
 	public Function derivate()
 	{
+		// TODO à compléter
 		return null;
 	}
 
+	@Override
 	public Function simplify()
 	{
+		// TODO à compléter
 		return null;
 	}
 }

@@ -63,6 +63,7 @@ public class Heure implements Comparable
 
 	/*-----------------------------------------------*/
 
+	@Override
 	public String toString()
 	{
 		return heures + ":" + minutes;
@@ -81,6 +82,7 @@ public class Heure implements Comparable
 	 * -1 si this < other 0 si this = others 1 si this > other
 	 */
 
+	@Override
 	public int compareTo(Comparable other)
 	{
 		Heure autre = (Heure) other;

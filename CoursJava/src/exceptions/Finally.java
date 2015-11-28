@@ -2,6 +2,7 @@ package exceptions;
 
 class MonException extends Exception
 {
+	@Override
 	public String toString()
 	{
 		return "Fallait pas invoquer cette methode...";

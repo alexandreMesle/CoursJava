@@ -8,6 +8,7 @@ public class PaireOrdonneeComparable<T extends Comparable<T>> extends
 		super(first, second);
 	}
 
+	@Override
 	public int compareTo(PaireOrdonnee<T> other)
 	{
 		return getGrand().compareTo(other.getGrand());
