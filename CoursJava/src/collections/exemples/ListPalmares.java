@@ -11,7 +11,7 @@ public class ListPalmares
 		palmares.add("Ginette");
 		palmares.add("Gertrude");
 		palmares.add("Maurice");
-		for (int i = 0; i < 3; i++)
-			System.out.println(palmares.get(i));
+		for (String nom : palmares)
+			System.out.println(nom);
 	}
 }

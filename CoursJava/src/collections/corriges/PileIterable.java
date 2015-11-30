@@ -125,6 +125,7 @@ class MyIterator<T> implements Iterator<T>
 		return temp.getData();
 	}
 
+
 	@Override
 	public void remove()
 	{
