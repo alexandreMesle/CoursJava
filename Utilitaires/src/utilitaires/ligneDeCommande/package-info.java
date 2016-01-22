@@ -115,8 +115,50 @@ q : Quitter
 q
 </PRE>
 
+La librarie permet aussi de créer automatiquement un menu en utilisant une 
+liste :
+
+<PRE>
+// Création d'une liste contenant les trois chaînes "Ginette", "Marcel" et "Gisèle"
+final ArrayList<String> personnes = new ArrayList<>();
+personnes.add("Ginette");
+personnes.add("Marcel");
+personnes.add("Gisèle");
+// Création d'un menu proposant une option par personne
+Liste<String> menu = new Liste<String>("Liste des Personnes", 
+	new ActionListe<String>()
+	{
+		// Retourne la liste des personnes formant le menu
+		public List<String> getListe()
+		{
+			return personnes;
+		}
+
+		// Exécutée automatiquement lorsqu'un élément de liste est sélectionné
+		public void elementSelectionne(int indice, String element)
+		{
+			System.out.println("Vous avez sélectionné "+ element+ ", qui a l'indice " + indice);
+		}
+	});
+// Lancement du menu
+menu.start();
+</PRE>
+
+Voici un exemple d'exécution : 
+
+<PRE>
+1 : Ginette
+2 : Marcel
+3 : Gisèle
+2
+Vous avez sélectionné Marcel, qui a l'indice 1
+</PRE>
+
  * Vous pouvez aussi consulter un 
  * <A HREF="https://github.com/alexandreMesle/personnel">Exemple d'implémentation</A>.
  */
 
 package utilitaires.ligneDeCommande;
+import java.util.ArrayList;
+import java.util.List;
+
