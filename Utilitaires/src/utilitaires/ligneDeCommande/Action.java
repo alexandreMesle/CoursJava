@@ -30,7 +30,6 @@ public interface Action
 		public void optionSelectionnee(){}
 	};
 
-
 	/**
 	 * Fonction automatiquement exécutée quand une option est sélectionnée.
 	 */
