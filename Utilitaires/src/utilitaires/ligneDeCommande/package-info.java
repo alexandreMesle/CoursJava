@@ -159,6 +159,3 @@ Vous avez sélectionné Marcel, qui a l'indice 1
  */
 
 package utilitaires.ligneDeCommande;
-import java.util.ArrayList;
-import java.util.List;
-
