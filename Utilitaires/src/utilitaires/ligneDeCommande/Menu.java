@@ -88,7 +88,7 @@ public class Menu extends Option
 	
 	/**
 	 * Détermine si le choix d'une option entraîne automatiquement le retour au menu précédent.
-	 * Désactivé par défaut.
+	 * Faux par défaut.
 	 * @param retourAuto vrai ssi si le choix d'une option entraîne le retour au 
 	 * menu précédent.
 	 */
