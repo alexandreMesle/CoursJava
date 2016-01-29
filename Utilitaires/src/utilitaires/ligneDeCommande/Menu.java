@@ -151,7 +151,10 @@ public class Menu extends Option
 	@Override
 	public String stringOfOption()
 	{
-		return raccourci + " : " + titreCourt;
+		if (titreCourt != null)
+			return raccourci + " : " + titreCourt;
+		else
+			return super.stringOfOption();
 	}
 	
 	@Override
