@@ -66,7 +66,11 @@ public class Menu extends Option
 	
 	public void ajoute(Option option)
 	{
-		Option autre = optionsMap.get(option.getRaccourci());
+		String raccourci = option.getRaccourci();
+		if (raccourci == null)
+			throw new RuntimeException("Impossible d'ajouter l'option " + option.getTitre() + 
+					" dans le menu " + getTitre() + " si le raccourci n'a pas été spécifié.");
+		Option autre = optionsMap.get(raccourci);
 		if (autre != null)
 			throw new RuntimeException("Collision entre " + autre.getTitre()
 					+ " et " + option.getTitre() + " pour le raccourci" +
