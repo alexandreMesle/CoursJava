@@ -29,7 +29,7 @@ public class Menu extends Option
 	
 	public Menu(String titre)
 	{
-		super(titre, "");
+		super(titre, null);
 		titreCourt = titre;
 	}
 	
