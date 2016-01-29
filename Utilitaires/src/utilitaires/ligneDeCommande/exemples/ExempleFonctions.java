@@ -1,8 +1,6 @@
 package utilitaires.ligneDeCommande.exemples;
 
-import utilitaires.ligneDeCommande.Action;
-import utilitaires.ligneDeCommande.Menu;
-import utilitaires.ligneDeCommande.Option;
+import utilitaires.ligneDeCommande.*;
 
 public class ExempleFonctions
 {

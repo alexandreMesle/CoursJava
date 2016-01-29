@@ -120,16 +120,16 @@ liste :
 
 <PRE>
 // Création d'une liste contenant les trois chaînes "Ginette", "Marcel" et "Gisèle"
-final ArrayList<String> personnes = new ArrayList<>();
+final ArrayList&lt;String&gt; personnes = new ArrayList<>();
 personnes.add("Ginette");
 personnes.add("Marcel");
 personnes.add("Gisèle");
 // Création d'un menu proposant une option par personne
-Liste<String> menu = new Liste<String>("Liste des Personnes", 
-	new ActionListe<String>()
+Liste&lt;String&gt; menu = new Liste&lt;String&gt;("Liste des Personnes", 
+	new ActionListe&lt;String&gt;()
 	{
 		// Retourne la liste des personnes formant le menu
-		public List<String> getListe()
+		public List&lt;String&gt; getListe()
 		{
 			return personnes;
 		}
