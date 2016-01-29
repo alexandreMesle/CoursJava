@@ -6,12 +6,16 @@ import java.util.List;
  * Liste de valeurs (de type T) dans laquelle l'utilisateur
  * doit faire une sélection. Les valeurs de trouvant dans le champs
  * {@link liste} sont affichées et l'utilisateur est invité à saisir
- * l'indice de l'élément qu'il souhaite.
+ * l'indice de l'élément qu'il souhaite. Par défaut, la méthode toString
+ * héritée de Object est utilisée pour afficher les éléments de menu, 
+ * mais vous pouvez le modifier en utilisant la méthode 
+ * {@link setToString}.
  */
 
 public class Liste<T> extends Menu
 {
 	private ActionListe<T> action;
+	private ToString<T> convertisseur = null;
 	
 	/**
 	 * Créée une liste.
@@ -74,8 +78,9 @@ public class Liste<T> extends Menu
 		for (int i = 0 ; i < liste.size() ; i++)
 		{
 			T element = liste.get(i);
-			ajoute(new Option(element.toString(), "" + (i + 1), getAction(i, element))) ;
-		}				
+			String string = (convertisseur == null) ? element.toString() : convertisseur.toString(element); 
+			ajoute(new Option(string, "" + (i + 1), getAction(i, element))) ;
+		}
 	}
 	
 	/**
@@ -87,5 +92,19 @@ public class Liste<T> extends Menu
 	{
 		actualise();
 		super.start();
+	}
+	
+	/**
+	 * Définit de quelle façon vont s'afficher les éléments de menu.
+	 */
+	
+	public void setToString(ToString<T> convertisseur)
+	{
+		this.convertisseur = convertisseur;
+	}
+	
+	public interface ToString<T>
+	{
+		public String toString(T item);
 	}
 }

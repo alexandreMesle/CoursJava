@@ -5,6 +5,7 @@ import java.util.List;
 
 import utilitaires.ligneDeCommande.ActionListe;
 import utilitaires.ligneDeCommande.Liste;
+import utilitaires.ligneDeCommande.Liste.ToString;
 
 public class ExempleListes
 {

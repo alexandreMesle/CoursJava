@@ -6,7 +6,9 @@
  * Par exemple, le code ci-dessous met en place un menu dont les deux 
  * uniques options sont afficher bonjour et quitter :
  * 
- * <PRE>
+ * 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+ <PRE class="prettyprint">
 // Création d'un menu dont le titre est "Menu Bonjour"
 Menu menu = new Menu("Menu bonjour");
 // Création d'une option de menu dont le titre est "Dire bonjour"
@@ -49,12 +51,12 @@ est exécutée.
 Vous avez aussi la possibilité d'imbriquer un menu dans un menu, 
 comme dans l'exemple ci-dessous :
 
-<PRE>
+ <PRE class="prettyprint">
 // Création du menu racine de l'application.
 Menu menuPrincipal = new Menu("Menu Principal");
 // Création de deux options
 Option calculatrice = new Option("Calculatrice", "c");
-Menu direBonjour = new Menu("Menu bonjour", "b");
+Menu direBonjour = new Menu("Menu bonjour", "Bonjour", "b");
 // Imbrication des deux options dans le menu
 menuPrincipal.ajoute(calculatrice);
 // Vous remarquez que comme Menu hérite de Option, on peut mettre un menu dans un menu
@@ -92,7 +94,7 @@ Voici un exemple d'exécution du programme :
 <PRE>
 Menu Principal
 c : Calculatrice
-b : Menu bonjour
+b : Bonjour
 q : Quitter
 c
 Saisissez la première opérande : 5
@@ -118,7 +120,7 @@ q
 La librarie permet aussi de créer automatiquement un menu en utilisant une 
 liste :
 
-<PRE>
+ <PRE class="prettyprint">
 // Création d'une liste contenant les trois chaînes "Ginette", "Marcel" et "Gisèle"
 final ArrayList&lt;String&gt; personnes = new ArrayList<>();
 personnes.add("Ginette");
@@ -157,7 +159,7 @@ Vous avez sélectionné Marcel, qui a l'indice 1
 Il est conseillé, pour clarifier le code, de répartir les 
 instructions dans des fonctions de la façon suivante :
 
-<PRE>
+ <PRE class="prettyprint">
 static Menu getMenuPrincipal()
 {
 	Menu menuPrincipal = new Menu("Menu Principal");
@@ -203,7 +205,7 @@ static Option getOptionDireBonjour()
 	
 static Menu getMenuDireBonjour()
 {
-	Menu direBonjour = new Menu("Menu bonjour", "b");
+	Menu direBonjour = new Menu("Menu bonjour", "bonjour", "b");
 	direBonjour.ajoute(getOptionDireBonjour());
 	direBonjour.ajouteRevenir("r");;
 	direBonjour.setRetourAuto(true);

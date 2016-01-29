@@ -12,7 +12,7 @@ class ExempleMenus
 		Menu menuPrincipal = new Menu("Menu Principal");
 		// Création de deux options
 		Option calculatrice = new Option("Calculatrice", "c");
-		Menu direBonjour = new Menu("Menu bonjour", "b");
+		Menu direBonjour = new Menu("Menu bonjour", "Bonjour", "b");
 		// Imbrication des deux options dans le menu
 		menuPrincipal.ajoute(calculatrice);
 		// Vous remarquez que comme Menu hérite de Option, on peut mettre un menu dans un menu

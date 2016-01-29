@@ -49,7 +49,7 @@ public class ExempleFonctions
 	
 	static Menu getMenuDireBonjour()
 	{
-		Menu direBonjour = new Menu("Menu bonjour", "b");
+		Menu direBonjour = new Menu("Menu bonjour", "Bonjour", "b");
 		direBonjour.ajoute(getOptionDireBonjour());
 		direBonjour.ajouteRevenir("r");;
 		direBonjour.setRetourAuto(true);

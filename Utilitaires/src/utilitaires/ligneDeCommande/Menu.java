@@ -20,6 +20,7 @@ public class Menu extends Option
 	private Map<String, Option> optionsMap = new TreeMap<>();
 	private List<Option> optionsList = new ArrayList<>();
 	private boolean retourAuto = false;
+	private String titreCourt;
 	
 	/**
 	 * Créée un menu.
@@ -29,6 +30,7 @@ public class Menu extends Option
 	public Menu(String titre)
 	{
 		super(titre, "");
+		titreCourt = titre;
 	}
 	
 	/**
@@ -41,6 +43,20 @@ public class Menu extends Option
 	public Menu(String titre, String raccourci)
 	{
 		super(titre, raccourci);
+	}
+
+	/**
+	 * Créée un menu.
+	 * @param titreLong titre affiché au dessus du menu.
+	 * @param titreCourt titre affiché en tant qu'élément de menu (ou en tant qu'option).
+	 * @param raccourci Si ce menu est aussi une option, 
+	 * raccourci permettant de l'activer.
+	 */
+	
+	public Menu(String titreLong, String titreCourt, String raccourci)
+	{
+		super(titreLong, raccourci);
+		this.titreCourt = titreCourt; 
 	}
 
 	/**
@@ -126,6 +142,12 @@ public class Menu extends Option
 	void optionSelectionnee()
 	{
 		this.start();
+	}
+	
+	@Override
+	public String stringOfOption()
+	{
+		return raccourci + " : " + titreCourt;
 	}
 	
 	@Override
