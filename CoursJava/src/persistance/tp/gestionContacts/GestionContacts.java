@@ -117,11 +117,10 @@ class ListeContacts implements Serializable
 
 	public void ecrire()
 	{
-		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 		try
 		{
-			fos = new FileOutputStream(FILE);
+			FileOutputStream fos = new FileOutputStream(FILE);
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(this);
 		}
@@ -133,8 +132,6 @@ class ListeContacts implements Serializable
 		{
 			try
 			{
-				if (fos != null)
-					fos.close();
 				if (oos != null)
 					oos.close();
 			}
