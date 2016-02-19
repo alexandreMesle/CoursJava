@@ -50,23 +50,21 @@ public class Pile
 	}
 
 	/*
-	 * Retourne l'element se trouvant au sommet de la pile, -1 si la pile est
-	 * vide.
+	 * Retourne l'element se trouvant au sommet de la pile.
 	 */
 
 	public Object sommet()
 	{
 		if (!estVide())
 			return l.getData();
-		return -1;
+		throw new PileVideException();
 	}
 
 	/*
-	 * Supprime l'element se trouvant au sommet de la pile, ne fait rien si la
-	 * pile est vide.
+	 * Supprime l'element se trouvant au sommet de la pile.
 	 */
 
-	public void depile() throws PileVideException
+	public void depile()
 	{
 		if (!estVide())
 		{
@@ -74,13 +72,11 @@ public class Pile
 			nbItems--;
 		}
 		else
-		{
 			throw new PileVideException();
-		}
 	}
 
 	/*
-	 * Ajoute data en haut de la pile, ne fait rien si la pile est pleine.
+	 * Ajoute data en haut de la pile.
 	 */
 
 	public void empile(int data)
@@ -90,7 +86,7 @@ public class Pile
 	}
 
 	/*
-	 * Retourne une representation de la pile au format chaine de caracteres.
+	 * Retourne une representation de la pile au format chaîne de caractères.
 	 */
 
 	public String toString()

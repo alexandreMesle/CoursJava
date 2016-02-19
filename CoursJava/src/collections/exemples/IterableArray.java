@@ -49,7 +49,6 @@ public class IterableArray implements Iterable<Integer>
 			{
 				for (int i = index; i < TAILLE; i++)
 					set(i, get(i + 1));
-
 			}
 		};
 	}
