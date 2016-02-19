@@ -9,12 +9,11 @@ public class Fichier
 {
 	public static void main(String[] args)
 	{
-		FileInputStream fis;
 		BufferedReader br = null;
 		String fileName = "src/persistance/Fichier.java";
 		try
 		{
-			fis = new FileInputStream(fileName);
+			FileInputStream fis = new FileInputStream(fileName);
 			InputStreamReader isr = new InputStreamReader(fis);
 			br = new BufferedReader(isr);
 			String line;
