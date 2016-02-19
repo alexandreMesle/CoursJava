@@ -20,6 +20,7 @@ public class Menu extends Option
 	private Map<String, Option> optionsMap = new TreeMap<>();
 	private List<Option> optionsList = new ArrayList<>();
 	private boolean retourAuto = false;
+	private String titreCourt;
 	
 	/**
 	 * Créée un menu.
@@ -28,7 +29,8 @@ public class Menu extends Option
 	
 	public Menu(String titre)
 	{
-		super(titre, "");
+		super(titre, null);
+		titreCourt = titre;
 	}
 	
 	/**
@@ -44,13 +46,31 @@ public class Menu extends Option
 	}
 
 	/**
+	 * Créée un menu.
+	 * @param titreLong titre affiché au dessus du menu.
+	 * @param titreCourt titre affiché en tant qu'élément de menu (ou en tant qu'option).
+	 * @param raccourci Si ce menu est aussi une option, 
+	 * raccourci permettant de l'activer.
+	 */
+	
+	public Menu(String titreLong, String titreCourt, String raccourci)
+	{
+		super(titreLong, raccourci);
+		this.titreCourt = titreCourt; 
+	}
+
+	/**
 	 * Ajoute une option dans le menu.
 	 * @param option option à ajouter.
 	 */
 	
 	public void ajoute(Option option)
 	{
-		Option autre = optionsMap.get(option.getRaccourci());
+		String raccourci = option.getRaccourci();
+		if (raccourci == null)
+			throw new RuntimeException("Impossible d'ajouter l'option " + option.getTitre() + 
+					" dans le menu " + getTitre() + " si le raccourci n'a pas été spécifié.");
+		Option autre = optionsMap.get(raccourci);
 		if (autre != null)
 			throw new RuntimeException("Collision entre " + autre.getTitre()
 					+ " et " + option.getTitre() + " pour le raccourci" +
@@ -88,7 +108,7 @@ public class Menu extends Option
 	
 	/**
 	 * Détermine si le choix d'une option entraîne automatiquement le retour au menu précédent.
-	 * Désactivé par défaut.
+	 * Faux par défaut.
 	 * @param retourAuto vrai ssi si le choix d'une option entraîne le retour au 
 	 * menu précédent.
 	 */
@@ -126,6 +146,15 @@ public class Menu extends Option
 	void optionSelectionnee()
 	{
 		this.start();
+	}
+	
+	@Override
+	public String stringOfOption()
+	{
+		if (titreCourt != null)
+			return raccourci + " : " + titreCourt;
+		else
+			return super.stringOfOption();
 	}
 	
 	@Override

@@ -20,8 +20,7 @@ public class Carre
 		}
 		catch (Exception ex)
 		{
-			if (result != null)
-				result.setText("");
+			result.setText("");
 		}
 	}
 
@@ -29,6 +28,7 @@ public class Carre
 	{
 		return new KeyAdapter()
 		{
+			@Override
 			public void keyReleased(KeyEvent e)
 			{
 				afficheCarre();
@@ -55,7 +55,7 @@ public class Carre
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(getMainPanel());
 		frame.setVisible(true);
-		frame.pack();
+		frame.setSize(150, 150);
 	}
 
 	public static void main(String[] args)

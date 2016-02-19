@@ -6,12 +6,17 @@ import java.util.List;
  * Liste de valeurs (de type T) dans laquelle l'utilisateur
  * doit faire une sélection. Les valeurs de trouvant dans le champs
  * {@link liste} sont affichées et l'utilisateur est invité à saisir
- * l'indice de l'élément qu'il souhaite.
+ * l'indice de l'élément qu'il souhaite. Par défaut, la méthode toString
+ * héritée de Object est utilisée pour afficher les éléments de menu, 
+ * mais vous pouvez le modifier en utilisant la méthode 
+ * {@link setToString}.
  */
 
 public class Liste<T> extends Menu
 {
 	private ActionListe<T> action;
+	private ToString<T> convertisseur = null;
+	private Option optionQuitter = null, optionRevenir = null;
 	
 	/**
 	 * Créée une liste.
@@ -74,8 +79,13 @@ public class Liste<T> extends Menu
 		for (int i = 0 ; i < liste.size() ; i++)
 		{
 			T element = liste.get(i);
-			ajoute(new Option(element.toString(), "" + (i + 1), getAction(i, element))) ;
-		}				
+			String string = (convertisseur == null) ? element.toString() : convertisseur.toString(element); 
+			super.ajoute(new Option(string, "" + (i + 1), getAction(i, element))) ;
+		}
+		if (optionQuitter != null)
+			super.ajoute(optionQuitter);
+		if (optionRevenir!= null)
+			super.ajoute(optionRevenir);
 	}
 	
 	/**
@@ -88,4 +98,41 @@ public class Liste<T> extends Menu
 		actualise();
 		super.start();
 	}
+	
+	/**
+	 * Définit de quelle façon vont s'afficher les éléments de menu.
+	 */
+	
+	public void setToString(ToString<T> convertisseur)
+	{
+		this.convertisseur = convertisseur;
+	}
+	
+	public interface ToString<T>
+	{
+		public String toString(T item);
+	}
+	
+	/**
+	 * Déclenche une erreur, il est interdit de modifier les options d'une Liste.
+	 */
+	
+	@Override
+	public void ajoute(Option option)
+	{
+		throw new RuntimeException("Il est interdit d'ajouter manuellement une option dans une liste.");
+	}
+	
+	@Override
+	public void ajouteQuitter(String raccourci)
+	{
+		optionQuitter = new Option("Quitter", raccourci, Action.QUITTER);
+	}
+
+	@Override
+	public void ajouteRevenir(String raccourci)
+	{
+		optionRevenir = new Option("Revenir", raccourci, Action.REVENIR);
+	}
 }
+	

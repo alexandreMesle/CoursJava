@@ -25,6 +25,7 @@ public class FormaterDisqueDurGridLayout
 	{
 		return new ActionListener()
 		{
+			@Override
 			public void actionPerformed(ActionEvent e)
 			{
 				label.setText("Formatage en cours.");

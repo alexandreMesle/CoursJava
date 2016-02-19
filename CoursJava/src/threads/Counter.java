@@ -5,7 +5,6 @@ public class Counter
 	private int value = 0;
 	private int upperBound;
 	private int lowerBound;
-	private static int SLEEP_DURATION = 50;
 
 	public Counter(int lowerBound, int upperBound)
 	{
@@ -22,7 +21,6 @@ public class Counter
 		{
 			value++;
 			System.out.println("+ 1 = " + value);
-			Thread.sleep(SLEEP_DURATION);
 			if (value == lowerBound + 1)
 				notify();
 		}
@@ -36,7 +34,6 @@ public class Counter
 		{
 			value--;
 			System.out.println("- 1 = " + value);
-			Thread.sleep(SLEEP_DURATION);
 			if (value == upperBound - 1)
 				notify();
 		}
@@ -64,13 +61,8 @@ class Plus extends Thread
 	public void run()
 	{
 		while (true)
-			try
-			{
-				c.increaseCounter();
-			}
-			catch (InterruptedException e)
-			{
-			}
+			try{c.increaseCounter();}
+			catch (InterruptedException e){}
 	}
 }
 
@@ -86,12 +78,7 @@ class Moins extends Thread
 	public void run()
 	{
 		while (true)
-			try
-			{
-				c.decreaseCounter();
-			}
-			catch (InterruptedException e)
-			{
-			}
+			try{c.decreaseCounter();}
+			catch (InterruptedException e){}
 	}
 }

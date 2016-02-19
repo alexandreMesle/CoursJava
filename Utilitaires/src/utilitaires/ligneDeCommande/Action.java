@@ -18,18 +18,17 @@ public interface Action
 		{
 			System.exit(0);
 		}
-	},
+	};
 	
 	/**
 	 * Action prédéfinie permettant de revenir au menu précédent.
 	 */
 	
-	REVENIR = new Action()
+	public static final Action REVENIR = new Action()
 	{
 		@Override 
 		public void optionSelectionnee(){}
 	};
-
 
 	/**
 	 * Fonction automatiquement exécutée quand une option est sélectionnée.

@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class EuroDollar
 {
-	private final double OneDollarInEuro = 1.4237;
+	private static final double ONE_DOLLAR_IN_EURO = 1.4237;
 	private final JTextField dollarText = new JTextField(),
 			euroText = new JTextField();
 	private final JLabel dollarLabel = new JLabel("Dollars"),
@@ -59,9 +59,9 @@ public class EuroDollar
 		frame.setVisible(true);
 		frame.setContentPane(getMainPanel());
 		euroText.addKeyListener(getKeyListener(euroText, dollarText,
-				OneDollarInEuro));
+				ONE_DOLLAR_IN_EURO));
 		dollarText.addKeyListener(getKeyListener(dollarText, euroText,
-				1 / OneDollarInEuro));
+				1 / ONE_DOLLAR_IN_EURO));
 		frame.pack();
 	}
 
