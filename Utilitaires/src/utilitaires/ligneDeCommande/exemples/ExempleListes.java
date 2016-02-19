@@ -32,6 +32,8 @@ public class ExempleListes
 				System.out.println("Vous avez sélectionné "+ element+ ", qui a l'indice " + indice);
 			}
 		});
+		// Ajoute une option quitter à la fin de la liste
+		menu.ajouteQuitter("q");
 		// Lancement du menu
 		menu.start();
 	}

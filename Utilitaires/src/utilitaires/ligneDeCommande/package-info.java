@@ -142,6 +142,8 @@ Liste&lt;String&gt; menu = new Liste&lt;String&gt;("Liste des Personnes",
 			System.out.println("Vous avez sélectionné "+ element+ ", qui a l'indice " + indice);
 		}
 	});
+// Ajoute une option quitter à la fin de la liste
+menu.ajouteQuitter("q");
 // Lancement du menu
 menu.start();
 </PRE>
@@ -152,6 +154,7 @@ Voici un exemple d'exécution :
 1 : Ginette
 2 : Marcel
 3 : Gisèle
+q : Quitter
 2
 Vous avez sélectionné Marcel, qui a l'indice 1
 </PRE>
