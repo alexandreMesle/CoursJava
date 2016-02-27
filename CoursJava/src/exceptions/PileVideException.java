@@ -1,6 +1,6 @@
 package exceptions;
 
-public class PileVideException extends Exception
+public class PileVideException extends RuntimeException
 {
 	public String toString()
 	{
