@@ -7,7 +7,7 @@ public class UnACinqTantQue
 		int i = 1;
 		while (i <= 5)
 		{
-			System.out.println(i + " ");
+			System.out.print(i + " ");
 			i++;	
 		}
 		System.out.println("\n");
