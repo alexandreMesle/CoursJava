@@ -4,18 +4,15 @@ import java.util.Scanner;
 
 public class JoliCarre
 {
+
 	public static void main(String[] args)
 	{
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("n = ");
+		System.out.println("Saisissez un nombre : ");
 		int n = scanner.nextInt();
 		scanner.close();
-		for (int i = 1 ; i <= n ; i++)
-		{
-			for (int j = 1 ; j <= n ; j++)
-				System.out.print("* ");
-			System.out.println();
-		}
+		for (int i = 1 ; i <= 10 ; i++)
+			System.out.println(n + " * " + i + " = " + n * i);
 	}
 
 }
