@@ -8,7 +8,7 @@ import java.util.logging.SimpleFormatter;
 
 public class PuissanceAvecLog extends ImplementationPuissance
 {
-	static private Logger LOGGER = Logger.getLogger(PuissanceAvecLog.class
+	private final static Logger LOGGER = Logger.getLogger(PuissanceAvecLog.class
 			.getName());
 	static
 	{
