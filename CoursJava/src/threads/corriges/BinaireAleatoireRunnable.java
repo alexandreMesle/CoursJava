@@ -11,6 +11,7 @@ public class BinaireAleatoireRunnable implements Runnable
 		this.nbIterations = nbIterations;
 	}
 
+	@Override
 	public void run()
 	{
 		for (int i = 1; i <= nbIterations; i++)
@@ -19,11 +20,11 @@ public class BinaireAleatoireRunnable implements Runnable
 
 	public static void main(String[] args)
 	{
-		Runnable un = new BinaireAleatoireRunnable(1, 30);
-		Runnable zero = new BinaireAleatoireRunnable(0, 30);
-		Thread tUn = new Thread(un);
-		Thread tZero = new Thread(zero);
-		tUn.start();
-		tZero.start();
+		Runnable runnableUn = new BinaireAleatoireRunnable(1, 30);
+		Runnable runnableZero = new BinaireAleatoireRunnable(0, 30);
+		Thread threadUn = new Thread(runnableUn);
+		Thread threadZero = new Thread(runnableZero);
+		threadUn.start();
+		threadZero.start();
 	}
 }
