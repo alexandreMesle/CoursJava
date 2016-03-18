@@ -16,6 +16,7 @@ public class Liste<T> extends Menu
 {
 	private ActionListe<T> action;
 	private ToString<T> convertisseur = null;
+	private Option optionQuitter = null, optionRevenir = null;
 	
 	/**
 	 * Créée une liste.
@@ -79,8 +80,12 @@ public class Liste<T> extends Menu
 		{
 			T element = liste.get(i);
 			String string = (convertisseur == null) ? element.toString() : convertisseur.toString(element); 
-			ajoute(new Option(string, "" + (i + 1), getAction(i, element))) ;
+			super.ajoute(new Option(string, "" + (i + 1), getAction(i, element))) ;
 		}
+		if (optionQuitter != null)
+			super.ajoute(optionQuitter);
+		if (optionRevenir!= null)
+			super.ajoute(optionRevenir);
 	}
 	
 	/**
@@ -107,4 +112,27 @@ public class Liste<T> extends Menu
 	{
 		public String toString(T item);
 	}
+	
+	/**
+	 * Déclenche une erreur, il est interdit de modifier les options d'une Liste.
+	 */
+	
+	@Override
+	public void ajoute(Option option)
+	{
+		throw new RuntimeException("Il est interdit d'ajouter manuellement une option dans une liste.");
+	}
+	
+	@Override
+	public void ajouteQuitter(String raccourci)
+	{
+		optionQuitter = new Option("Quitter", raccourci, Action.QUITTER);
+	}
+
+	@Override
+	public void ajouteRevenir(String raccourci)
+	{
+		optionRevenir = new Option("Revenir", raccourci, Action.REVENIR);
+	}
 }
+	
