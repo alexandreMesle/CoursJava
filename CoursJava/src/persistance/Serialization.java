@@ -39,11 +39,10 @@ public class Serialization implements Serializable
 		String fileName = "serialization.srz";
 		Serialization s = new Serialization(5);
 		System.out.println(s);
-		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 		try
 		{
-			fos = new FileOutputStream(fileName);
+			FileOutputStream fos = new FileOutputStream(fileName);
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(s);
 		}
@@ -55,8 +54,6 @@ public class Serialization implements Serializable
 		{
 			try
 			{
-				if (fos != null)
-					fos.close();
 				if (oos != null)
 					oos.close();
 			}
@@ -71,7 +68,7 @@ public class Serialization implements Serializable
 		try
 		{
 			FileInputStream fis = new FileInputStream(fileName);
-			ois = new ObjectInputStream(fis);
+			ois= new ObjectInputStream(fis);
 			Serialization sBis = (Serialization) (ois.readObject());
 			System.out.println(sBis);// 4 ou 5 ?
 		}

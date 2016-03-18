@@ -1,18 +1,18 @@
 package collections.clientsCommandes;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Facture
 {
 	private Client client;
 	private int montant;
-	private Date date;
+	private LocalDate date;
 
 	Facture(Client client, int montant)
 	{
 		this.client = client;
 		this.montant = montant;
-		this.date = new Date();
+		this.date = LocalDate.now();
 	}
 
 	public Client getClient()
@@ -25,7 +25,7 @@ public class Facture
 		return montant;
 	}
 
-	public Date getDate()
+	public LocalDate getDate()
 	{
 		return date;
 	}

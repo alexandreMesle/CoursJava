@@ -52,7 +52,7 @@ public class CopieFichier
 		}
 		catch (IOException e)
 		{
-			System.out.println("Erreur d'entrée/sortie.");
+			System.out.println("Erreur d'entrï¿½e/sortie.");
 		}
 		finally
 		{
@@ -77,9 +77,9 @@ public class CopieFichier
 	public static void main(String[] args)
 	{
 		if (copie(args[1], args[2]))
-			System.out.println("Copie réussie.");
+			System.out.println("Copie rÃ©ussie.");
 		else
-			System.out.println("Copie échouée.");
+			System.out.println("Copie Ã©chouÃ©e.");
 	}
 
 }
