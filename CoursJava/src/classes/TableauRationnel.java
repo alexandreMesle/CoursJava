@@ -1,4 +1,4 @@
-package tableaux;
+package classes;
 
 import java.util.Random;
 import java.lang.Math;

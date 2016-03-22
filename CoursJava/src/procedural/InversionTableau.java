@@ -1,9 +1,7 @@
-package tableaux;
+package procedural;
 
-public class PriseEnMainTableaux
+public class InversionTableau
 {
-
-	/*-----------------------------------------------------*/
 
 	public static void affiche(int[] t)
 	{
@@ -14,8 +12,6 @@ public class PriseEnMainTableaux
 		System.out.println();
 	}
 
-	/*-----------------------------------------------------*/
-
 	public static void swap(int[] t, int i, int j)
 	{
 		int temp = t[i];
@@ -23,16 +19,12 @@ public class PriseEnMainTableaux
 		t[j] = temp;
 	}
 
-	/*-----------------------------------------------------*/
-
 	public static void reverse(int[] t)
 	{
 		int i = 0, j = t.length - 1;
 		while (i < j)
 			swap(t, i++, j--);
 	}
-
-	/*-----------------------------------------------------*/
 
 	public static void reverseRec(int[] t, int i, int j)
 	{
@@ -43,14 +35,11 @@ public class PriseEnMainTableaux
 		}
 	}
 
-	/*-----------------------------------------------------*/
-
 	public static void reverseBis(int[] t)
 	{
 		reverseRec(t, 0, t.length - 1);
 	}
 
-	/*-----------------------------------------------------*/
 
 	public static void main(String[] args)
 	{
