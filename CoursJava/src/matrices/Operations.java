@@ -91,4 +91,14 @@ public class Operations
 			}
 		return maxcol;
 	}
+	
+	public static void afficheMatrice(int[][] matrice)
+	{
+		for(int i = 0 ; i < matrice.length ; i++)
+		{
+			for (int j = 0 ; j < matrice[i].length ; j++)
+				System.out.format("%6d", matrice[i][j]);
+			System.out.println();
+		}
+	}
 }
