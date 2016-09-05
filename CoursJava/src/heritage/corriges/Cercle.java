@@ -2,28 +2,28 @@ package heritage.corriges;
 
 public class Cercle extends Point
 {
-	private double radius = 0;
+	private double rayon = 0;
 
-	public Cercle(double abs, double ord, double radius)
+	public Cercle(double abs, double ord, double rayon)
 	{
 		super(abs, ord);
-		setRadius(radius);
+		setRayon(rayon);
 	}
 
 	public Cercle(Point centre, double rayon)
 	{
-		this(centre.getAbs(), centre.getOrd(), 0);
+		this(centre.getAbs(), centre.getOrd(), rayon);
 	}
 
-	public double getRadius()
+	public double getRayon()
 	{
-		return radius;
+		return rayon;
 	}
 
-	public void setRadius(double radius)
+	public void setRayon(double rayon)
 	{
-		if (radius > 0)
-			this.radius = radius;
+		if (rayon > 0)
+			this.rayon = rayon;
 	}
 
 	// exercice 4
@@ -32,7 +32,7 @@ public class Cercle extends Point
 	public String toString()
 	{
 		return "( centre = " + super.toString() +
-				"; rayon = " + getRadius() + ")";
+				"; rayon = " + getRayon() + ")";
 	}
 	
 }
