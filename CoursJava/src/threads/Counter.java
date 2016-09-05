@@ -15,28 +15,22 @@ public class Counter
 
 	public synchronized void increaseCounter() throws InterruptedException
 	{
-		if (value == upperBound)
+		while (value == upperBound)
 			wait();
-		else
-		{
-			value++;
-			System.out.println("+ 1 = " + value);
-			if (value == lowerBound + 1)
-				notify();
-		}
+		value++;
+		System.out.println("+ 1 = " + value);
+		if (value == lowerBound + 1)
+			notify();
 	}
 
 	public synchronized void decreaseCounter() throws InterruptedException
 	{
-		if (value == lowerBound)
+		while (value == lowerBound)
 			wait();
-		else
-		{
-			value--;
-			System.out.println("- 1 = " + value);
-			if (value == upperBound - 1)
-				notify();
-		}
+		value--;
+		System.out.println("- 1 = " + value);
+		if (value == upperBound - 1)
+			notify();
 	}
 
 	public static void main(String[] args)
@@ -63,6 +57,7 @@ class Plus extends Thread
 		while (true)
 			try{c.increaseCounter();}
 			catch (InterruptedException e){}
+		
 	}
 }
 

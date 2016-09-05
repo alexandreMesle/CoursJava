@@ -52,7 +52,7 @@ public class CopieFichier
 		}
 		catch (IOException e)
 		{
-			System.out.println("Erreur d'entr�e/sortie.");
+			System.out.println("Erreur d'entrée/sortie.");
 		}
 		finally
 		{
