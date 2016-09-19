@@ -4,11 +4,17 @@ public abstract class Devise
 {
 	private double somme = 0;
 
+	/*
+	 * Nombre de devises pour 1$.
+	 */
+	
 	public abstract double getCours();
+
+	public abstract String getUnite();
 
 	public void setSomme(Devise d)
 	{
-		this.somme = d.somme * d.getCours() / this.getCours();
+		this.somme = d.somme * this.getCours() / d.getCours();
 	}
 
 	public void setSomme(double somme)
@@ -23,17 +29,19 @@ public abstract class Devise
 	
 	public String toString()
 	{
-		return "somme = " + somme + " ";
+		return "somme = " + somme + " " + getUnite();
 	}
 
 	public static void main(String[] args)
 	{
-		Dollars d = new Dollars(12);
+		Devise d = new Dollars(12);
 		System.out.println(d);
 		Euros e = new Euros(d);
 		System.out.println(e);
 		Livres l = new Livres(e);
 		System.out.println(l);
+		Dollars dBis = new Dollars(l);
+		System.out.println(dBis);
 	}
 }
 
@@ -52,12 +60,13 @@ class Livres extends Devise
 	@Override
 	public double getCours()
 	{
-		return 1.95842;
+		return 0.76636574;
 	}
 
-	public String toString()
+	@Override
+	public String getUnite() 
 	{
-		return super.toString() + " Livres";
+		return "Livres";
 	}
 }
 
@@ -76,12 +85,13 @@ class Euros extends Devise
 	@Override
 	public double getCours()
 	{
-		return 1.4625;
+		return 0.895744319;
 	}
 
-	public String toString()
+	@Override
+	public String getUnite() 
 	{
-		return super.toString() + " Euros";
+		return "Euros";
 	}
 }
 
@@ -103,8 +113,9 @@ class Dollars extends Devise
 		return 1.;
 	}
 
-	public String toString()
+	@Override
+	public String getUnite() 
 	{
-		return super.toString() + " Dollars";
+		return "Dollars";
 	}
 }
