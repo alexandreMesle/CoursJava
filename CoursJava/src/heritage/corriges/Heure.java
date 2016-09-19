@@ -78,23 +78,10 @@ public class Heure implements Comparable
 
 	/*-----------------------------------------------*/
 
-	/*
-	 * -1 si this < other 0 si this = others 1 si this > other
-	 */
-
 	@Override
 	public int compareTo(Comparable other)
 	{
-		Heure autre = (Heure) other;
-		if (heures > autre.getHeures())
-			return 1;
-		if (heures < autre.getHeures())
-			return -1;
-		if (minutes > autre.getMinutes())
-			return 1;
-		if (minutes < autre.getMinutes())
-			return -1;
-		return 0;
+		return this.enMinutes() - ((Heure) other).enMinutes();
 	}
 
 	/*-----------------------------------------------*/

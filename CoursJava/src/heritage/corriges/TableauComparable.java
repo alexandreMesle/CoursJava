@@ -2,9 +2,6 @@ package heritage.corriges;
 
 import heritage.Comparable;
 
-import java.util.Random;
-import java.lang.Math;
-
 public class TableauComparable
 {
 	private Comparable[] t;
