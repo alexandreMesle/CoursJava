@@ -61,8 +61,6 @@ abstract class Animal implements Comparable
 
 class Chat extends Animal
 {
-	private String nom;
-
 	public Chat(String nom)
 	{
 		super(nom);
@@ -93,8 +91,6 @@ class Chien extends Animal
 
 class Vache extends Animal
 {
-	private String nom;
-
 	public Vache(String nom)
 	{
 		super(nom);
@@ -114,9 +110,11 @@ abstract class Devise implements Comparable
 
 	public abstract double getCours();
 
+	public abstract String getUnite();
+
 	public void setSomme(Devise d)
 	{
-		this.somme = d.getSomme() * d.getCours() / this.getCours();
+		this.somme = d.getSomme() * this.getCours() / d.getCours();
 	}
 
 	public void setSomme(double somme)
@@ -128,18 +126,17 @@ abstract class Devise implements Comparable
 	{
 		return somme;
 	}
-
-	@Override
+	
 	public String toString()
 	{
-		return "somme = " + somme + " ";
+		return "somme = " + somme + " " + getUnite();
 	}
 
 	@Override
 	public int compareTo(Comparable other)
 	{
-		Double thisDollar = (new Dollars(this)).getSomme(), otherDollar = (new Dollars(
-				(Devise) other)).getSomme();
+		Double thisDollar = (new Dollars(this)).getSomme(), 
+				otherDollar = (new Dollars((Devise) other)).getSomme();
 		return thisDollar.compareTo(otherDollar);
 	}
 }
@@ -159,13 +156,13 @@ class Livres extends Devise
 	@Override
 	public double getCours()
 	{
-		return 1.95842;
+		return 0.76636574;
 	}
 
 	@Override
-	public String toString()
+	public String getUnite() 
 	{
-		return super.toString() + " Livres";
+		return "Livres";
 	}
 }
 
@@ -184,13 +181,12 @@ class Euros extends Devise
 	@Override
 	public double getCours()
 	{
-		return 1.4625;
+		return 0.895744319;
 	}
-
 	@Override
-	public String toString()
+	public String getUnite() 
 	{
-		return super.toString() + " Euros";
+		return "Euros";
 	}
 }
 
@@ -211,10 +207,10 @@ class Dollars extends Devise
 	{
 		return 1.;
 	}
-
+	
 	@Override
-	public String toString()
+	public String getUnite() 
 	{
-		return super.toString() + " Dollars";
+		return "Dollars";
 	}
 }
