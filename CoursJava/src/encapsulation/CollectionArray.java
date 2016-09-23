@@ -1,4 +1,4 @@
-package collections.exemples;
+package encapsulation;
 
 import java.util.ArrayList;
 

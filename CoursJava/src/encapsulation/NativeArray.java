@@ -1,4 +1,4 @@
-package collections.exemples;
+package encapsulation;
 
 public class NativeArray
 {
