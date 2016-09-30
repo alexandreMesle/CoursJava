@@ -8,15 +8,11 @@ public class ListeInt
 
 	private int data;
 
-	/*********************************/
-
 	/*
 	 * Pointeur vers le maillon suivant
 	 */
 
 	private ListeInt next;
-
-	/*********************************/
 
 	/*
 	 * Constructeur initialisant la donnee et le pointeur vers l'element
@@ -27,8 +23,6 @@ public class ListeInt
 	{
 	}
 
-	/*********************************/
-
 	/*
 	 * Constructeur initialisant la donnee et mettant le suivant a null.
 	 */
@@ -37,8 +31,6 @@ public class ListeInt
 	{
 	}
 
-	/*********************************/
-
 	/*
 	 * Constructeur recopiant tous les maillons de other.
 	 */
@@ -46,8 +38,6 @@ public class ListeInt
 	ListeInt(ListeInt other)
 	{
 	}
-
-	/*********************************/
 
 	/*
 	 * Retourne la donnee.
@@ -58,8 +48,6 @@ public class ListeInt
 		return 0;
 	}
 
-	/*********************************/
-
 	/*
 	 * Modifie la donnee
 	 */
@@ -67,8 +55,6 @@ public class ListeInt
 	public void setData(int data)
 	{
 	}
-
-	/*********************************/
 
 	/*
 	 * Retourne le maillon suivant.
@@ -79,8 +65,6 @@ public class ListeInt
 		return null;
 	}
 
-	/*********************************/
-
 	/*
 	 * Modifie le maillon suivant
 	 */
@@ -88,8 +72,6 @@ public class ListeInt
 	public void setNext(ListeInt next)
 	{
 	}
-
-	/*********************************/
 
 	/*
 	 * Retourne une représentation sous forme de chaine de la liste.
@@ -99,8 +81,6 @@ public class ListeInt
 	{
 		return null;
 	}
-
-	/*********************************/
 
 	/*
 	 * Teste le fonctionnement de la liste.

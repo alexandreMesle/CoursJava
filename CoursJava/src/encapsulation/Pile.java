@@ -8,23 +8,17 @@ public class Pile
 
 	private int[] tab;
 
-	/********************************************/
-
 	/*
 	 * Taille de la pile
 	 */
 
 	private final int taille;
 
-	/********************************************/
-
 	/*
 	 * Indice du premier element non occupe dans le tableau.
 	 */
 
 	private int firstFree;
-
-	/********************************************/
 
 	/*
 	 * Constructeur
@@ -35,8 +29,6 @@ public class Pile
 		this.taille = 0;
 	}
 
-	/********************************************/
-
 	/*
 	 * Constructeur de copie
 	 */
@@ -45,8 +37,6 @@ public class Pile
 	{
 		this(other.taille);
 	}
-
-	/********************************************/
 
 	/*
 	 * Retourne vrai si et seulement si la pile est vide
@@ -57,8 +47,6 @@ public class Pile
 		return true;
 	}
 
-	/********************************************/
-
 	/*
 	 * Retourne vrai si et seulement si la pile est pleine.
 	 */
@@ -67,8 +55,6 @@ public class Pile
 	{
 		return true;
 	}
-
-	/********************************************/
 
 	/*
 	 * Retourne l'element se trouvant au sommet de la pile, -1 si la pile est
@@ -80,8 +66,6 @@ public class Pile
 		return 0;
 	}
 
-	/********************************************/
-
 	/*
 	 * Supprime l'element se trouvant au sommet de la pile, ne fait rien si la
 	 * pile est vide.
@@ -91,8 +75,6 @@ public class Pile
 	{
 	}
 
-	/********************************************/
-
 	/*
 	 * Ajoute data en haut de la pile, ne fait rien si la pile est pleine.
 	 */
@@ -100,8 +82,6 @@ public class Pile
 	public void empile(int data)
 	{
 	}
-
-	/********************************************/
 
 	/*
 	 * Retourne une representation de la pile au format chaine de caracteres.
@@ -111,8 +91,6 @@ public class Pile
 	{
 		return null;
 	}
-
-	/********************************************/
 
 	/*
 	 * Teste le fonctionnement de la pile.

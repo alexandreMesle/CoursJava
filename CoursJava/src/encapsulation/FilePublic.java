@@ -8,16 +8,12 @@ public class FilePublic
 
 	int[] entiers;
 
-	/******************************/
-
 	/*
 	 * Indice de la tête de file et du premier emplacement libre dans le
 	 * tableau.
 	 */
 
 	int first, firstFree;
-
-	/******************************/
 
 	/*
 	 * Initialise les attributs de la file.
@@ -28,8 +24,6 @@ public class FilePublic
 		entiers = new int[taille + 1];
 		first = firstFree = 0;
 	}
-
-	/******************************/
 
 	/*
 	 * Décale i d'une position vers la droite dans le tableau, revient au debut
@@ -44,8 +38,6 @@ public class FilePublic
 		return i;
 	}
 
-	/******************************/
-
 	/*
 	 * Retourne vrai si et seulement si la file est pleine.
 	 */
@@ -55,8 +47,6 @@ public class FilePublic
 		return first == incrementeIndice(firstFree);
 	}
 
-	/******************************/
-
 	/*
 	 * Retourne vrai si et seulement si la file est vide.
 	 */
@@ -65,8 +55,6 @@ public class FilePublic
 	{
 		return first == firstFree;
 	}
-
-	/******************************/
 
 	/*
 	 * Ajoute l'élément n dans la file.
@@ -81,8 +69,6 @@ public class FilePublic
 		}
 	}
 
-	/******************************/
-
 	/*
 	 * Supprime la tête de file.
 	 */
@@ -92,8 +78,6 @@ public class FilePublic
 		if (!estVide())
 			first = incrementeIndice(first);
 	}
-
-	/******************************/
 
 	/*
 	 * Retourne la tête de file.
