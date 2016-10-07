@@ -34,14 +34,16 @@ public abstract class Devise
 
 	public static void main(String[] args)
 	{
-		Devise d = new Dollars(12);
-		System.out.println(d);
-		Euros e = new Euros(d);
-		System.out.println(e);
-		Livres l = new Livres(e);
-		System.out.println(l);
-		Dollars dBis = new Dollars(l);
-		System.out.println(dBis);
+		Devise devise = new Dollars(12);
+		System.out.println(devise);
+		devise = new Euros(devise);
+		System.out.println(devise);
+		devise = new Livres(devise);
+		System.out.println(devise);
+		devise = new Livres(devise);
+		System.out.println(devise);
+		devise = new Dollars(devise);
+		System.out.println(devise);
 	}
 }
 
