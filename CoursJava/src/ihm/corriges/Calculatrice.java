@@ -98,15 +98,17 @@ public class Calculatrice
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new GridLayout(5, 3));
 		for (int i = 0; i < 10; i++)
-			buttons[i] = new JButton("" + i);
-		for (int i = 0; i < 10; i++)
-			buttons[i].addActionListener(addDigitListener(i));
+		{
+			int digit = (i + 1) % 10;
+			buttons[i] = new JButton("" + digit);
+			buttons[i].addActionListener(addDigitListener(digit));
+		}
 		buttons[10] = getOperatorButton('+');
 		buttons[11] = getOperatorButton('-');
 		buttons[12] = getOperatorButton('*');
 		buttons[13] = getOperatorButton('/');
 		buttons[14] = getOperatorButton('=');
-		for (int i = 1; i < buttons.length; i++)
+		for (int i = 0; i < buttons.length; i++)
 			buttonsPanel.add(buttons[i]);
 		return buttonsPanel;
 
