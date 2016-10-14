@@ -20,6 +20,7 @@ public class EcouteurAnonyme
 			frame.getContentPane().add(jButtons[i]);
 		jButtons[0].addActionListener(new ActionListener()
 		{
+			@Override
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("click on First JButton");
@@ -27,6 +28,7 @@ public class EcouteurAnonyme
 		});
 		jButtons[1].addActionListener(new ActionListener()
 		{
+			@Override
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("click on Second JButton");
@@ -34,13 +36,14 @@ public class EcouteurAnonyme
 		});
 		jButtons[2].addActionListener(new ActionListener()
 		{
+			@Override
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("click on Third JButton");
 			}
 		});
-		frame.setVisible(true);
 		frame.pack();
+		frame.setVisible(true);
 	}
 
 	public static void main(String[] args)

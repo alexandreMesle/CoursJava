@@ -8,6 +8,7 @@ public class TestGridLayout implements ActionListener
 {
 	JButton[] jButtons;
 
+	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		int k = 0;
@@ -32,8 +33,8 @@ public class TestGridLayout implements ActionListener
 			frame.getContentPane().add(jButtons[i]);
 			jButtons[i].addActionListener(this);
 		}
-		frame.setVisible(true);
 		frame.pack();
+		frame.setVisible(true);
 	}
 
 	public static void main(String[] args)

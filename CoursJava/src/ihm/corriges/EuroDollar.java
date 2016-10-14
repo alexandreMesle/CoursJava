@@ -48,6 +48,10 @@ public class EuroDollar
 		panel.add(euroLabel);
 		panel.add(dollarText);
 		panel.add(euroText);
+		euroText.addKeyListener(getKeyListener(euroText, dollarText,
+				ONE_DOLLAR_IN_EURO));
+		dollarText.addKeyListener(getKeyListener(dollarText, euroText,
+				1 / ONE_DOLLAR_IN_EURO));
 		return panel;
 	}
 
@@ -58,10 +62,6 @@ public class EuroDollar
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setContentPane(getMainPanel());
-		euroText.addKeyListener(getKeyListener(euroText, dollarText,
-				ONE_DOLLAR_IN_EURO));
-		dollarText.addKeyListener(getKeyListener(dollarText, euroText,
-				1 / ONE_DOLLAR_IN_EURO));
 		frame.pack();
 	}
 
