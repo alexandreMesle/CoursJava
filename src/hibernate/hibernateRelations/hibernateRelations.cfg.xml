@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory >
+
+		<!-- local connection properties -->
+	    <property name="hibernate.dialect">
+	    	org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost/hibernateRelations</property>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.username">
+			hibernate</property>
+		<property name="hibernate.connection.password">
+			hibernate</property>
+
+    <!-- Comportement pour la conservation des tables -->
+    <property name="hbm2ddl.auto">create</property>
+
+        <property name="hibernate.show_sql">false</property>
+        <property name="jta.UserTransaction">
+        	java:comp/UserTransaction</property>
+        <mapping class="hibernate.hibernateRelations.Client" />
+        <mapping class="hibernate.hibernateRelations.Commande" />
+        <mapping class="hibernate.hibernateRelations.Produit" />
+        <mapping class="hibernate.hibernateRelations.DetailCommande" />
+         
+    </session-factory>
+</hibernate-configuration>

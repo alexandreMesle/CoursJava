@@ -7,7 +7,7 @@
  * uniques options sont afficher bonjour et quitter :
  * 
  * 
-<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<script type="text/javascript" src="run_prettify.js"></script>
  <PRE class="prettyprint">
 // Création d'un menu dont le titre est "Menu Bonjour"
 Menu menu = new Menu("Menu bonjour");
