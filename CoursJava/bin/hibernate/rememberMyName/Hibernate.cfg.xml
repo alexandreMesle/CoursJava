@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory >
+
+		<!-- local connection properties -->
+	    <property name="hibernate.dialect">
+	    	org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost/rememberMyName</property>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.username">
+			rememberMyUser</property>
+		<property name="hibernate.connection.password">
+			rememberMyPassword</property>
+
+    <!-- Comportement pour la conservation des tables -->
+    <property name="hbm2ddl.auto">update</property>
+
+        <property name="jta.UserTransaction">
+        	java:comp/UserTransaction</property>
+         <mapping class="hibernate.rememberMyName.MyName" />
+         
+    </session-factory>
+</hibernate-configuration>

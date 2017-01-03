@@ -10,6 +10,6 @@ public class UnACinqTantQue
 			System.out.print(i + " ");
 			i++;	
 		}
-		System.out.println("\n");
+		System.out.println();
 	}
 }

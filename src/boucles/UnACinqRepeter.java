@@ -11,6 +11,6 @@ public class UnACinqRepeter
 			i++;	
 		}
 		while (i <= 5);
-		System.out.print("\n");			
+		System.out.println();			
 	}
 }
