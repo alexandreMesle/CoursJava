@@ -13,11 +13,11 @@ public class SortedMapSalaires
 		salaires.put("Marcel", 2000);
 		salaires.put("Ginette", 3000);
 		salaires.put("Lucienne", 1000);
-		for (Entry<String, Integer> e : salaires.entrySet())
-			System.out.println(e);
 		for (String e : salaires.keySet())
 			System.out.println(e);
 		for (int e : salaires.values())
 			System.out.println(e);
+		for (Entry<String, Integer> e : salaires.entrySet())
+			System.out.println("Le salaire de " + e.getKey() + " est " + e.getValue());
 	}
 }
