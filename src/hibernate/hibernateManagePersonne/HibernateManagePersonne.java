@@ -177,6 +177,12 @@ public abstract class HibernateManagePersonne
 					{
 						return personnes;
 					}
+
+					@Override
+					public Option getOption(Personne element)
+					{
+						return null;
+					}
 				});
 		return supprimer;
 	}
@@ -199,6 +205,12 @@ public abstract class HibernateManagePersonne
 					public List<Personne> getListe()
 					{
 						return personnes;
+					}
+
+					@Override
+					public Option getOption(Personne element)
+					{
+						return null;
 					}
 				});
 		return modifier;

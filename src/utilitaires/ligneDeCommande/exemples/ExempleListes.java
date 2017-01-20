@@ -1,11 +1,10 @@
 package utilitaires.ligneDeCommande.exemples;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
-import utilitaires.ligneDeCommande.ActionListe;
-import utilitaires.ligneDeCommande.Liste;
-import utilitaires.ligneDeCommande.Liste.ToString;
+import utilitaires.ligneDeCommande.*;
 
 public class ExempleListes
 {
@@ -30,6 +29,13 @@ public class ExempleListes
 			public void elementSelectionne(int indice, String element)
 			{
 				System.out.println("Vous avez sélectionné "+ element+ ", qui a l'indice " + indice);
+			}
+
+			// Retourne l'option que l'on souhaite créer, null si l'on préfère que l'option soit 
+			// crée automatiquement
+			public Menu getOption(final String element)
+			{
+				return null;
 			}
 		});
 		// Ajoute une option quitter à la fin de la liste

@@ -24,4 +24,13 @@ public interface ActionListe<T>
 	 */
 	
 	public void elementSelectionne(int indice, T element);
+
+	/**
+	 * Fonction permettant d'ajouter un menu dans la liste. Le raccourci sera écrasé par l'indice
+	 * de l'élément dans la liste affichée.
+	 * @param element élément de la liste affiché dans ce menu.
+	 * @returns Le sous-menu qui sera affichée dans la liste.
+	 */
+	
+	public Option getOption(T element);
 }

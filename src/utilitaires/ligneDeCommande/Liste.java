@@ -79,8 +79,17 @@ public class Liste<T> extends Menu
 		for (int i = 0 ; i < liste.size() ; i++)
 		{
 			T element = liste.get(i);
-			String string = (convertisseur == null) ? element.toString() : convertisseur.toString(element); 
-			super.ajoute(new Option(string, "" + (i + 1), getAction(i, element))) ;
+			Option option = action.getOption(element);
+			if (option == null)
+			{
+				String string = (convertisseur == null) ? element.toString() : convertisseur.toString(element);
+				super.ajoute(new Option(string, "" + (i + 1), getAction(i, element))) ;
+			}
+			else
+			{
+				option.setRaccourci("" + (i + 1));
+				super.ajoute(option);				
+			}
 		}
 		if (optionQuitter != null)
 			super.ajoute(optionQuitter);

@@ -39,6 +39,15 @@ public class Option
 	}
 
 	/**
+	 * Modifie le raccourci permettant de sélectioner cette option.
+	 */
+	
+	public void setRaccourci(String raccourci)
+	{
+		this.raccourci = raccourci;
+	}
+
+	/**
 	 * Retourne le libellé de l'option.
 	 */
 	

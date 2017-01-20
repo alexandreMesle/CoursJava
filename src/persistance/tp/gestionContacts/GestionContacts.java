@@ -259,6 +259,12 @@ public class GestionContacts
 					{
 						return listeContacts.getContacts();
 					}
+
+					@Override
+					public Option getOption(Contact element)
+					{
+						return null;
+					}
 				});
 		return modifier;
 	}
@@ -278,6 +284,12 @@ public class GestionContacts
 					public List<Contact> getListe()
 					{
 						return listeContacts.getContacts();
+					}
+
+					@Override
+					public Option getOption(Contact element)
+					{
+						return null;
 					}
 				});
 		return liste;

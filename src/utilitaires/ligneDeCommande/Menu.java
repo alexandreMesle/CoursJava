@@ -21,6 +21,7 @@ public class Menu extends Option
 	private List<Option> optionsList = new ArrayList<>();
 	private boolean retourAuto = false;
 	private String titreCourt;
+	private static boolean running = false;
 	
 	/**
 	 * Créée un menu.
@@ -124,11 +125,15 @@ public class Menu extends Option
 	}
 	
 	/**
-	 * Exécute le menu.	
+	 * Exécute le menu.	Attention, il n'est autorisé de lancer qu'un menu à la fois. Si vous avez besoin de lancer
+	 * un menu dans un sous-menu, lisez la documentation du package pour voir comment procéder. 
 	 */
 	
 	public void start()
 	{
+		if (running)
+			throw new RuntimeException("Un menu est déjà en cours d'exécution, menu.start() ne peut être lancé que depuis le menu racine.");
+		running = true;
 		Option option = null;
 		do
 		{
@@ -145,7 +150,9 @@ public class Menu extends Option
 	@Override
 	void optionSelectionnee()
 	{
+		running = false;
 		this.start();
+		running = true;
 	}
 	
 	@Override
