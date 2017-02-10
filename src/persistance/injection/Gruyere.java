@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import utilitaires.EntreesSorties;
+import commandLine.util.InOut;
 
 public class Gruyere
 {
@@ -47,8 +47,8 @@ public class Gruyere
 
 	private void saisitIdentifiants()
 	{
-		login = EntreesSorties.getString("login : ");
-		password = EntreesSorties.getString("password : ");
+		login = InOut.getString("login : ");
+		password = InOut.getString("password : ");
 	}
 
 	public boolean connect()

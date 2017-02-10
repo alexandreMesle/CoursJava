@@ -1,7 +1,8 @@
 package persistance.tp.rememberMyName;
 
 import java.io.IOException;
-import utilitaires.EntreesSorties;
+
+import commandLine.util.InOut;
 
 public abstract class RememberMyName
 {
@@ -30,7 +31,7 @@ public abstract class RememberMyName
 		}
 		catch (ReadException e)
 		{
-			name = EntreesSorties.getString("What is your name ? ");
+			name = InOut.getString("What is your name ? ");
 			writeNameToSupport(name);
 			return name;
 		}

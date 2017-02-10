@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import utilitaires.EntreesSorties;
+import commandLine.util.InOut;
 
 public class ListeContactsJDBC extends ListeContacts
 {
@@ -99,7 +99,7 @@ public class ListeContactsJDBC extends ListeContacts
 		catch (SQLException e)
 		{
 			System.out.println("Connexion perdue !");
-			EntreesSorties.afficheException(e);
+			InOut.afficheException(e);
 		}
 	}
 

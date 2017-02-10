@@ -14,10 +14,11 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.Query;
 
-import utilitaires.EntreesSorties;
-import utilitaires.ligneDeCommande.*;
+import commandLine.*;
+import commandLine.util.InOut;
+
+import org.hibernate.Query;
 
 @Entity
 class Personne
@@ -152,8 +153,8 @@ public abstract class HibernateManagePersonne
 			@Override
 			public void optionSelectionnee()
 			{
-				Passerelle.save(new Personne(EntreesSorties
-						.getString("Prénom : "), EntreesSorties
+				Passerelle.save(new Personne(InOut
+						.getString("Prénom : "), InOut
 						.getString("Nom : ")));
 				refreshList();
 			}
@@ -195,9 +196,9 @@ public abstract class HibernateManagePersonne
 					@Override
 					public void elementSelectionne(int indice, Personne element)
 					{
-						element.setPrenom(EntreesSorties
+						element.setPrenom(InOut
 								.getString("Prénom : "));
-						element.setNom(EntreesSorties.getString("Nom : "));
+						element.setNom(InOut.getString("Nom : "));
 						Passerelle.save(element);
 					}
 

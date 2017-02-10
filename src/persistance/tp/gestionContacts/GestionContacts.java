@@ -2,8 +2,8 @@ package persistance.tp.gestionContacts;
 
 import java.util.List;
 
-import utilitaires.EntreesSorties;
-import utilitaires.ligneDeCommande.*;
+import commandLine.*;
+import commandLine.util.InOut;
 
 public class GestionContacts
 {
@@ -38,8 +38,8 @@ public class GestionContacts
 			@Override
 			public void optionSelectionnee()
 			{
-				listeContacts.ajouter(EntreesSorties.getString("nom : "),
-						EntreesSorties.getString("e-mail : "));
+				listeContacts.ajouter(InOut.getString("nom : "),
+						InOut.getString("e-mail : "));
 			}
 		});
 	}
@@ -54,9 +54,9 @@ public class GestionContacts
 			{
 				String str = "nouveau " + lib + " : ";
 				if (champ == 'n')
-					contact.setNom(EntreesSorties.getString(str));
+					contact.setNom(InOut.getString(str));
 				else
-					contact.setEMail(EntreesSorties.getString(str));
+					contact.setEMail(InOut.getString(str));
 			}
 		});
 	}
@@ -130,7 +130,7 @@ public class GestionContacts
 			@Override
 			public void optionSelectionnee()
 			{
-				String nom = EntreesSorties.getString("nom : ");
+				String nom = InOut.getString("nom : ");
 				Contact contact = listeContacts.getContact(nom);
 				if (contact == null)
 					System.out.println("Ce contact n'existe pas");
