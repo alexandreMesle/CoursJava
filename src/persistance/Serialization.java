@@ -7,13 +7,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Serialization implements Serializable
+class Wrapper implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
 	private int value;
 
-	public Serialization(int value)
+	public Wrapper(int value)
 	{
 		this.value = value;
 	}
@@ -34,60 +34,61 @@ public class Serialization implements Serializable
 		return "" + value;
 	}
 
-	public static void main(String[] args)
+	public static Wrapper read(String fileName) throws IOException, ClassNotFoundException
 	{
-		String fileName = "serialization.srz";
-		Serialization s = new Serialization(5);
-		System.out.println(s);
-		ObjectOutputStream oos = null;
-		try
-		{
-			FileOutputStream fos = new FileOutputStream(fileName);
-			oos = new ObjectOutputStream(fos);
-			oos.writeObject(s);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			try
-			{
-				if (oos != null)
-					oos.close();
-			}
-			catch (IOException e)
-			{
-				System.out.println("Impossible de fermer le fichier "
-						+ fileName + ".");
-			}
-		}
-		s.setValue(4);
 		ObjectInputStream ois = null;
 		try
 		{
 			FileInputStream fis = new FileInputStream(fileName);
 			ois= new ObjectInputStream(fis);
-			Serialization sBis = (Serialization) (ois.readObject());
-			System.out.println(sBis);// 4 ou 5 ?
-		}
-		catch (IOException | ClassNotFoundException e)
-		{
-			e.printStackTrace();
+			return (Wrapper) (ois.readObject());
 		}
 		finally
 		{
-			try
-			{
-				if (ois != null)
-					ois.close();
-			}
-			catch (IOException e)
-			{
-				System.out.println("Impossible de fermer le fichier "
-						+ fileName + ".");
-			}
+			if (ois != null)
+				ois.close();
 		}
+	}
+	
+	public void write(String fileName) throws IOException
+	{
+		ObjectOutputStream oos = null;
+		try
+		{
+			FileOutputStream fos = new FileOutputStream(fileName);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(this);
+		}
+		finally
+		{
+			if (oos != null)
+				oos.close();
+		}
+	}
+}
+
+public class Serialization
+{
+	public static void main(String[] args)
+	{
+		String fileName = "serialization.srz";
+		Wrapper w = new Wrapper(5);
+		System.out.println(w);
+		try
+		{
+			w.write(fileName);
+			w.setValue(4);
+			Wrapper wBis = Wrapper.read(fileName);
+			System.out.println(wBis);// 4 ou 5 ?
+		}
+		catch (IOException e) 
+		{
+			System.out.println("Impossible d'ouvrir le fichier " + fileName + ".");
+		}
+		catch (ClassNotFoundException e) 
+		{
+			System.out.println("Le fichier " + fileName + " est corrompu.");
+		}
+		
 	}
 }
