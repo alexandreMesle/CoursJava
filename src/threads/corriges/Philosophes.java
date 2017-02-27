@@ -18,6 +18,7 @@ public class Philosophes extends Thread
 			places[i] = new Place(i, couverts[i], couverts[(i + 1) % nbPlaces]);
 	}
 
+	@Override
 	public void run()
 	{
 		Random r = new Random();
@@ -134,6 +135,7 @@ class Philosophe extends Thread
 		this.place = place;
 	}
 
+	@Override
 	public void run()
 	{
 		System.out.println(this + "en attente de " + place);

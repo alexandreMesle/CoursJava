@@ -11,6 +11,7 @@ public class SectionCritique extends Thread
 		this.c = c;
 	}
 
+	@Override
 	public void run()
 	{
 		boolean okay = true;

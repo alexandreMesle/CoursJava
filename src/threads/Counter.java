@@ -52,6 +52,7 @@ class Plus extends Thread
 		this.c = c;
 	}
 
+	@Override
 	public void run()
 	{
 		while (true)
@@ -70,6 +71,7 @@ class Moins extends Thread
 		this.c = c;
 	}
 
+	@Override
 	public void run()
 	{
 		while (true)

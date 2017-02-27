@@ -29,6 +29,7 @@ class Producteur extends Thread
 		this.name = name;
 	}
 
+	@Override
 	public void run()
 	{
 		Random r = new Random();
@@ -84,6 +85,7 @@ class Consommateur extends Thread
 		this.name = name;
 	}
 
+	@Override
 	public void run()
 	{
 		while (true)
@@ -162,22 +164,6 @@ class List<T>
 	}
 }
 
-class EmptyFileException extends Exception
-{
-	public EmptyFileException()
-	{
-		System.out.println("Can't read empty file");
-	}
-}
-
-class FullFileException extends Exception
-{
-	public FullFileException()
-	{
-		System.out.println("Can't write full file");
-	}
-}
-
 class File<T>
 {
 	private List<T> first = null;
@@ -190,23 +176,27 @@ class File<T>
 		this.maxNbElements = maxNbElements;
 	}
 
-	public T getFirst() throws EmptyFileException
+	public T getFirst()
 	{
+		if (isEmpty())
+			throw new EmptyFileException();
 		return first.getData();
 	}
 
-	public void removeFirst() throws EmptyFileException
+	public void removeFirst()
 	{
+		if (isEmpty())
+			throw new EmptyFileException();
 		first = first.getNext();
 		nbElements--;
 	}
 
-	public void add(T data) throws FullFileException
+	public void add(T data)
 	{
+		if (isFull())
+			throw new FullFileException();
 		if (isEmpty())
-		{
 			first = last = new List<T>(data);
-		}
 		else
 		{
 			last.setNext(new List<T>(data));
@@ -223,5 +213,23 @@ class File<T>
 	public boolean isFull()
 	{
 		return nbElements == maxNbElements;
+	}
+	
+	static class EmptyFileException extends RuntimeException
+	{
+		private static final long serialVersionUID = 8004748487421897828L;
+		public EmptyFileException()
+		{
+			System.out.println("Can't read empty file");
+		}
+	}
+
+	static class FullFileException extends RuntimeException
+	{
+		private static final long serialVersionUID = -1988943091168454052L;
+		public FullFileException()
+		{
+			System.out.println("Can't write full file");
+		}
 	}
 }

@@ -11,6 +11,7 @@ public class BinaireAleatoire extends Thread
 		this.nbIterations = nbIterations;
 	}
 
+	@Override
 	public void run()
 	{
 		for (int i = 1; i <= nbIterations; i++)

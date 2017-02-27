@@ -11,6 +11,7 @@ public class BinaireSynchronise extends Thread
 		this.c = c;
 	}
 
+	@Override
 	public void run()
 	{
 		while (c.stepCounter())

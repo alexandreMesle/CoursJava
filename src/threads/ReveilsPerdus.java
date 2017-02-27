@@ -43,6 +43,7 @@ public class ReveilsPerdus
 
 	class Plus extends Thread
 	{
+		@Override
 		public void run()
 		{
 			while (true)
@@ -53,6 +54,7 @@ public class ReveilsPerdus
 
 	class Moins extends Thread
 	{
+		@Override
 		public void run()
 		{
 			while (true)
