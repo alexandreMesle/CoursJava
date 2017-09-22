@@ -7,7 +7,7 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		TableauComparable t = new TableauComparable(3);
+		TableauComparable t = new TableauComparable();
 		t.set(0, new Chat("Ronron"));
 		t.set(1, new Chien("Médor"));
 		t.set(2, new Vache("Huguette"));
@@ -15,7 +15,7 @@ public class Main
 		t.triSelection();
 		System.out.println(t);
 
-		t = new TableauComparable(4);
+		t = new TableauComparable();
 		t.set(0, new Euros(5));
 		t.set(1, new Dollars(5));
 		t.set(2, new Livres(5));
