@@ -1,5 +1,7 @@
 package heritage.animalAbstrait;
 
+import java.util.ArrayList;
+
 public abstract class Animal
 {
 	private String nom;
@@ -19,16 +21,16 @@ public abstract class Animal
 		return nom;
 	}
 
-	public abstract String parle();
+	public abstract String cri();
 
 	public static void main(String[] args)
 	{
-		Animal a = new Chat("Ronron");
-		Animal b = new Chien("Médor");
-		Animal c = new Vache("Huguette");
-		System.out.println(a.parle());
-		System.out.println(b.parle());
-		System.out.println(c.parle());
+		ArrayList<Animal> animaux = new ArrayList<>();
+		animaux.add(new Chat("Ronron"));
+		animaux.add(new Chien("Médor"));
+		animaux.add(new Vache("Huguette"));
+		for (Animal animal : animaux)
+			System.out.println(animal.cri());
 	}
 }
 
@@ -40,7 +42,7 @@ class Chat extends Animal
 	}
 
 	@Override
-	public String parle()
+	public String cri()
 	{
 		return "Miaou !";
 	}
@@ -55,7 +57,7 @@ class Chien extends Animal
 	}
 
 	@Override
-	public String parle()
+	public String cri()
 	{
 		return "Waf !";
 	}
@@ -70,7 +72,7 @@ class Vache extends Animal
 	}
 
 	@Override
-	public String parle()
+	public String cri()
 	{
 		return "Meuh !";
 	}

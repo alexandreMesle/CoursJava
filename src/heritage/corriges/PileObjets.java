@@ -1,34 +1,22 @@
 package heritage.corriges;
 
+import java.util.ArrayList;
+
 public class PileObjets
 {
 	/*
 	 * Liste contenant les elements de la pile.
 	 */
 
-	private ListeObjets l;
-
-	/*
-	 * Taille de la pile
-	 */
-
-	private final int taille;
-
-	/*
-	 * Nombre d'elements dans la liste
-	 */
-
-	private int nbItems;
+	private ArrayList<Object> array;
 
 	/*
 	 * Constructeur
 	 */
 
-	PileObjets(int taille)
+	PileObjets()
 	{
-		l = null;
-		this.taille = taille;
-		nbItems = 0;
+		array = new ArrayList<>();
 	}
 
 	/*
@@ -37,17 +25,9 @@ public class PileObjets
 
 	public boolean estVide()
 	{
-		return nbItems == 0;
+		return array.isEmpty();
 	}
 
-	/*
-	 * Retourne vrai si et seulement si la pile est pleine.
-	 */
-
-	public boolean estPleine()
-	{
-		return nbItems == taille;
-	}
 
 	/*
 	 * Retourne l'element se trouvant au sommet de la pile, -1 si la pile est
@@ -57,7 +37,7 @@ public class PileObjets
 	public Object sommet()
 	{
 		if (!estVide())
-			return l.getData();
+			return array.get(array.size() - 1);
 		return -1;
 	}
 
@@ -69,20 +49,16 @@ public class PileObjets
 	public void depile()
 	{
 		if (!estVide())
-		{
-			l = l.getNext();
-			nbItems--;
-		}
+			array.remove(array.size() - 1);
 	}
 
 	/*
 	 * Ajoute data en haut de la pile, ne fait rien si la pile est pleine.
 	 */
 
-	public void empile(int data)
+	public void empile(Object data)
 	{
-		l = new ListeObjets(data, l);
-		nbItems++;
+		array.add(data);
 	}
 
 	/*
@@ -92,7 +68,7 @@ public class PileObjets
 	@Override
 	public String toString()
 	{
-		return l.toString();
+		return array.toString();
 	}
 
 	/*
@@ -101,9 +77,10 @@ public class PileObjets
 
 	public static void main(String[] args)
 	{
-		PileObjets p = new PileObjets(30);
-		int i = 0;
-		while (!p.estPleine())
+		int nb = 20;
+		PileObjets p = new PileObjets();
+		int i = 1;
+		while (i <= 20)
 			p.empile(new Integer(i++));
 		System.out.println(p);
 		while (!p.estVide())
