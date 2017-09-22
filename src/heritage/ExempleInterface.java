@@ -1,5 +1,7 @@
 package heritage;
 
+import java.util.ArrayList;
+
 interface Saluer
 {
 	public void saluer();
@@ -40,8 +42,11 @@ public class ExempleInterface
 		s.saluer();
 		s = new Hello();
 		s.saluer();
-		Saluer[] t = new Saluer[] { new Bonjour(), new Hello(), new GutenTag() };
-		for (int i = 0; i < 3; i++)
-			t[i].saluer();
+		ArrayList<Saluer> arrayList = new ArrayList<Saluer>();
+		arrayList.add(new Bonjour());
+		arrayList.add(new Hello());
+		arrayList.add(new GutenTag());
+		for (Saluer salut : arrayList)
+			salut.saluer();
 	}
 }
