@@ -1,25 +1,29 @@
 package heritage.corriges;
 
-public interface Animal
+import java.util.ArrayList;
+
+interface Animal
 {
+	// Getter pour le champ nom
 	public void setNom(String nom);
 
+	// Setter pour le champ nom
 	public String getNom();
 
-	public String parle();
-
+	// Affiche le cri de l'animal
+	public String cri();
 }
 
-class Main
+public class ExempleAnimaux
 {
 	public static void main(String[] args)
 	{
-		Animal a = new Chat("Ronron");
-		Animal b = new Chien("Médor");
-		Animal c = new Vache("Huguette");
-		System.out.println(a.parle());
-		System.out.println(b.parle());
-		System.out.println(c.parle());
+		ArrayList<Animal> animaux = new ArrayList<>();
+		animaux.add(new Chat("Ronron"));
+		animaux.add(new Chien("Médor"));
+		animaux.add(new Vache("Huguette"));
+		for (Animal animal : animaux)
+			System.out.println(animal.cri());
 	}
 }
 
@@ -45,7 +49,7 @@ class Chat implements Animal
 	}
 
 	@Override
-	public String parle()
+	public String cri()
 	{
 		return "Miaou !";
 	}
@@ -74,7 +78,7 @@ class Vache implements Animal
 	}
 
 	@Override
-	public String parle()
+	public String cri()
 	{
 		return "Meuh !";
 	}
@@ -102,7 +106,7 @@ class Chien implements Animal
 	}
 
 	@Override
-	public String parle()
+	public String cri()
 	{
 		return "Waf !";
 	}
