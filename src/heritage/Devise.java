@@ -12,14 +12,14 @@ public abstract class Devise
 
 	public abstract String getUnite();
 
-	public void setSomme(Devise d)
-	{
-		this.somme = d.somme * this.getCours() / d.getCours();
-	}
-
-	public void setSomme(double somme)
+	protected void setSomme(double somme)
 	{
 		this.somme = somme;
+	}
+
+	protected void setSomme(Devise d)
+	{
+		setSomme(d.getSomme() * this.getCours() / d.getCours());
 	}
 
 	public double getSomme()
@@ -27,6 +27,7 @@ public abstract class Devise
 		return somme;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return "somme = " + somme + " " + getUnite();
@@ -37,8 +38,6 @@ public abstract class Devise
 		Devise devise = new Dollars(12);
 		System.out.println(devise);
 		devise = new Euros(devise);
-		System.out.println(devise);
-		devise = new Livres(devise);
 		System.out.println(devise);
 		devise = new Livres(devise);
 		System.out.println(devise);
