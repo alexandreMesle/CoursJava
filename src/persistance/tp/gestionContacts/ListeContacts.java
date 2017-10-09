@@ -50,6 +50,13 @@ public class ListeContacts implements Serializable
 	{
 		ajouter(new Contact(nom, email));
 	}
+	
+	public void renommer(Contact contact, String nom)
+	{
+		contacts.remove(contact.getNom());
+		contact.setNom(nom);
+		ajouter(contact);
+	}
 
 	public void supprimer(Contact contact)
 	{

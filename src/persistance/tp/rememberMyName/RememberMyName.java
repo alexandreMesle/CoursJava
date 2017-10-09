@@ -1,8 +1,7 @@
 package persistance.tp.rememberMyName;
 
 import java.io.IOException;
-
-import commandLine.util.InOut;
+import commandLineMenus.rendering.examples.util.InOut;
 
 public abstract class RememberMyName
 {

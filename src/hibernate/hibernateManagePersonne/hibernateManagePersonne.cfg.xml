@@ -10,7 +10,7 @@
 	    <property name="hibernate.dialect">
 	    	org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.url">
-			jdbc:mysql://localhost/courshibernate</property>
+			jdbc:mysql://localhost/hibernate</property>
 		<property name="hibernate.connection.driver_class">
 			com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.username">

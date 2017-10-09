@@ -1,9 +1,7 @@
 package persistance.tp.gestionContacts;
 
-import java.util.List;
-
-import commandLine.*;
-import commandLine.util.InOut;
+import commandLineMenus.*;
+import commandLineMenus.rendering.examples.util.InOut;
 
 public class GestionContacts
 {
@@ -13,7 +11,7 @@ public class GestionContacts
 	{
 		return new Option("Liste des contacts", "l", new Action()
 		{
-			public void optionSelectionnee()
+			public void optionSelected()
 			{
 				System.out.println(listeContacts);
 			}
@@ -24,7 +22,7 @@ public class GestionContacts
 	{
 		return new Option("Afficher", "a", new Action()
 		{
-			public void optionSelectionnee()
+			public void optionSelected()
 			{
 				System.out.println(contact);
 			}
@@ -36,7 +34,7 @@ public class GestionContacts
 		return new Option("Ajouter un contact", "a", new Action()
 		{
 			@Override
-			public void optionSelectionnee()
+			public void optionSelected()
 			{
 				listeContacts.ajouter(InOut.getString("nom : "),
 						InOut.getString("e-mail : "));
@@ -50,11 +48,11 @@ public class GestionContacts
 		return new Option("Modifier le " + lib, "" + champ, new Action()
 		{
 			@Override
-			public void optionSelectionnee()
+			public void optionSelected()
 			{
 				String str = "nouveau " + lib + " : ";
 				if (champ == 'n')
-					contact.setNom(InOut.getString(str));
+					listeContacts.renommer(contact, InOut.getString(str));
 				else
 					contact.setEMail(InOut.getString(str));
 			}
@@ -63,118 +61,75 @@ public class GestionContacts
 
 	private Menu getModifier(Contact contact)
 	{
-		Menu menu = new Menu("Modifier un contact");
-		menu.ajoute(getAfficher(contact));
-		menu.ajoute(getModifier(contact, 'n'));
-		menu.ajoute(getModifier(contact, 'm'));
-		menu.ajouteRevenir("r");
+		Menu menu = new Menu("Modifier " + contact.getNom());
+		menu.add(getAfficher(contact));
+		menu.add(getModifier(contact, 'n'));
+		menu.add(getModifier(contact, 'm'));
+		menu.addBack("r");
 		return menu;
 	}
 
 	private Option getModifier()
 	{
-		Liste<Contact> modifier = new Liste<>("Modifier un contact", "m",
-				new ActionListe<Contact>()
-				{
-					@Override
-					public void elementSelectionne(int indice, Contact element)
-					{
-						getModifier(element).start();
-					}
-
-					@Override
-					public List<Contact> getListe()
-					{
-						return listeContacts.getContacts();
-					}
-
-					@Override
-					public Option getOption(Contact element)
-					{
-						return null;
-					}
-				});
-		return modifier;
+		return new List<Contact>("Modifier un contact", "m",
+				() -> listeContacts.getContacts(),
+				(contact) -> getModifier(contact));
 	}
 
 	private Option getSupprimer()
 	{
-		Liste<Contact> liste = new Liste<>("Supprimer un contact", "s",
-				new ActionListe<Contact>()
-				{
-					@Override
-					public void elementSelectionne(int indice, Contact element)
-					{
-						listeContacts.supprimer(element);
-					}
-
-					@Override
-					public List<Contact> getListe()
-					{
-						return listeContacts.getContacts();
-					}
-
-					@Override
-					public Option getOption(Contact element)
-					{
-						return null;
-					}
-				});
-		return liste;
+		return new List<>("Supprimer un contact", "s",
+				() -> listeContacts.getContacts(),
+				(indice, element) -> listeContacts.supprimer(element));
 	}
 
 	private Option getRechercher()
 	{
-		return new Option("Rechercher un contact", "r", new Action()
-		{
-			@Override
-			public void optionSelectionnee()
-			{
-				String nom = InOut.getString("nom : ");
-				Contact contact = listeContacts.getContact(nom);
-				if (contact == null)
-					System.out.println("Ce contact n'existe pas");
-				else
-					System.out.println(contact);
-			}
-		});
+		return new Option("Rechercher un contact", "r", 
+				() ->
+				{
+					String nom = InOut.getString("nom : ");
+					Contact contact = listeContacts.getContact(nom);
+					if (contact == null)
+						System.out.println("Ce contact n'existe pas");
+					else
+						System.out.println(contact);
+				}
+			);
 	}
 
 	private Option getQuitter(final boolean enregistrer)
 	{
 		return new Option((enregistrer) ? "Enregistrer et quitter"
 				: "Quitter sans enregistrer", (enregistrer) ? "r" : "q",
-				new Action()
+				() -> 
 				{
-					@Override
-					public void optionSelectionnee()
-					{
-						if (enregistrer)
-							listeContacts.ecrire();
-						else
-							listeContacts.annuler();
-						Action.QUITTER.optionSelectionnee();
-					}
-				});
+					if (enregistrer)
+						listeContacts.ecrire();
+					else
+						listeContacts.annuler();
+					Action.QUIT.optionSelected();
+				}
+			);
 	}
 
 	private Menu getQuitter()
 	{
 		Menu menu = new Menu("Quitter", "q");
-		menu.ajoute(getQuitter(true));
-		menu.ajoute(getQuitter(false));
+		menu.add(getQuitter(true));
+		menu.add(getQuitter(false));
 		return menu;
 	}
 
 	private Menu getMenu()
 	{
 		Menu menu = new Menu("Gestion des e-mails");
-		menu.ajoute(getAfficher());
-		menu.ajoute(getAjouter());
-		menu.ajoute(getModifier());
-		menu.ajoute(getSupprimer());
-		menu.ajoute(getRechercher());
-		menu.ajoute(getQuitter());
+		menu.add(getAfficher());
+		menu.add(getAjouter());
+		menu.add(getModifier());
+		menu.add(getSupprimer());
+		menu.add(getRechercher());
+		menu.add(getQuitter());
 		return menu;
 	}
 

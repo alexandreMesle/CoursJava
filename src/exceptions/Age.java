@@ -2,7 +2,7 @@ package exceptions;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import commandLine.util.InOut;
+import commandLineMenus.rendering.examples.util.InOut;
 
 class AnneeInvalideException extends Exception
 {

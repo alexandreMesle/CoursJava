@@ -1,7 +1,5 @@
 package hibernate.hibernateManagePersonne;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +13,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import commandLine.*;
-import commandLine.util.InOut;
+import commandLineMenus.*;
+import commandLineMenus.rendering.examples.util.InOut;
 
 import org.hibernate.Query;
 
@@ -101,14 +99,14 @@ abstract class Passerelle
 		}
 	}
 
-	public static void delete(Personne personne)
+	static void delete(Personne personne)
 	{
 		Transaction tx = session.beginTransaction();
 		session.delete(personne);
 		tx.commit();
 	}
 
-	public static void save(Personne personne)
+	static void save(Personne personne)
 	{
 		Transaction tx = session.beginTransaction();
 		session.save(personne);
@@ -116,7 +114,7 @@ abstract class Passerelle
 	}
 
 	@SuppressWarnings("unchecked")
-	static List<Personne> refreshList()
+	static java.util.List<Personne> refreshList()
 	{
 		Query query = session.createQuery("from Personne");
 		return query.list();
@@ -125,7 +123,7 @@ abstract class Passerelle
 
 public abstract class HibernateManagePersonne
 {
-	private static List<Personne> personnes;;
+	private static java.util.List<Personne> personnes;;
 
 	private static void refreshList()
 	{
@@ -134,97 +132,63 @@ public abstract class HibernateManagePersonne
 
 	private static Option getAfficher()
 	{
-		return new Option("Afficher", "l", new Action()
-		{
-			@Override
-			public void optionSelectionnee()
-			{
-				refreshList();
-				for (Personne personne : personnes)
-					System.out.println(personne);
-			}
-		});
+		return new Option("Afficher", "l", 
+				() -> 
+				{
+					refreshList();
+					for (Personne personne : personnes)
+						System.out.println(personne);
+				}
+			);
 	}
 
 	private static Option getAjouter()
 	{
-		return new Option("Ajouter", "a", new Action()
-		{
-			@Override
-			public void optionSelectionnee()
-			{
-				Passerelle.save(new Personne(InOut
+		return new Option("Ajouter", "a", 
+				() -> 
+				{
+					Passerelle.save(new Personne(InOut
 						.getString("Prénom : "), InOut
 						.getString("Nom : ")));
-				refreshList();
-			}
-		});
+					refreshList();
+				}
+			);
 	}
 
 	private static Option getSupprimer()
 	{
-		Liste<Personne> supprimer = new Liste<>("Supprimer", "s",
-				new ActionListe<Personne>()
-				{
-					@Override
-					public void elementSelectionne(int indice, Personne element)
+		return new List<>("Supprimer", "s",
+				() -> personnes,
+				(indice, element) -> 
 					{
 						Passerelle.delete(element);
 						refreshList();
 					}
-
-					@Override
-					public List<Personne> getListe()
-					{
-						return personnes;
-					}
-
-					@Override
-					public Option getOption(Personne element)
-					{
-						return null;
-					}
-				});
-		return supprimer;
+				);
 	}
 
 	private static Option getModifier()
 	{
-		Liste<Personne> modifier = new Liste<>("Modifier", "m",
-				new ActionListe<Personne>()
-				{
-					@Override
-					public void elementSelectionne(int indice, Personne element)
+		return new List<>("Modifier", "m",
+				() -> personnes,
+				(indice, element) -> 
 					{
 						element.setPrenom(InOut
 								.getString("Prénom : "));
 						element.setNom(InOut.getString("Nom : "));
 						Passerelle.save(element);
 					}
-
-					@Override
-					public List<Personne> getListe()
-					{
-						return personnes;
-					}
-
-					@Override
-					public Option getOption(Personne element)
-					{
-						return null;
-					}
-				});
-		return modifier;
+				);
 	}
 
 	private static Menu menuPrincipal()
 	{
 		Menu menu = new Menu("Gestionnaire de contacts");
-		menu.ajoute(getAfficher());
-		menu.ajoute(getAjouter());
-		menu.ajoute(getSupprimer());
-		menu.ajoute(getModifier());
-		menu.ajouteQuitter("q");
+		menu.add(getAfficher());
+		menu.add(getAjouter());
+		menu.add(getSupprimer());
+		menu.add(getModifier());
+		menu.addQuit("q");
 		return menu;
 	}
 

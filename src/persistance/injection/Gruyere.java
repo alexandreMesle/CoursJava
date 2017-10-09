@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import commandLine.util.InOut;
+import commandLineMenus.rendering.examples.util.*;
 
 public class Gruyere
 {
