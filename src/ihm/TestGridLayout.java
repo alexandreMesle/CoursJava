@@ -2,36 +2,34 @@ package ihm;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.awt.*;
 
 public class TestGridLayout implements ActionListener
 {
-	JButton[] jButtons;
+	ArrayList<JButton> jButtons;
 
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		int k = 0;
-		while (jButtons[k++] != e.getSource())
-			;
-		System.out.println("click on JButton " + k);
+		System.out.println("Click on " + ((JButton) e.getSource()).getText());
 	}
 
 	public TestGridLayout()
 	{
 		JFrame frame = new JFrame();
-		jButtons = new JButton[4];
+		jButtons = new ArrayList<JButton>();
 		frame.setTitle("One More Window !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(2, 2));
-		jButtons[0] = new JButton("my First JButton");
-		jButtons[1] = new JButton("my Second JButton");
-		jButtons[2] = new JButton("my Third JButton");
-		jButtons[3] = new JButton("my Fourth JButton");
-		for (int i = 0; i < 4; i++)
+		jButtons.add(new JButton("North-West"));
+		jButtons.add(new JButton("North-East"));
+		jButtons.add(new JButton("South-West"));
+		jButtons.add(new JButton("South-East"));
+		for (JButton jButton : jButtons)
 		{
-			frame.getContentPane().add(jButtons[i]);
-			jButtons[i].addActionListener(this);
+			frame.getContentPane().add(jButton);
+			jButton.addActionListener(this);
 		}
 		frame.pack();
 		frame.setVisible(true);
