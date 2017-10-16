@@ -3,12 +3,13 @@ package ihm.corriges;
 import javax.swing.*;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.awt.*;
 
 public class Calculatrice
 {
 	private JLabel resultLabel = new JLabel("0");
-	private JButton[] buttons = new JButton[10 + 4 + 1];
+	private ArrayList<JButton> buttons = new ArrayList<>();
 	private JFrame frame = new JFrame();
 	private double left = 0;
 	private double right = 0;
@@ -100,16 +101,17 @@ public class Calculatrice
 		for (int i = 0; i < 10; i++)
 		{
 			int digit = (i + 1) % 10;
-			buttons[i] = new JButton("" + digit);
-			buttons[i].addActionListener(addDigitListener(digit));
+			JButton button = new JButton("" + digit);
+			button.addActionListener(addDigitListener(digit));
+			buttons.add(button);
 		}
-		buttons[10] = getOperatorButton('+');
-		buttons[11] = getOperatorButton('-');
-		buttons[12] = getOperatorButton('*');
-		buttons[13] = getOperatorButton('/');
-		buttons[14] = getOperatorButton('=');
-		for (int i = 0; i < buttons.length; i++)
-			buttonsPanel.add(buttons[i]);
+		buttons.add(getOperatorButton('+'));
+		buttons.add(getOperatorButton('-'));
+		buttons.add(getOperatorButton('*'));
+		buttons.add(getOperatorButton('/'));
+		buttons.add(getOperatorButton('='));
+		for (JButton button : buttons)
+			buttonsPanel.add(button);
 		return buttonsPanel;
 
 	}

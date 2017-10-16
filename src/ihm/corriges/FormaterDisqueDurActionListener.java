@@ -16,4 +16,10 @@ public class FormaterDisqueDurActionListener extends FormaterDisqueDur
 	{
 		System.out.println("Formatage en cours.");
 	}
+	
+	public static void main(String[] args)
+	{
+		new FormaterDisqueDurActionListener();
+	}
+
 }
