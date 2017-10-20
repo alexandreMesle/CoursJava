@@ -7,8 +7,6 @@ import java.awt.*;
 
 public class PremierEcouteur implements ActionListener
 {
-	ArrayList<JButton> jButtons;
-
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -18,7 +16,7 @@ public class PremierEcouteur implements ActionListener
 	public PremierEcouteur()
 	{
 		JFrame frame = new JFrame();
-		jButtons = new ArrayList<>();
+		ArrayList<JButton> jButtons = new ArrayList<>();
 		frame.setTitle("My third window !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FlowLayout());
