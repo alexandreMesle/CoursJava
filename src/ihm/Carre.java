@@ -1,7 +1,6 @@
 package ihm;
 
 import javax.swing.*;
-
 import java.awt.event.*;
 import java.awt.*;
 
@@ -16,9 +15,9 @@ public class Carre
 		{
 			int k = Integer.parseInt(operand.getText());
 			k *= k;
-			result.setText(Integer.toString(k));
+			result.setText("" + k);
 		}
-		catch (Exception ex)
+		catch (NumberFormatException e)
 		{
 			result.setText("");
 		}
@@ -55,7 +54,7 @@ public class Carre
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setContentPane(getMainPanel());
 		frame.setVisible(true);
-		frame.setSize(150, 150);
+		frame.pack();
 	}
 
 	public static void main(String[] args)

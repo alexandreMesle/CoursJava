@@ -34,13 +34,13 @@ public class EcouteurAnonyme
 			}
 		});
 		
-		/* lambda expression */
+		/* Lambda expression */
 		jButtons.get(2).addActionListener(
 				(e) -> {System.out.println("click on Third JButton");}
 		);
 		
 		/* Classe anonyme dans une fonction */
-		jButtons.get(3).addActionListener(getEcouteur() );
+		jButtons.get(3).addActionListener(getEcouteur());
 		
 		/* Lambda expression dans une fonction */
 		jButtons.get(4).addActionListener(getEcouteurLambda());
