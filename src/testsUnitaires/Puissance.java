@@ -27,7 +27,8 @@ public interface Puissance
 	public int produit(int a, int b);
 
 	/**
-	 * Retourne base^exp. base quelconque, exp positif ou nul.
+	 * Retourne base^exp. 
+	 * base quelconque, exp positif ou nul.
 	 */
 
 	public int puissance(int base, int exp);

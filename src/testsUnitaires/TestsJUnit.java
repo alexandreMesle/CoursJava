@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class TestsJUnit
 {
-	private Puissance p = new PuissanceAvecLog();
+	private Puissance p = new ImplementationPuissance();
 
 	@Test
 	public void testSucc()

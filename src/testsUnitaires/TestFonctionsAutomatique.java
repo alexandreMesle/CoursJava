@@ -29,6 +29,7 @@ public class TestFonctionsAutomatique
 			teste("produit", p.produit(2, 1), 2);
 			teste("produit", p.produit(3, 6), 18);
 			teste("produit", p.produit(-3, 6), -18);
+			teste("produit", p.produit(3, -6), -18);
 			teste("puissance", p.puissance(4, 0), 1);
 			teste("puissance", p.puissance(5, 1), 5);
 			teste("puissance", p.puissance(3, 2), 9);
