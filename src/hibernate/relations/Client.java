@@ -1,4 +1,4 @@
-package hibernate.hibernateRelations;
+package hibernate.relations;
 
 import java.util.Iterator;
 import java.util.Collections;
@@ -44,6 +44,11 @@ public class Client
 		return nom;
 	}
 
+	int getNum()
+	{
+		return num;
+	}
+	
 	public void delete()
 	{
 		for (Iterator<Commande> it = commandes.iterator(); it.hasNext();)

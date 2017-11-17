@@ -1,8 +1,7 @@
-package hibernate.tests;
+package hibernate.relations;
 
+import static hibernate.relations.Passerelle.*;
 import static org.junit.Assert.*;
-import hibernate.hibernateRelations.*;
-import static hibernate.hibernateRelations.Passerelle.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,50 +21,76 @@ public class TestRelations
 		close();
 	}
 
-	private void reset() throws Exception
+	private void reopen() throws Exception
 	{
-		tearDown();
-		setUp();
+		close();
+		open();
+	}
+
+	private Client createJoffrey()
+	{
+		Client joffrey = new Client("Joffrey");
+		assertEquals(joffrey.getNom(), "Joffrey");
+		joffrey.save();
+		return joffrey;
+	}
+	
+	@Test
+	public void testClient() throws Exception
+	{
+		Client joffrey = createJoffrey();
+		assertEquals(joffrey, getData("Client").get(0));
+		int id = joffrey.getNum();
+		reopen();
+		joffrey = getData("Client", id);
+		assertEquals("Joffrey", joffrey.getNom());
+		assertEquals(count("Client"), 1);
+		joffrey.delete();
+		assertEquals(count("Client"), 0);
+	}
+	
+	@Test
+	public void testClientCommande() throws Exception
+	{
+		Client joffrey = createJoffrey();
+		Commande commandeJoffrey = joffrey.createCommande();
+		commandeJoffrey.save();
+		int id = joffrey.getNum();
+		reopen();
+		assertEquals(count("Commande"), 1);
+		joffrey = getData("Client", id);
+		assertEquals(joffrey.getCommandes().size(), 1);
+		commandeJoffrey = joffrey.getCommandes().first();
+		commandeJoffrey.delete();
+		assertEquals(joffrey.getCommandes().size(), 0);
+		joffrey.delete();
 	}
 
 	@Test
-	public void all() throws Exception
+	public void testInsertionClientCascade() throws Exception
 	{
-		testClientCommande();
-		testProduit();
-		testDeleteClientCommande();
-		testDeleteProduit();
-	}
-
-	public void testClientCommande() throws Exception
-	{
-		Client joff = new Client("Joffrey"), cersei = new Client("Cersei");
-		Commande joffCmd = joff.createCommande();
-		Commande cerseiCommande = cersei.createCommande();
-		joff.save();
-		// vérifie Joffrey et sa commande
-		assertTrue(joff == getData("Client", 1));
-		assertTrue(joffCmd == getData("Commande", 1));
-		assertTrue(count("Client") == 1);
-		assertTrue(count("Commande") == 1);
-		cerseiCommande.save();
-		// vérifie insertion en cascade Cersei et sa commande
-		assertTrue(cersei == getData("Client", 2));
-		assertTrue(cerseiCommande == getData("Commande", 2));
-		assertTrue(count("Client") == 2);
-		assertTrue(count("Commande") == 2);
-		reset();
-		// Re-vérification avec un reset
-		assertTrue(count("Client") == 2);
-		assertTrue(count("Commande") == 2);
-		joff = Passerelle.<Client> getData("Client", 1);
-		cersei = Passerelle.<Client> getData("Client", 2);
-		assertTrue("Joffrey != " + joff.getNom(),
-				joff.getNom().equals("Joffrey"));
-		assertTrue(joff.getCommandes().size() == 1);
-		assertTrue(cersei.getCommandes().size() == 1);
-		assertTrue(joff.getCommandes().first().getClient() == joff);
-		assertTrue(cersei.getCommandes().first().getClient() == cersei);
+		Client cersei = new Client("Cersei");
+		Commande commandeCersei = cersei.createCommande();
+		assertEquals(count("Commande"), 0);
+		assertEquals(cersei.getNum(), 0);
+		commandeCersei.save();
+		int id = cersei.getNum();
+		assertNotEquals(id, 0);
+		assertEquals(count("Client"), 1);
+		assertEquals(count("Commande"), 1);
+		assertEquals(cersei, getData("Client", id));
+		assertEquals(commandeCersei, getData("Commande", commandeCersei.getNum()));
+		reopen();
+		assertEquals(count("Client"), 1);
+		assertEquals(count("Commande"), 1);
+		cersei = ((Client) getData("Client", id));
+		assertEquals("Cersei", cersei.getNom());
+		cersei.delete();
+		assertEquals(count("Client"), 0);
+		assertEquals(count("Commande"), 0);
+		reopen();
+		assertEquals(count("Client"), 0);
+		assertEquals(count("Commande"), 0);
 	}
 
 	public void testProduit() throws Exception
@@ -89,7 +114,7 @@ public class TestRelations
 		// hachoir inséré en cascade
 		assertTrue(hachoir == getData("Produit", 2));
 		// *******************************************
-		reset();
+		reopen();
 		arb = getData("Produit", 1);
 		hachoir = getData("Produit", 2);
 		// vérification des produits insérés dans la base
@@ -112,7 +137,7 @@ public class TestRelations
 		cmd.addProduit(hachoir, 2);
 		cmd.save();
 		// *******************************************
-		reset();
+		reopen();
 		cersei = getData("Client", 2);
 		cmd = getData("Commande", 2);
 		assertTrue(cersei.getCommandes().first() == cmd);

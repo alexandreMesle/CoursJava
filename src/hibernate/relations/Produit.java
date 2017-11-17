@@ -1,4 +1,4 @@
-package hibernate.hibernateRelations;
+package hibernate.relations;
 
 import java.util.HashSet;
 import java.util.Iterator;

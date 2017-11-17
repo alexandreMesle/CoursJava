@@ -1,4 +1,4 @@
-package hibernate.hibernateRelations;
+package hibernate.relations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +16,9 @@ public class Passerelle
 {
 	private static Session session = null;
 	private static SessionFactory sessionFactory = null;
-	private static final String CONF_FILE = "hibernate/hibernateRelations/hibernateRelations.cfg.xml";
+	private static final String CONF_FILE = "hibernate/relations/relations.cfg.xml";
 
-	static
+	static void initHibernate()
 	{
 		try
 		{
@@ -32,17 +32,26 @@ public class Passerelle
 		{
 			throw new RuntimeException("Probleme de configuration : "
 					+ ex.getMessage(), ex);
-		}
+		}		
 	}
-
+	
 	public static void open()
 	{
-		session = sessionFactory.openSession();
+		if (sessionFactory == null)
+			initHibernate();
+		if (!isOpened())
+			session = sessionFactory.openSession();
 	}
 
+	public static boolean isOpened()
+	{
+		return session != null && session.isOpen();
+	}
+	
 	public static void close()
 	{
-		session.close();
+		if (isOpened())
+			session.close();
 	}
 
 	static void delete(Object o)

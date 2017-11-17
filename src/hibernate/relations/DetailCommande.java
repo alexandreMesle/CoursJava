@@ -1,4 +1,4 @@
-package hibernate.hibernateRelations;
+package hibernate.relations;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

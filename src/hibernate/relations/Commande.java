@@ -1,4 +1,4 @@
-package hibernate.hibernateRelations;
+package hibernate.relations;
 
 import java.util.Date;
 import java.util.Iterator;
@@ -49,6 +49,11 @@ public class Commande implements Comparable<Commande>
 		this.client = client;
 	}
 
+	int getNum()
+	{
+		return num;
+	}
+	
 	public Client getClient()
 	{
 		return client;
