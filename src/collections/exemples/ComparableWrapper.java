@@ -1,7 +1,7 @@
 package collections.exemples;
 
-public class ComparableWrapper<T extends Comparable<T>> implements
-		Comparable<ComparableWrapper<T>>
+public class ComparableWrapper<T extends Comparable<T>> 
+	implements Comparable<ComparableWrapper<T>>
 {
 	private T data;
 
@@ -28,11 +28,11 @@ public class ComparableWrapper<T extends Comparable<T>> implements
 
 	public static void main(String[] args)
 	{
-		ComparableWrapper<String> e1 = new ComparableWrapper<>("toto"), e2 = new ComparableWrapper<>(
-				"tutu");
+		ComparableWrapper<String> e1 = new ComparableWrapper<>("toto"), 
+				e2 = new ComparableWrapper<>("tutu");
 		System.out.println(e1.compareTo(e2));
-		ComparableWrapper<Integer> i1 = new ComparableWrapper<>(4), i2 = new ComparableWrapper<>(
-				3);
+		ComparableWrapper<Integer> i1 = new ComparableWrapper<>(4), 
+				i2 = new ComparableWrapper<>(3);
 		System.out.println(i1.compareTo(i2));
 	}
 }

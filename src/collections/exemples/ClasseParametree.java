@@ -31,3 +31,4 @@ public class ClasseParametree<T>
 		System.out.println(entier);
 	}
 }
+
