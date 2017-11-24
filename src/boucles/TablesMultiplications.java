@@ -1,7 +1,5 @@
 package boucles;
 
-import java.util.Scanner;
-
 public class TablesMultiplications
 {
 
