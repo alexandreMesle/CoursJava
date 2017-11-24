@@ -66,16 +66,19 @@ public class Commande implements Comparable<Commande>
 
 	public void delete()
 	{
+		Passerelle.beginDeletion();
 		client.remove(this);
 		client = null;
-		for (Iterator<DetailCommande> it = detailsCommandes.values().iterator(); it
-				.hasNext();)
+		Iterator<DetailCommande> it = detailsCommandes.values().iterator(); 
+		DetailCommande detailCommande = null;
+		while(it.hasNext())
 		{
-			DetailCommande detailCommande = it.next();
+			detailCommande = it.next();
 			it.remove();
 			detailCommande.delete();
 		}
 		Passerelle.delete(this);
+		Passerelle.commitDeletion();
 	}
 
 	public void save()

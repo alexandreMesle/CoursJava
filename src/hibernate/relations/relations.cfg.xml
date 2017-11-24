@@ -19,7 +19,7 @@
 			hibernate</property>
 
     <!-- Comportement pour la conservation des tables -->
-    <property name="hbm2ddl.auto">create-drop</property>
+    <property name="hbm2ddl.auto">create</property>
 
         <property name="hibernate.show_sql">false</property>
         <property name="jta.UserTransaction">

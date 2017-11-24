@@ -53,14 +53,25 @@ public class Produit implements Comparable<Produit>
 		this.nom = nom;
 		this.prix = prix;
 	}
+	
+	int getNum()
+	{
+		return num;
+	}
 
 	public String getNom()
 	{
 		return nom;
 	}
 
+	public double getPrix()
+	{
+		return prix;
+	}
+
 	public void delete()
 	{
+		Passerelle.beginDeletion();
 		for (Iterator<DetailCommande> it = detailsCommandes.iterator(); it
 				.hasNext();)
 		{

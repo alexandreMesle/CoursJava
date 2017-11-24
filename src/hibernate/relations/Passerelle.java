@@ -17,7 +17,8 @@ public class Passerelle
 	private static Session session = null;
 	private static SessionFactory sessionFactory = null;
 	private static final String CONF_FILE = "hibernate/relations/relations.cfg.xml";
-
+	private static Transaction transaction;
+	
 	static void initHibernate()
 	{
 		try
@@ -54,11 +55,26 @@ public class Passerelle
 			session.close();
 	}
 
+	static void beginDeletion()
+	{
+		transaction = session.beginTransaction();
+	}
+	
 	static void delete(Object o)
 	{
-		Transaction tx = session.beginTransaction();
-		session.delete(o);
-		tx.commit();
+		if (transaction == null)
+		{
+			beginDeletion();
+			session.delete(o);
+			commitDeletion();
+		}
+		else
+			session.delete(o);
+	}
+
+	static void commitDeletion()
+	{
+		transaction.commit();
 	}
 
 	static void save(Object o)

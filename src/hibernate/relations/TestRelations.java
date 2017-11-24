@@ -9,6 +9,10 @@ import org.junit.Test;
 
 public class TestRelations
 {
+	private Client joffrey;
+	private Commande commandeJoffrey;
+	private Produit arbalete;
+	
 	@Before
 	public void setUp() throws Exception
 	{
@@ -18,6 +22,9 @@ public class TestRelations
 	@After
 	public void tearDown() throws Exception
 	{
+		deleteCommandeJoffrey();
+		deleteJoffrey();
+		deleteArbalete();
 		close();
 	}
 
@@ -27,43 +34,87 @@ public class TestRelations
 		open();
 	}
 
-	private Client createJoffrey()
+	private void createJoffrey()
 	{
-		Client joffrey = new Client("Joffrey");
-		assertEquals(joffrey.getNom(), "Joffrey");
+		joffrey = new Client("Joffrey");
+		assertEquals(0, joffrey.getNum());
 		joffrey.save();
-		return joffrey;
 	}
 	
+	private void deleteJoffrey()
+	{
+		if (joffrey != null)
+		{
+			deleteCommandeJoffrey();
+			joffrey.delete();
+			assertNotEquals(0, joffrey.getNum());
+			joffrey = null;
+		}
+		assertEquals(0, count("Client"));
+	}
+
+	private void createCommandeJoffrey()
+	{
+		createJoffrey();
+		commandeJoffrey = joffrey.createCommande();
+		commandeJoffrey.save();
+	}
+	
+	private void deleteCommandeJoffrey()
+	{
+		if (commandeJoffrey != null)
+		{
+			commandeJoffrey.delete();
+			commandeJoffrey = null;
+		}
+	}
+
+	private void createArbalete()
+	{
+		arbalete = new Produit("Arbalète", 12);
+		assertEquals(0, arbalete.getNum());
+		arbalete.save();
+	}
+	
+	private void deleteArbalete()
+	{
+		if (arbalete != null)
+		{
+			arbalete.delete();
+			assertNotEquals(0, arbalete.getNum());
+			arbalete = null;
+			assertEquals(0, count("Produit"));
+		}
+	}
+
 	@Test
 	public void testClient() throws Exception
 	{
-		Client joffrey = createJoffrey();
-		assertEquals(joffrey, getData("Client").get(0));
+		createJoffrey();
+		assertEquals(joffrey.getNom(), "Joffrey");
 		int id = joffrey.getNum();
+		assertNotEquals(0, id);
+		assertEquals(joffrey, getData("Client", id));
 		reopen();
 		joffrey = getData("Client", id);
 		assertEquals("Joffrey", joffrey.getNom());
-		assertEquals(count("Client"), 1);
-		joffrey.delete();
-		assertEquals(count("Client"), 0);
+		assertEquals(1, count("Client"));
+		deleteJoffrey();
+		assertEquals(0, count("Client"));
 	}
 	
 	@Test
 	public void testClientCommande() throws Exception
 	{
-		Client joffrey = createJoffrey();
-		Commande commandeJoffrey = joffrey.createCommande();
-		commandeJoffrey.save();
+		createCommandeJoffrey();
 		int id = joffrey.getNum();
 		reopen();
-		assertEquals(count("Commande"), 1);
+		assertEquals(1, count("Commande"));
 		joffrey = getData("Client", id);
-		assertEquals(joffrey.getCommandes().size(), 1);
+		assertEquals(1, joffrey.getCommandes().size());
 		commandeJoffrey = joffrey.getCommandes().first();
-		commandeJoffrey.delete();
-		assertEquals(joffrey.getCommandes().size(), 0);
-		joffrey.delete();
+		deleteCommandeJoffrey();
+		assertEquals(0, joffrey.getCommandes().size());
 	}
 
 	@Test
@@ -71,29 +122,64 @@ public class TestRelations
 	{
 		Client cersei = new Client("Cersei");
 		Commande commandeCersei = cersei.createCommande();
-		assertEquals(count("Commande"), 0);
-		assertEquals(cersei.getNum(), 0);
+		assertEquals(0, count("Commande"));
+		assertEquals(0, cersei.getNum());
 		commandeCersei.save();
 		int id = cersei.getNum();
 		assertNotEquals(id, 0);
-		assertEquals(count("Client"), 1);
-		assertEquals(count("Commande"), 1);
+		assertEquals(1, count("Client"));
+		assertEquals(1, count("Commande"));
 		assertEquals(cersei, getData("Client", id));
 		assertEquals(commandeCersei, getData("Commande", commandeCersei.getNum()));
 		reopen();
-		assertEquals(count("Client"), 1);
-		assertEquals(count("Commande"), 1);
+		assertEquals(1, count("Client"));
+		assertEquals(1, count("Commande"));
 		cersei = ((Client) getData("Client", id));
 		assertEquals("Cersei", cersei.getNom());
 		cersei.delete();
-		assertEquals(count("Client"), 0);
-		assertEquals(count("Commande"), 0);
+		assertEquals(0, count("Client"));
+		assertEquals(0, count("Commande"));
 		reopen();
-		assertEquals(count("Client"), 0);
-		assertEquals(count("Commande"), 0);
+		assertEquals(0, count("Client"));
+		assertEquals(0, count("Commande"));
 	}
 
+	@Test
 	public void testProduit() throws Exception
+	{
+		createArbalete();
+		int id = arbalete.getNum();
+		assertNotEquals(id, 0);
+		assertEquals(count("Produit"), 1);
+		assertEquals(arbalete, getData("Produit", id));
+		reopen();
+		assertEquals(count("Produit"), 1);
+		arbalete = getData("Produit", id);
+		assertEquals(arbalete.getNom(), "Arbalète");
+		assertEquals(arbalete.getPrix(), 12, 0);
+		deleteArbalete();
+	}
+
+	@Test
+	public void testProduitCommande() throws Exception
+	{
+		createJoffrey();
+		createArbalete();
+		createCommandeJoffrey();
+		int id = joffrey.getNum();
+		commandeJoffrey.addProduit(arbalete, 2);
+		assertEquals(commandeJoffrey.getDetailsCommande().size(), 1);
+		commandeJoffrey.save();
+		reopen();
+		joffrey = getData("Client", id);
+		commandeJoffrey = joffrey.getCommandes().first();
+		assertEquals(commandeJoffrey.getDetailsCommande().size(), 1);
+		arbalete = commandeJoffrey.getProduits().first();
+		assertTrue(false);
+		deleteArbalete();
+	}
+
+	public void testBordel() throws Exception
 	{
 		Produit arb = new Produit("Arbalète", 600), hachoir = new Produit(
 				"Hachoir", 150);
