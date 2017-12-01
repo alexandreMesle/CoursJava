@@ -1,6 +1,5 @@
 package hibernate.relations;
 
-import java.util.Iterator;
 import java.util.Collections;
 import java.util.TreeSet;
 import java.util.SortedSet;
@@ -51,12 +50,6 @@ public class Client
 	
 	public void delete()
 	{
-//		for (Iterator<Commande> it = commandes.iterator(); it.hasNext();)
-//		{
-//			Commande commande = it.next();
-//			it.remove();
-//			commande.delete();
-//		}
 		Passerelle.delete(this);
 	}
 

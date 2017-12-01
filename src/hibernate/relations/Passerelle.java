@@ -55,25 +55,10 @@ class Passerelle
 			session.close();
 	}
 
-	static void beginDeletion()
-	{
-		transaction = session.beginTransaction();
-	}
-	
 	static void delete(Object o)
 	{
-		if (transaction == null)
-		{
-			beginDeletion();
-			session.delete(o);
-			commitDeletion();
-		}
-		else
-			session.delete(o);
-	}
-
-	static void commitDeletion()
-	{
+		transaction = session.beginTransaction();
+		session.delete(o);
 		transaction.commit();
 		transaction = null;
 		session.flush();
@@ -100,20 +85,5 @@ class Passerelle
 		Query query = session.createQuery("from " + className + " where num = "
 				+ id);
 		return (T) (query.list().get(0));
-	}
-
-	public static int count(String className)
-	{
-		Query query = session.createQuery("from " + className);
-		return query.list().size();
-	}
-
-	public static void printAllData()
-	{
-		System.out.println("****************************");
-		System.out.println(Passerelle.getData("Client"));
-		System.out.println(Passerelle.getData("Produit"));
-		System.out.println(Passerelle.getData("Commande"));
-		System.out.println(Passerelle.getData("DetailCommande"));
 	}
 }

@@ -37,12 +37,12 @@ class Personne
 	}
 }
 
-public class HibernatePremierExemple
+public class PremierExemple
 {
 	private static Session getSession() throws HibernateException
 	{
 		Configuration configuration = new Configuration()
-				.configure("hibernate/hibernatePremierExemple/hibernatePremierExemple.cfg.xml");
+				.configure("hibernate/premierExemple/PremierExemple.cfg.xml");
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties()).build();
 		SessionFactory sessionFactory = configuration

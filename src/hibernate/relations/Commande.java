@@ -1,7 +1,6 @@
 package hibernate.relations;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
@@ -66,19 +65,8 @@ public class Commande implements Comparable<Commande>
 
 	public void delete()
 	{
-//		Passerelle.beginDeletion();
 		client.remove(this);
-//		client = null;
-//		Iterator<DetailCommande> it = detailsCommandes.values().iterator(); 
-//		DetailCommande detailCommande = null;
-//		while(it.hasNext())
-//		{
-//			detailCommande = it.next();
-//			it.remove();
-//			detailCommande.delete();
-//		}
 		Passerelle.delete(this);
-//		Passerelle.commitDeletion();
 	}
 
 	public void save()

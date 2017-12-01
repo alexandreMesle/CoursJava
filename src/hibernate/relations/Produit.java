@@ -1,7 +1,6 @@
 package hibernate.relations;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -71,16 +70,9 @@ public class Produit implements Comparable<Produit>
 
 	public void delete()
 	{
-//		Passerelle.beginDeletion();
-		for (Iterator<DetailCommande> it = detailsCommandes.iterator(); it
-				.hasNext();)
-		{
-			DetailCommande detailCommande = it.next();
-//			it.remove();
+		for (DetailCommande detailCommande : detailsCommandes)
 			detailCommande.delete();
-		}
 		Passerelle.delete(this);
-//		Passerelle.commitDeletion();
 	}
 
 	public void save()

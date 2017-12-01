@@ -1,4 +1,4 @@
-package hibernate.gestionPersonnes;
+package hibernate.gestionContacts;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -19,7 +19,7 @@ abstract class Passerelle
 		try
 		{
 			Configuration configuration = new Configuration()
-					.configure("hibernate/hibernateManagePersonne/hibernateManagePersonne.cfg.xml");
+					.configure("hibernate/gestionContacts/GestionContacts.cfg.xml");
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
@@ -32,14 +32,14 @@ abstract class Passerelle
 		}
 	}
 
-	static void delete(Personne personne)
+	static void delete(Contact personne)
 	{
 		Transaction tx = session.beginTransaction();
 		session.delete(personne);
 		tx.commit();
 	}
 
-	static void save(Personne personne)
+	static void save(Contact personne)
 	{
 		Transaction tx = session.beginTransaction();
 		session.save(personne);
@@ -47,9 +47,9 @@ abstract class Passerelle
 	}
 
 	@SuppressWarnings("unchecked")
-	static java.util.List<Personne> refreshList()
+	static java.util.List<Contact> refreshList()
 	{
-		Query query = session.createQuery("from Personne");
+		Query query = session.createQuery("from Contact");
 		return query.list();
 	}
 }

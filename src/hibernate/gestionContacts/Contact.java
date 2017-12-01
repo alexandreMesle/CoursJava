@@ -1,4 +1,4 @@
-package hibernate.gestionPersonnes;
+package hibernate.gestionContacts;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-class Personne
+class Contact
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,11 +16,11 @@ class Personne
 
 	private String prenom;
 
-	Personne()
+	Contact()
 	{
 	}
 
-	public Personne(String prenom, String nom)
+	public Contact(String prenom, String nom)
 	{
 		this.nom = nom;
 		this.prenom = prenom;

@@ -34,6 +34,11 @@ public class TestRelations
 		open();
 	}
 
+	private int count(String className)
+	{
+		return getData(className).size();
+	}
+	
 	private void createJoffrey()
 	{
 		if (joffrey == null)
