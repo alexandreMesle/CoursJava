@@ -1,4 +1,4 @@
-package hibernate.hibernateRelations;
+package hibernate.relations;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -24,8 +24,8 @@ public class Produit implements Comparable<Produit>
 
 	private double prix;
 
-	@OneToMany(mappedBy = "produit")
-	@Cascade(value = { CascadeType.SAVE_UPDATE })
+	@OneToMany(mappedBy = "produit", orphanRemoval=true)
+	@Cascade(value = { CascadeType.ALL })
 	private Set<DetailCommande> detailsCommandes = new HashSet<>();
 
 	void add(DetailCommande detailCommande)
@@ -53,22 +53,34 @@ public class Produit implements Comparable<Produit>
 		this.nom = nom;
 		this.prix = prix;
 	}
+	
+	int getNum()
+	{
+		return num;
+	}
 
 	public String getNom()
 	{
 		return nom;
 	}
 
+	public double getPrix()
+	{
+		return prix;
+	}
+
 	public void delete()
 	{
+//		Passerelle.beginDeletion();
 		for (Iterator<DetailCommande> it = detailsCommandes.iterator(); it
 				.hasNext();)
 		{
 			DetailCommande detailCommande = it.next();
-			it.remove();
+//			it.remove();
 			detailCommande.delete();
 		}
 		Passerelle.delete(this);
+//		Passerelle.commitDeletion();
 	}
 
 	public void save()

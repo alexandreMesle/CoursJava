@@ -1,4 +1,4 @@
-package hibernate.hibernatePremierExemple;
+package hibernate.premierExemple;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

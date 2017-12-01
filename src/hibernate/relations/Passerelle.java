@@ -1,4 +1,4 @@
-package hibernate.hibernateRelations;
+package hibernate.relations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +12,14 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-public class Passerelle
+class Passerelle
 {
 	private static Session session = null;
 	private static SessionFactory sessionFactory = null;
-	private static final String CONF_FILE = "hibernate/hibernateRelations/hibernateRelations.cfg.xml";
-
-	static
+	private static final String CONF_FILE = "hibernate/relations/relations.cfg.xml";
+	private static Transaction transaction = null;
+	
+	static void initHibernate()
 	{
 		try
 		{
@@ -32,24 +33,50 @@ public class Passerelle
 		{
 			throw new RuntimeException("Probleme de configuration : "
 					+ ex.getMessage(), ex);
-		}
+		}		
 	}
-
+	
 	public static void open()
 	{
-		session = sessionFactory.openSession();
+		if (sessionFactory == null)
+			initHibernate();
+		if (!isOpened())
+			session = sessionFactory.openSession();
 	}
 
+	public static boolean isOpened()
+	{
+		return session != null && session.isOpen();
+	}
+	
 	public static void close()
 	{
-		session.close();
+		if (isOpened())
+			session.close();
 	}
 
+	static void beginDeletion()
+	{
+		transaction = session.beginTransaction();
+	}
+	
 	static void delete(Object o)
 	{
-		Transaction tx = session.beginTransaction();
-		session.delete(o);
-		tx.commit();
+		if (transaction == null)
+		{
+			beginDeletion();
+			session.delete(o);
+			commitDeletion();
+		}
+		else
+			session.delete(o);
+	}
+
+	static void commitDeletion()
+	{
+		transaction.commit();
+		transaction = null;
+		session.flush();
 	}
 
 	static void save(Object o)
@@ -57,6 +84,7 @@ public class Passerelle
 		Transaction tx = session.beginTransaction();
 		session.save(o);
 		tx.commit();
+		session.flush();
 	}
 
 	@SuppressWarnings("unchecked")
