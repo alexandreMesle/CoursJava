@@ -12,12 +12,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-public class Passerelle
+class Passerelle
 {
 	private static Session session = null;
 	private static SessionFactory sessionFactory = null;
 	private static final String CONF_FILE = "hibernate/relations/relations.cfg.xml";
-	private static Transaction transaction;
+	private static Transaction transaction = null;
 	
 	static void initHibernate()
 	{
@@ -75,6 +75,8 @@ public class Passerelle
 	static void commitDeletion()
 	{
 		transaction.commit();
+		transaction = null;
+		session.flush();
 	}
 
 	static void save(Object o)
@@ -82,6 +84,7 @@ public class Passerelle
 		Transaction tx = session.beginTransaction();
 		session.save(o);
 		tx.commit();
+		session.flush();
 	}
 
 	@SuppressWarnings("unchecked")

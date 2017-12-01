@@ -25,7 +25,7 @@ public class Client
 	private String nom;
 
 	@OneToMany(mappedBy = "client")
-	@Cascade(value = { CascadeType.SAVE_UPDATE })
+	@Cascade(value = { CascadeType.ALL })
 	@SortNatural
 	private SortedSet<Commande> commandes = new TreeSet<>();
 
@@ -51,12 +51,12 @@ public class Client
 	
 	public void delete()
 	{
-		for (Iterator<Commande> it = commandes.iterator(); it.hasNext();)
-		{
-			Commande commande = it.next();
-			it.remove();
-			commande.delete();
-		}
+//		for (Iterator<Commande> it = commandes.iterator(); it.hasNext();)
+//		{
+//			Commande commande = it.next();
+//			it.remove();
+//			commande.delete();
+//		}
 		Passerelle.delete(this);
 	}
 

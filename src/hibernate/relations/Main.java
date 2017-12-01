@@ -1,6 +1,6 @@
 package hibernate.relations;
 
-public class Relations
+public class Main
 {
 	public static void main(String[] args)
 	{

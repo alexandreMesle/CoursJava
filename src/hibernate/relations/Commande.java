@@ -29,11 +29,11 @@ public class Commande implements Comparable<Commande>
 	private Date date;
 
 	@ManyToOne
-	@Cascade(value = { CascadeType.SAVE_UPDATE })
+	@Cascade(value = { CascadeType.SAVE_UPDATE})
 	private Client client;
 
 	@OneToMany(mappedBy = "commande")
-	@Cascade(value = { CascadeType.SAVE_UPDATE })
+	@Cascade(value = { CascadeType.ALL })
 	@SortNatural
 	@MapKey(name = "produit")
 	private SortedMap<Produit, DetailCommande> detailsCommandes = new TreeMap<>();
@@ -66,19 +66,19 @@ public class Commande implements Comparable<Commande>
 
 	public void delete()
 	{
-		Passerelle.beginDeletion();
+//		Passerelle.beginDeletion();
 		client.remove(this);
-		client = null;
-		Iterator<DetailCommande> it = detailsCommandes.values().iterator(); 
-		DetailCommande detailCommande = null;
-		while(it.hasNext())
-		{
-			detailCommande = it.next();
-			it.remove();
-			detailCommande.delete();
-		}
+//		client = null;
+//		Iterator<DetailCommande> it = detailsCommandes.values().iterator(); 
+//		DetailCommande detailCommande = null;
+//		while(it.hasNext())
+//		{
+//			detailCommande = it.next();
+//			it.remove();
+//			detailCommande.delete();
+//		}
 		Passerelle.delete(this);
-		Passerelle.commitDeletion();
+//		Passerelle.commitDeletion();
 	}
 
 	public void save()
@@ -86,7 +86,7 @@ public class Commande implements Comparable<Commande>
 		Passerelle.save(this);
 	}
 
-	public void addProduit(Produit produit, int quantite)
+	public void add(Produit produit, int quantite)
 	{
 		detailsCommandes.put(produit, new DetailCommande(this, produit,
 				quantite));

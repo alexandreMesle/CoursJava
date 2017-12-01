@@ -17,11 +17,11 @@ class DetailCommande implements Comparable<DetailCommande>
 	private int num;
 
 	@ManyToOne
-	@Cascade(value = { CascadeType.SAVE_UPDATE })
+	@Cascade(value = { CascadeType.ALL })
 	private Commande commande;
 
 	@ManyToOne
-	@Cascade(value = { CascadeType.SAVE_UPDATE })
+	@Cascade(value = { CascadeType.ALL })
 	private Produit produit;
 
 	private int quantite;
