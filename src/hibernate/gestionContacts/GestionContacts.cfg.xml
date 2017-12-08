@@ -24,7 +24,7 @@
         <property name="hibernate.use_outer_join">true</property>
         <property name="jta.UserTransaction">
         	java:comp/UserTransaction</property>
-         <mapping class="hibernate.hibernateManagePersonne.Personne" />
+         <mapping class="hibernate.gestionContacts.Contact" />
          
     </session-factory>
 </hibernate-configuration>

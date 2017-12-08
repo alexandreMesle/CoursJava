@@ -31,7 +31,8 @@ public class GestionContactsLigneCommande
 		return new Option("Ajouter", "a", 
 				() -> 
 				{
-					gestionContacts.sauvegarder(new Contact(InOut.getString("Prénom : "), 
+					gestionContacts.sauvegarder(new Contact(
+							InOut.getString("Prénom : "), 
 							InOut.getString("Nom : ")));
 				}
 			);
@@ -41,9 +42,9 @@ public class GestionContactsLigneCommande
 	{
 		return new List<>("Supprimer", "s",
 				() -> gestionContacts.getContacts(),
-				(indice, element) -> 
+				(indice, contact) -> 
 					{
-						gestionContacts.supprimer(element);
+						gestionContacts.supprimer(contact);
 					}
 				);
 	}
@@ -52,12 +53,11 @@ public class GestionContactsLigneCommande
 	{
 		return new List<>("Modifier", "m",
 				() -> gestionContacts.getContacts(),
-				(indice, element) -> 
+				(indice, contact) -> 
 					{
-						element.setPrenom(InOut
-								.getString("Prénom : "));
-						element.setNom(InOut.getString("Nom : "));
-						gestionContacts.sauvegarder(element);
+						contact.setPrenom(InOut.getString("Prénom : "));
+						contact.setNom(InOut.getString("Nom : "));
+						gestionContacts.sauvegarder(contact);
 					}
 				);
 	}

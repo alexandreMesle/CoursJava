@@ -18,6 +18,8 @@ public class GestionContacts
 		return gestionContacts;
 	}
 	
+	private GestionContacts(){}
+	
 	public void sauvegarder(Contact contact)
 	{
 		Passerelle.save(contact);
