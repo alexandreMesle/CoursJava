@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 interface Animal
 {
-	// Getter pour le champ nom
+	// Setter pour le champ nom
 	public void setNom(String nom);
 
-	// Setter pour le champ nom
+	// Getter pour le champ nom
 	public String getNom();
 
 	// Affiche le cri de l'animal
