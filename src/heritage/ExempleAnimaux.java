@@ -11,11 +11,11 @@ interface Animal
 	// Getter pour le champ nom
 	public String getNom();
 
-	// Affiche le cri de l'animal
+	// Retourne le cri de l'animal
 	public String cri();
 }
 
-//TODO Décommentez le code ci-dessous pour le compléter
+//TODO DÃcommentez le code ci-dessous pour le complÃ©ter
 
 //public class ExempleAnimaux
 //{
@@ -23,7 +23,7 @@ interface Animal
 //	{
 //		ArrayList<Animal> animaux = new ArrayList<>();
 //		animaux.add(new Chat("Ronron"));
-//		animaux.add(new Chien("Médor"));
+//		animaux.add(new Chien("MÃ©dor"));
 //		animaux.add(new Vache("Huguette"));
 //		for (Animal animal : animaux)
 //			System.out.println(animal.cri());

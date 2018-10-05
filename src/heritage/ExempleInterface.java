@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 interface Saluer
 {
-	public void saluer();
+	public void direBonjour();
 }
 
 class Bonjour implements Saluer
 {
 	@Override
-	public void saluer()
+	public void direBonjour()
 	{
 		System.out.println("Bonjour");
 	}
@@ -19,7 +19,7 @@ class Bonjour implements Saluer
 class Hello implements Saluer
 {
 	@Override
-	public void saluer()
+	public void direBonjour()
 	{
 		System.out.println("Hello");
 	}
@@ -28,7 +28,7 @@ class Hello implements Saluer
 class GutenTag implements Saluer
 {
 	@Override
-	public void saluer()
+	public void direBonjour()
 	{
 		System.out.println("Guten tag");
 	}
@@ -39,14 +39,14 @@ public class ExempleInterface
 	public static void main(String[] args)
 	{
 		Saluer s = new Bonjour();
-		s.saluer();
+		s.direBonjour();
 		s = new Hello();
-		s.saluer();
+		s.direBonjour();
 		ArrayList<Saluer> arrayList = new ArrayList<Saluer>();
 		arrayList.add(new Bonjour());
 		arrayList.add(new Hello());
 		arrayList.add(new GutenTag());
-		for (Saluer salut : arrayList)
-			salut.saluer();
+		for (Saluer saluer : arrayList)
+			saluer.direBonjour();
 	}
 }
