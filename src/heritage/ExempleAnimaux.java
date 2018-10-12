@@ -23,7 +23,7 @@ public class ExempleAnimaux
 //	{
 //		ArrayList<Animal> animaux = new ArrayList<>();
 //		animaux.add(new Chat("Ronron"));
-//		animaux.add(new Chien("MÃ©dor"));
+//		animaux.add(new Chien("Médor"));
 //		animaux.add(new Vache("Huguette"));
 //		for (Animal animal : animaux)
 //			System.out.println(animal.cri());
