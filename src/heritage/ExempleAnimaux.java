@@ -15,10 +15,10 @@ interface Animal
 	public String cri();
 }
 
-//TODO DÃcommentez le code ci-dessous pour le complÃ©ter
+//TODO Décommentez le code ci-dessous pour le compléter
 
-//public class ExempleAnimaux
-//{
+public class ExempleAnimaux
+{
 //	public static void main(String[] args)
 //	{
 //		ArrayList<Animal> animaux = new ArrayList<>();
@@ -28,8 +28,8 @@ interface Animal
 //		for (Animal animal : animaux)
 //			System.out.println(animal.cri());
 //	}
-//}
-//
+}
+
 //class Chat implements Animal
 //{
 //}
