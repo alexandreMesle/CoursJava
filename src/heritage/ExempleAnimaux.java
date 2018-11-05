@@ -15,21 +15,21 @@ interface Animal
 	public String cri();
 }
 
-//TODO DÃcommentez le code ci-dessous pour le complÃ©ter
+//TODO Décommentez le code ci-dessous pour le compléter
 
-//public class ExempleAnimaux
-//{
+public class ExempleAnimaux
+{
 //	public static void main(String[] args)
 //	{
 //		ArrayList<Animal> animaux = new ArrayList<>();
 //		animaux.add(new Chat("Ronron"));
-//		animaux.add(new Chien("MÃ©dor"));
+//		animaux.add(new Chien("Médor"));
 //		animaux.add(new Vache("Huguette"));
 //		for (Animal animal : animaux)
 //			System.out.println(animal.cri());
 //	}
-//}
-//
+}
+
 //class Chat implements Animal
 //{
 //}
