@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class Carre
 {
-	JTextField operand = new JTextField();
-	JLabel result = new JLabel();
+	private JTextField operand = new JTextField();
+	private JLabel result = new JLabel();
 
 	private void afficheCarre()
 	{
