@@ -1,6 +1,6 @@
 package ihm.corriges;
 
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class FormaterDisqueDurAnonyme extends FormaterDisqueDur
 {
@@ -12,7 +12,13 @@ public class FormaterDisqueDurAnonyme extends FormaterDisqueDur
 
 	private ActionListener getActionListener()
 	{
-		return (e) -> {System.out.println("Formatage en cours.");};
+		return new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("Formatage en cours.");
+			}
+		};
 	}
 
 	public static void main(String[] args)
