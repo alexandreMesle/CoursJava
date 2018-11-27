@@ -34,9 +34,9 @@ public class TableauComparable
 	{
 		String res = "[";
 		if (taille() >= 1)
-			res += t.get(0);
+			res += get(0);
 		for (int i = 1 ; i < taille() ; i++)
-			res += ", " + t.get(i);
+			res += ", " + get(i);
 		res += "]";
 		return res;
 	}
@@ -53,15 +53,15 @@ public class TableauComparable
 			t.set(index, value);
 		if (index == n)
 			t.add(value);
-		if (index < n)
+		if (index > n)
 			System.out.println("Achtung !");
 	}
 
 	public void echange(int i, int j)
 	{
-		Comparable temp = t.get(i);
-		t.set(i, t.get(j));
-		t.set(j, temp);
+		Comparable temp = get(i);
+		set(i, get(j));
+		set(j, temp);
 	}
 
 	public void triSelection()

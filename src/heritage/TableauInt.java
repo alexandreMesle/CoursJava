@@ -33,9 +33,9 @@ public class TableauInt
 	{
 		String res = "[";
 		if (taille() >= 1)
-			res += t.get(0);
+			res += get(0);
 		for (int i = 1 ; i < taille() ; i++)
-			res += ", " + t.get(i);
+			res += ", " + get(i);
 		res += "]";
 		return res;
 	}
@@ -52,15 +52,15 @@ public class TableauInt
 			t.set(index, value);
 		if (index == n)
 			t.add(value);
-		if (index < n)
+		if (index > n)
 			System.out.println("Achtung !");
 	}
 
 	public void echange(int i, int j)
 	{
-		int temp = t.get(i);
-		t.set(i, t.get(j));
-		t.set(j, temp);
+		int temp = get(i);
+		set(i, get(j));
+		set(j, temp);
 	}
 
 	public void triSelection()
@@ -69,7 +69,7 @@ public class TableauInt
 		{
 			int indiceMin = i;
 			for (int j = i + 1 ; j < taille() ; j++)
-				if (t.get(indiceMin) > t.get(j))
+				if (get(indiceMin) > get(j))
 					indiceMin = j;
 			echange(i, indiceMin);
 		}
@@ -85,5 +85,5 @@ public class TableauInt
 		System.out.println(tab);
 		tab.triSelection();
 		System.out.println(tab);
-	}
+	}	
 }
