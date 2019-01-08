@@ -19,6 +19,7 @@ public class EcouteurAnonyme
 		jButtons.add(new JButton("my Third JButton"));
 		jButtons.add(new JButton("my Fourth JButton"));
 		jButtons.add(new JButton("my Fifth JButton"));
+		jButtons.add(new JButton("my Sixth JButton"));
 		for (JButton button : jButtons)
 			frame.getContentPane().add(button);		
 		/* Classe dediee */
@@ -44,6 +45,10 @@ public class EcouteurAnonyme
 		
 		/* Lambda expression dans une fonction */
 		jButtons.get(4).addActionListener(getEcouteurLambda());
+		
+		/* Double colon */
+		jButtons.get(5).addActionListener(this::ecouteurDoubleColon);
+
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -63,6 +68,11 @@ public class EcouteurAnonyme
 	private ActionListener getEcouteurLambda()
 	{
 		return (e) -> {System.out.println("click on Fifth JButton");};
+	};
+	
+	private void ecouteurDoubleColon(ActionEvent e )
+	{
+		System.out.println("click on Sixth JButton");
 	};
 	
 	public static void main(String[] args)
