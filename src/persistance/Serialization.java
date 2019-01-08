@@ -80,6 +80,11 @@ public class Serialization
 			w.setValue(4);
 			Wrapper wBis = Wrapper.read(fileName);
 			System.out.println(wBis);// 4 ou 5 ?
+			
+			wBis.setValue(6);
+			wBis.write(fileName);
+			
+			
 		}
 		catch (IOException e) 
 		{
