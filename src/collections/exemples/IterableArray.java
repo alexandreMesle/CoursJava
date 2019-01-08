@@ -28,27 +28,28 @@ public class IterableArray implements Iterable<Integer>
 	{
 		return new Iterator<Integer>()
 		{
-			private int index = 0;
+			private int index = -1;
 
 			@Override
 			public boolean hasNext()
 			{
+				index++;
 				return index < TAILLE;
 			}
 
 			@Override
 			public Integer next()
 			{
-				int item = get(index);
-				index++;
-				return item;
+				return get(index);
 			}
 
 			@Override
 			public void remove()
 			{
-				for (int i = index; i < TAILLE; i++)
+				for (int i = index; i < TAILLE - 1; i++)
 					set(i, get(i + 1));
+				set(TAILLE - 1, 0);
+				index --;
 			}
 		};
 	}
@@ -58,6 +59,14 @@ public class IterableArray implements Iterable<Integer>
 		IterableArray tab = new IterableArray(10);
 		for (int i = 0; i < 10; i++)
 			tab.set(i, i + 1);
+		
+		Iterator<Integer> iterator = tab.iterator();
+		while (iterator.hasNext()) 
+		{
+			int value = iterator.next();
+			if (value % 2 != 0)
+				iterator.remove();
+		}		
 		for (int value : tab)
 			System.out.println(value);
 	}
