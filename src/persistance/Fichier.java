@@ -34,7 +34,8 @@ public class Fichier
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				System.out.println("Impossible de fermer le fichier " + fileName
+						+ ".");
 			}
 		}
 	}
