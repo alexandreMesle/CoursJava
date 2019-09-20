@@ -4,7 +4,10 @@ public class HelloWorld
 {
 	public static void main(String[] args)
 	{
-		// Affiche Hello World
+		/*
+		 Commentaire sur plusieurs lignes
+		 */
 		System.out.println("Hello World");
+		// Commentaire sur une ligne
 	}
 }
