@@ -4,100 +4,81 @@ public class Rationnel
 {
 	public int num, den;
 
-	/*-----------------------------------------------*/
-
 	public String toString()
 	{
 		return num + "/" + den;
 	}
 
-	/*-----------------------------------------------*/
-
-	public Rationnel copy()
+	static Rationnel cree(int num, int den)
 	{
 		Rationnel r = new Rationnel();
-		r.num = num;
-		r.den = den;
+		int p = pgcd(num, den);
+		r.num = num/p;
+		r.den = den/p;
 		return r;
 	}
-
-	/*-----------------------------------------------*/
-
-	public Rationnel opposite()
+	
+	public Rationnel copie()
 	{
-		Rationnel r = copy();
-		r.num = -r.num;
-		return r;
+		return cree(num, den);
 	}
 
-	/*-----------------------------------------------*/
+	public Rationnel oppose()
+	{
+		return cree(-num, den);
+	}
 
-	private int pgcd(int a, int b)
+	public Rationnel inverse()
+	{
+		return cree(den, num);
+	}
+
+	private static int pgcd(int a, int b)
 	{
 		if (b == 0)
 			return a;
 		return pgcd(b, a % b);
 	}
 
-	public Rationnel reduce()
-	{
-		Rationnel r = copy();
-		int p = pgcd(num, den);
-		r.num /= p;
-		r.den /= p;
-		return r;
-	}
-
-	/*-----------------------------------------------*/
-
-	public boolean isPositive()
+	public boolean estPositif()
 	{
 		return num > 0 && den > 0 || num < 0 && den < 0;
 	}
 
-	/*-----------------------------------------------*/
-
-	public Rationnel add(Rationnel other)
+	public Rationnel plus(Rationnel autre)
 	{
-		Rationnel res = new Rationnel();
-		res.num = num * other.den + den * other.num;
-		res.den = den * other.den;
-		return res.reduce();
+		return  cree(num * autre.den + den * autre.num, autre.den = den * autre.den);
 	}
 
-	/*-----------------------------------------------*/
-
-	public Rationnel multiply(Rationnel other)
+	public Rationnel moins(Rationnel autre)
 	{
-		Rationnel res = new Rationnel();
-		res.num = num * other.num;
-		res.den = den * other.den;
-		return res.reduce();
+		return plus(autre.oppose());
 	}
 
-	/*-----------------------------------------------*/
-
-	public Rationnel divide(Rationnel other)
+	public Rationnel multiplie(Rationnel autre)
 	{
-		Rationnel res = new Rationnel();
-		res.num = num * other.den;
-		res.den = den * other.num;
-		return res.reduce();
+		return cree(num * autre.num, den * autre.den);
 	}
 
-	/*-----------------------------------------------*/
-
-	public int compareTo(Rationnel other)
+	public Rationnel divise(Rationnel autre)
 	{
-		Rationnel sub = add(other.opposite());
-		if (sub.isPositive())
+		return multiplie(autre.inverse());
+	}
+
+	public boolean egale(Rationnel autre)
+	{
+		return num * autre.den == den * autre.num;
+	}
+	
+	public int compareTo(Rationnel autre)
+	{
+		if (egale(autre))
+			return 0;
+		if (moins(autre).estPositif())
 			return 1;
-		if (sub.opposite().isPositive())
+		else
 			return -1;
-		return 0;
 	}
-
-	/*-----------------------------------------------*/
 
 	public static void main(String[] args)
 	{
@@ -112,10 +93,10 @@ public class Rationnel
 		System.out.println("b = 4/3 = " + b);
 		System.out.println("compareTo(" + a + ", " + b + ") = -1 = "
 				+ a.compareTo(b));
-		System.out.println("1/2 = " + a.copy());
-		System.out.println("-1/2 = " + a.opposite());
-		System.out.println("11/6 = " + a.add(b));
-		System.out.println("2/3 = " + a.multiply(b));
-		System.out.println("3/8 = " + a.divide(b));
+		System.out.println("1/2 = " + a.copie());
+		System.out.println("-1/2 = " + a.oppose());
+		System.out.println("11/6 = " + a.plus(b));
+		System.out.println("2/3 = " + a.multiplie(b));
+		System.out.println("3/8 = " + a.divise(b));
 	}
 }

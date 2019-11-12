@@ -118,13 +118,13 @@ public class TableauRationnel
 		while (i < t.length)
 		{
 			if (i1 == t1.t.length)
-				t[i++] = t2.t[i2++].copy();
+				t[i++] = t2.t[i2++].copie();
 			else if (i2 == t2.t.length)
-				t[i++] = t1.t[i1++].copy();
+				t[i++] = t1.t[i1++].copie();
 			else if (t1.t[i1].compareTo(t2.t[i2]) < 0)
-				t[i++] = t1.t[i1++].copy();
+				t[i++] = t1.t[i1++].copie();
 			else
-				t[i++] = t2.t[i2++].copy();
+				t[i++] = t2.t[i2++].copie();
 		}
 	}
 
