@@ -2,21 +2,13 @@ package encapsulation.corriges;
 
 public class ListeInt
 {
-	/*
-	 * Donnee stockee dans le maillon
-	 */
-
 	private int data;
-
-	/*********************************/
 
 	/*
 	 * Pointeur vers le maillon suivant
 	 */
 
 	private ListeInt next;
-
-	/*********************************/
 
 	/*
 	 * Constructeur initialisant la donnee et le pointeur vers l'element
@@ -29,8 +21,6 @@ public class ListeInt
 		this.next = next;
 	}
 
-	/*********************************/
-
 	/*
 	 * Constructeur initialisant la donnee et mettant le suivant a null.
 	 */
@@ -40,8 +30,18 @@ public class ListeInt
 		this(data, null);
 	}
 
-	/*********************************/
-
+	/*
+	 * Cree une liste aléatoire
+	 */
+	
+	static ListeInt aleatoire(int taille)
+	{
+		if (taille == 0)
+			return null;
+		return new ListeInt((new java.util.Random()).nextInt()%100, 
+				aleatoire(taille - 1));
+	}
+	
 	/*
 	 * Constructeur initialisant la donnee et mettant le suivant a null.
 	 */
@@ -50,8 +50,6 @@ public class ListeInt
 	{
 		this(other.getData(), new ListeInt(other.getNext()));
 	}
-
-	/*********************************/
 
 	/*
 	 * Retourne la donnee.
@@ -62,8 +60,6 @@ public class ListeInt
 		return data;
 	}
 
-	/*********************************/
-
 	/*
 	 * Modifie la donnee
 	 */
@@ -72,8 +68,6 @@ public class ListeInt
 	{
 		this.data = data;
 	}
-
-	/*********************************/
 
 	/*
 	 * Retourne le maillon suivant.
@@ -84,8 +78,6 @@ public class ListeInt
 		return next;
 	}
 
-	/*********************************/
-
 	/*
 	 * Modifie le maillon suivant
 	 */
@@ -94,8 +86,6 @@ public class ListeInt
 	{
 		this.next = next;
 	}
-
-	/*********************************/
 
 	/*
 	 * Retourne une représentation sous forme de chaine de la liste.
@@ -109,18 +99,13 @@ public class ListeInt
 		return res;
 	}
 
-	/*********************************/
-
 	/*
 	 * Teste le fonctionnement de la liste.
 	 */
 
 	public static void main(String[] args)
 	{
-		ListeInt l = new ListeInt(20);
-		int i = 19;
-		while (i >= 0)
-			l = new ListeInt(i--, l);
+		ListeInt l = aleatoire(20);
 		System.out.println(l);
 	}
 
