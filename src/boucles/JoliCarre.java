@@ -11,8 +11,12 @@ public class JoliCarre
 		System.out.println("Saisissez un nombre : ");
 		int n = scanner.nextInt();
 		scanner.close();
-		for (int i = 1 ; i <= 10 ; i++)
-			System.out.println(n + " * " + i + " = " + n * i);
+		for (int i = 1 ; i <= n ; i++)
+		{
+			for (int j = 1 ; j <= n ; j++)
+				System.out.print("X ");
+			System.out.println();
+		}
 	}
 
 }
