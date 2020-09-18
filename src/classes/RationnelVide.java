@@ -12,7 +12,7 @@ public class RationnelVide
 	{
 		return null;
 	}
-
+	
 	static RationnelVide cree(int num, int den)
 	{
 		return null;
@@ -46,7 +46,11 @@ public class RationnelVide
 	 * Retourne le plus grand commun diviseur de a et b
 	 * Utilisez les propriétés suivantes :
 	 * pgcd(a, 0) = a
-	 * pgcd(a, b) = pgcd(b, a modulo b) 
+	 * pgcd(a, b) = pgcd(b, a modulo b)
+	 * 
+	 *  Modifier ensuite la méthode "cree(int, int)" 
+	 *  pour que les rationnels soient toujours créés 
+	 *  sous forme irréductible. 
 	 */
 	
 	static int pgcd(int a, int b)
