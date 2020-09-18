@@ -4,6 +4,10 @@ public class RationnelVide
 {
 	public int num, den;
 
+	/**
+	 * Retourne chaine de la forme num/den 
+	 */
+	
 	public String toString()
 	{
 		return null;
@@ -19,21 +23,40 @@ public class RationnelVide
 		return null;
 	}
 
+	/**
+	 * Retourne le rationnel qu'il faut additioner
+	 * à this pour obtenir 0.
+	 */
+	
 	public RationnelVide oppose()
 	{
 		return null;
 	}
 
+	/**
+	 * Retourne le rationnel par lequel il faut multiplier 
+	 * this pour obtenir 1.
+	 */
 	public RationnelVide inverse()
 	{
 		return null;
 	}
 
-	private static int pgcd(int a, int b)
+	/**
+	 * Retourne le plus grand commun diviseur de a et b
+	 * Utilisez les propriétés suivantes :
+	 * pgcd(a, 0) = a
+	 * pgcd(a, b) = pgcd(b, a modulo b) 
+	 */
+	
+	static int pgcd(int a, int b)
 	{
 		return 0;
 	}
 
+	/**
+	 * Retourne vrai ssi le rationnel est positif.
+	 */
 	public boolean estPositif()
 	{
 		return true;
@@ -59,10 +82,21 @@ public class RationnelVide
 		return null;
 	}
 
+	/**
+	 * Retourne vrai ssi this - autre vaut zéro.
+	 */
+	
 	public boolean egale(RationnelVide autre)
 	{
 		return true;
 	}
+	
+	/**
+	 * Retourne :
+	 * 1 si this > autre
+	 * 0 si this est égal à autre
+	 * -1 si this < autre 
+	 */
 	
 	public int compareTo(RationnelVide autre)
 	{
