@@ -26,7 +26,8 @@ public class ExempleAnimaux
 //		animaux.add(new Chien("Médor"));
 //		animaux.add(new Vache("Huguette"));
 //		for (Animal animal : animaux)
-//			System.out.println(animal.cri());
+//			System.out.println("Je m'appelle " + animal.getNom()
+//				+ " et je dis " + animal.cri() + "!");
 //	}
 }
 
