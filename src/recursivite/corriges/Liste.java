@@ -1,4 +1,4 @@
-package recursivite;
+package recursivite.corriges;
 
 public class Liste 
 {
@@ -54,7 +54,11 @@ public class Liste
 	
 	public boolean recherche(int x)
 	{
-		return true;
+		if (getValeur() == x)
+			return true;
+		if (getSuivant() == null)
+			return false;
+		return getSuivant().recherche(x);
 	}
 	
 	/**
@@ -62,9 +66,16 @@ public class Liste
 	 * @return le plus grand élément de la liste
 	 */
 	
+	private static int max (int x, int y)
+	{
+		return (x < y) ? y : x; 
+	}
+	
 	public int max()
 	{
-		return 0;
+		if (getSuivant() == null)
+			return getValeur();
+		return max(getValeur(), getSuivant().max());
 	}
 	
 	/**
@@ -74,7 +85,9 @@ public class Liste
 	
 	public int somme()
 	{
-		return 0;
+		if (getSuivant() == null)
+			return getValeur();
+		return getValeur() + getSuivant().somme();
 	}
 	
 	/**
@@ -89,7 +102,9 @@ public class Liste
 
 	private int sommeAccumulateur(int accumulateur)
 	{
-		return 0;
+		if (getSuivant() == null)
+			return accumulateur + getValeur();
+		return getSuivant().sommeAccumulateur(getValeur() + accumulateur);
 	}
 
 	/** Supprime la tête de la liste
@@ -97,14 +112,16 @@ public class Liste
 	 **/
 	public Liste deuxieme()
 	{
-		return null;
+		return getSuivant();
 	}
 
 	/** Retourne le dernier élément de la liste
 	 **/
 	public int dernier()
 	{
-		return 0;
+		if (getSuivant() == null)
+			return getValeur();
+		return getSuivant().dernier();
 	}
 
 	/** 
@@ -113,7 +130,12 @@ public class Liste
 	 **/
 	public Liste pairs()
 	{
-		return null;
+		if (getSuivant() != null)
+			setSuivant(getSuivant().pairs());
+		if (getValeur() % 2 == 0)
+			return this;
+		else
+			return getSuivant();
 	}
 
 	/** 
@@ -122,7 +144,9 @@ public class Liste
 	 **/
 	public Liste copie()
 	{
-		return null;
+		return new Liste(getValeur(), 
+			(getSuivant() != null) ? getSuivant().copie() : null
+			);
 	}
 
 	/** 
@@ -131,7 +155,19 @@ public class Liste
 	 **/
 	private Liste insere(Liste l)
 	{
-		return null;
+		if (l.getValeur() < getValeur())
+		{
+			l.setSuivant(this);
+			return l;
+		}
+		if (getSuivant() == null)
+		{
+			setSuivant(l);
+			l.setSuivant(null);
+			return this;
+		}
+		setSuivant(getSuivant().insere(l));
+		return this;
 	}
 
 	/**
@@ -141,7 +177,16 @@ public class Liste
 	
 	private Liste triInsertionAccumulateur(Liste accumulateur)
 	{
-		return null;
+		Liste suivant = getSuivant();
+		this.setSuivant(null);
+		if (accumulateur == null)
+			accumulateur = this;
+		else
+			accumulateur = accumulateur.insere(this);
+		if (suivant == null)	
+			return accumulateur;
+		else
+			return suivant.triInsertionAccumulateur(accumulateur);
 	}
 	
 	public Liste triInsertion()
@@ -153,7 +198,16 @@ public class Liste
 	 * Inverse l'ordre des éléments de la liste en utilisant un accumulateur
 	 * @return la liste dont l'ordre des éléments a été inversé
 	 */
-	private Liste inverseAcc(Liste accumulateur) {return null;}
+	private Liste inverseAcc(Liste accumulateur) 
+	{
+		Liste suivant = getSuivant();
+		setSuivant(accumulateur);
+		accumulateur = this;
+		if (suivant == null)
+			return accumulateur;
+		else
+			return suivant.inverseAcc(accumulateur);
+	}
 	
 	public Liste inverse()
 	{
@@ -162,7 +216,10 @@ public class Liste
 	
 	public static void main(String[] args) 
 	{
-		System.out.println(compteARebours(10));
+		Liste car = compteARebours(10);
+		System.out.println(car);					
+		car = car.triInsertion();
+		System.out.println(car);					
 	}
 
 }
