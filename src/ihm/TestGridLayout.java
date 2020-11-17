@@ -1,38 +1,37 @@
 package ihm;
 
 import javax.swing.*;
-import java.awt.event.*;
-import java.util.ArrayList;
 import java.awt.*;
 
-public class TestGridLayout implements ActionListener
+public class TestGridLayout
 {
-	ArrayList<JButton> jButtons;
-
-	@Override
-	public void actionPerformed(ActionEvent e)
+	private JPanel getMainPanel()
 	{
-		System.out.println("Click on " + ((JButton) e.getSource()).getText());
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(2, 2));
+		panel.add(getBouton("North-West"));
+		panel.add(getBouton("North-East"));
+		panel.add(getBouton("South-West"));
+		panel.add(getBouton("South-East"));
+		return panel;
 	}
-
+	
+	private JButton getBouton(String titre)
+	{
+		JButton bouton = new JButton(titre);
+		bouton.addActionListener((e) -> 
+		{
+			System.out.println("Click sur " + titre);
+		});
+		return bouton;
+	}
+	
 	public TestGridLayout()
 	{
 		JFrame frame = new JFrame();
-		jButtons = new ArrayList<JButton>();
+		frame.setContentPane(getMainPanel());
 		frame.setTitle("One More Window !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(2, 2));
-		jButtons.add(new JButton("North-West"));
-		jButtons.add(new JButton("North-East"));
-		jButtons.add(new JButton("South-West"));	
-		jButtons.add(new JButton("South-East"));
-		for (JButton jButton : jButtons)
-		{
-			JPanel jPanel = new JPanel();
-			jPanel.add(jButton);
-			frame.getContentPane().add(jPanel);
-			jButton.addActionListener(this);
-		}
 		frame.pack();
 		frame.setVisible(true);
 	}
