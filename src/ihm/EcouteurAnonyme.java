@@ -20,6 +20,7 @@ public class EcouteurAnonyme
 		jButtons.add(new JButton("my Fourth JButton"));
 		jButtons.add(new JButton("my Fifth JButton"));
 		jButtons.add(new JButton("my Sixth JButton"));
+		jButtons.add(new JButton("my Seventh JButton"));
 		for (JButton button : jButtons)
 			frame.getContentPane().add(button);		
 		/* Classe dediee */
@@ -49,6 +50,9 @@ public class EcouteurAnonyme
 		/* Double colon */
 		jButtons.get(5).addActionListener(this::ecouteurDoubleColon);
 
+		/* Double colon dans une fonction*/
+		jButtons.get(6).addActionListener(getEcouteurDoubleColon());
+
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -65,14 +69,24 @@ public class EcouteurAnonyme
 		};
 	};
 	
+	private ActionListener getEcouteurDoubleColon()
+	{
+		return EcouteurAnonyme.this::autreEcouteurDoubleColon;
+	}
+	
 	private ActionListener getEcouteurLambda()
 	{
 		return (e) -> {System.out.println("click on Fifth JButton");};
 	};
 	
-	private void ecouteurDoubleColon(ActionEvent e )
+	private void ecouteurDoubleColon(ActionEvent e)
 	{
 		System.out.println("click on Sixth JButton");
+	};
+	
+	private void autreEcouteurDoubleColon(ActionEvent e)
+	{
+		System.out.println("click on Seventh JButton");
 	};
 	
 	public static void main(String[] args)
