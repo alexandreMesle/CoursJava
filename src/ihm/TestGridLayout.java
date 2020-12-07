@@ -24,11 +24,13 @@ public class TestGridLayout implements ActionListener
 		frame.getContentPane().setLayout(new GridLayout(2, 2));
 		jButtons.add(new JButton("North-West"));
 		jButtons.add(new JButton("North-East"));
-		jButtons.add(new JButton("South-West"));
+		jButtons.add(new JButton("South-West"));	
 		jButtons.add(new JButton("South-East"));
 		for (JButton jButton : jButtons)
 		{
-			frame.getContentPane().add(jButton);
+			JPanel jPanel = new JPanel();
+			jPanel.add(jButton);
+			frame.getContentPane().add(jPanel);
 			jButton.addActionListener(this);
 		}
 		frame.pack();
