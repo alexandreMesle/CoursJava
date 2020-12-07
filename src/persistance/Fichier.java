@@ -2,6 +2,7 @@ package persistance;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -17,12 +18,18 @@ public class Fichier
 			InputStreamReader isr = new InputStreamReader(fis);
 			br = new BufferedReader(isr);
 			String line;
+			int i = 1;
 			while ((line = br.readLine()) != null)
 				System.out.println(line);
 		}
-		catch (IOException e)
+		catch (FileNotFoundException e)
 		{
 			System.out.println("Impossible d'ouvrir le fichier " + fileName
+					+ ".");
+		}
+		catch (IOException e)
+		{
+			System.out.println("Erreur lors de la lecture dans le fichier " + fileName
 					+ ".");
 		}
 		finally
