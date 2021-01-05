@@ -4,12 +4,12 @@ public class HuitReines
 {
 	private int nbReines;
 	private int nbNoeuds;
-	private boolean[][] reines;
+	private int[] reines;
 	
 	public HuitReines(int nbReines)
 	{
 		this.nbReines = nbReines;
-		this.reines = new boolean[nbReines][nbReines];
+		this.reines = new int[nbReines];
 	}
 	
 	public boolean solve()
@@ -22,18 +22,16 @@ public class HuitReines
 	{
 		nbNoeuds ++;
 		if (aPlacer == 0)
-			return verifie();
+			return verifie(aPlacer);
 		else
 		{
-			if (!verifie())
+			if (!verifie(aPlacer))
 				return false;
-			int ligne = aPlacer - 1;
 			for(int colonne = 0 ; colonne < this.nbReines ; colonne++)
 			{
-					this.reines[ligne][colonne] = true;
+					this.reines[aPlacer - 1] = colonne;
 					if (solve(aPlacer - 1))
 						return true;
-					this.reines[ligne][colonne] = false;
 			}
 			return false;
 		}		
@@ -49,16 +47,13 @@ public class HuitReines
 		return abs(a - b);
 	}
 	
-	private boolean verifie()
+	private boolean verifie(int aPlacer)
 	{
-		for (int i1 = 0 ; i1 < nbReines - 1; i1++)
-			for (int j1 = 0 ; j1 < nbReines ; j1++)
-				for (int i2 = i1 + 1 ; i2 < nbReines ; i2++)
-					for (int j2 = 0 ; j2 < nbReines ; j2++)
-						if(reines[i1][j1] && reines[i2][j2]
-							&& (j1 == j2 || dist(i1, i2) == dist(j1, j2)))
-								return false;
-		return true;		
+		for (int i = aPlacer + 1 ; i < nbReines; i ++)
+			if(reines[aPlacer] == reines[i] 
+				|| dist(aPlacer, i) == dist(reines[aPlacer], reines[i]))
+				return false;
+		return true;
 	}
 	
 	@Override
@@ -68,7 +63,7 @@ public class HuitReines
 		for (int i = 0 ; i < nbReines ; i++)
 		{
 			for (int j = 0 ; j < nbReines ; j++)
-				s += reines[i][j] ? "Q " : ". ";
+				s += reines[i] == j ? "Q " : ". ";
 			s += "\n";
 		}
 		return s;
@@ -79,9 +74,12 @@ public class HuitReines
 		for (int i = 1 ; i <= 30 ; i++)
 		{
 			HuitReines huitReines = new HuitReines(i);
-			huitReines.solve();
-			System.err.println("taille = " + i + ", Nb noeuds = " + huitReines.nbNoeuds);
-			System.out.println(huitReines);
+			boolean found = huitReines.solve(); 
+			System.out.println("taille = " + i + ", Nb noeuds = " + huitReines.nbNoeuds);
+			if (found)
+				System.out.println(huitReines);
+			else
+				System.out.println("Pas de solution");
 		}
 	}
 
