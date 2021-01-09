@@ -4,13 +4,12 @@
   <artifactId>CoursJava</artifactId>
   <version>2.0</version>
   <build>
-    <!-->sourceDirectory>src</sourceDirectory-->
     <resources>
       <resource>
         <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
+        <includes>
+          <include>**/*.java</include>
+        </includes>
       </resource>
     </resources>
     <plugins>
@@ -35,5 +34,22 @@
 	    <artifactId>hibernate-core</artifactId>
 	    <version>4.3.4.Final</version>
 	</dependency>
+	<dependency>
+       <groupId>CommandLineMenus</groupId>
+       <artifactId>CommandLineMenus</artifactId>
+       <version>2.0</version>
+     </dependency>
   </dependencies>
+  <repositories>
+    <repository>
+       <id>apache</id>
+       <name>apache</name>
+       <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+       <id>mereen</id>
+       <name>mereen</name>
+       <url>https://maven.alexandre-mesle.com/maven</url>
+    </repository>
+  </repositories>
 </project>
