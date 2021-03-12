@@ -52,7 +52,7 @@ public class TestGridLayout
 	
 	public TestGridLayout()
 	{
-		JFrame frame = new JFrame("Une fontion par panel, une fonction par composant");
+		JFrame frame = new JFrame("Une fonction par panel, une fonction par composant");
 		frame.setContentPane(getMainPanel());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

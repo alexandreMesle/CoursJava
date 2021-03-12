@@ -6,20 +6,20 @@ import java.awt.*;
 
 public class Carre
 {
-	private JTextField operand = new JTextField();
-	private JLabel result = new JLabel();
+	private JTextField operandTextField;
+	private JLabel resultLabel;
 
 	private void afficheCarre()
 	{
 		try
 		{
-			int k = Integer.parseInt(operand.getText());
+			int k = Integer.parseInt(operandTextField.getText());
 			k *= k;
-			result.setText("" + k);
+			resultLabel.setText("" + k);
 		}
 		catch (NumberFormatException e)
 		{
-			result.setText("");
+			resultLabel.setText("");
 		}
 	}
 
@@ -35,15 +35,59 @@ public class Carre
 		};
 	}
 
-	private JPanel getMainPanel()
+	private JLabel getLabelTitre()
+	{
+		return new JLabel("Calculatrice de carré");
+	}
+
+	private JLabel getLabelX()
+	{
+		return new JLabel("x = ");
+	}
+
+
+	private JLabel getLabelX2()
+	{
+		return new JLabel("x^2 = ");
+	}
+
+	private JLabel getLabelResultat()
+	{
+		resultLabel = new JLabel();
+		return resultLabel;
+	}
+	
+	private JTextField getTextFieldOperand()
+	{
+		operandTextField = new JTextField();
+		operandTextField.addKeyListener(getKeyListener());
+		return operandTextField;
+	}
+
+	private JPanel getPanelTitre()
+	{
+		JPanel panel = new JPanel();
+		panel.add(getLabelTitre());
+		return panel;
+	}
+
+	private JPanel getPanelCalculatrice()
 	{
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(2, 2));
-		panel.add(new JLabel("x = "));
-		operand.addKeyListener(getKeyListener());
-		panel.add(operand);
-		panel.add(new JLabel("x^2 = "));
-		panel.add(result);
+		panel.add(getLabelX());
+		panel.add(getTextFieldOperand());
+		panel.add(getLabelX2());
+		panel.add(getLabelResultat());
+		return panel;
+	}
+
+	private JPanel getPanelMain()
+	{
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		panel.add(getPanelTitre(), BorderLayout.NORTH);
+		panel.add(getPanelCalculatrice(), BorderLayout.CENTER);
 		return panel;
 	}
 
@@ -52,7 +96,7 @@ public class Carre
 		JFrame frame = new JFrame();
 		frame.setTitle("Square computer !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setContentPane(getMainPanel());
+		frame.setContentPane(getPanelMain());
 		frame.setVisible(true);
 		frame.pack();
 	}
