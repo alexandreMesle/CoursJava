@@ -13,7 +13,9 @@ public class EcouteurAnonyme
 		ArrayList<JButton> jButtons = new ArrayList<>();
 		frame.setTitle("My fourth window !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		frame.getContentPane().setLayout(new FlowLayout());
+		
 		jButtons.add(new JButton("my First JButton"));
 		jButtons.add(new JButton("my Second JButton"));
 		jButtons.add(new JButton("my Third JButton"));
@@ -36,13 +38,13 @@ public class EcouteurAnonyme
 			}
 		});
 		
+		/* Classe anonyme dans une fonction */
+		jButtons.get(2).addActionListener(getEcouteur());
+		
 		/* Lambda expression */
-		jButtons.get(2).addActionListener(
+		jButtons.get(3).addActionListener(
 				(e) -> {System.out.println("click on Third JButton");}
 		);
-		
-		/* Classe anonyme dans une fonction */
-		jButtons.get(3).addActionListener(getEcouteur());
 		
 		/* Lambda expression dans une fonction */
 		jButtons.get(4).addActionListener(getEcouteurLambda());
