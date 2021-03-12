@@ -5,7 +5,16 @@ import java.awt.*;
 
 public class TestGridLayout
 {
-	private JPanel getMainPanel()
+	private JLabel labelTitre;
+	
+	private JPanel getTitrePanel()
+	{
+		JPanel panel = new JPanel();
+		panel.add(getLabelTitre());
+		return panel;
+	}
+
+	private JPanel getBoutonsPanel()
 	{
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(2, 2));
@@ -13,7 +22,22 @@ public class TestGridLayout
 		panel.add(getBouton("North-East"));
 		panel.add(getBouton("South-West"));
 		panel.add(getBouton("South-East"));
+		return panel;		
+	}
+
+	private JPanel getMainPanel()
+	{
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		panel.add(getTitrePanel(), BorderLayout.NORTH);
+		panel.add(getBoutonsPanel(), BorderLayout.SOUTH);
 		return panel;
+	}
+	
+	private JLabel getLabelTitre()
+	{
+		labelTitre = new JLabel("Le Titre");
+		return labelTitre;
 	}
 	
 	private JButton getBouton(String titre)
@@ -21,16 +45,15 @@ public class TestGridLayout
 		JButton bouton = new JButton(titre);
 		bouton.addActionListener((e) -> 
 		{
-			System.out.println("Click sur " + titre);
+			labelTitre.setText(titre);
 		});
 		return bouton;
 	}
 	
 	public TestGridLayout()
 	{
-		JFrame frame = new JFrame();
+		JFrame frame = new JFrame("Une fontion par panel, une fonction par composant");
 		frame.setContentPane(getMainPanel());
-		frame.setTitle("One More Window !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
