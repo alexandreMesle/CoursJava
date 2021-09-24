@@ -8,8 +8,11 @@ public class CollectionArray
 	{
 		ArrayList a = new ArrayList();
 		for (int value = 2; value < 50; value += 3)
-			a.add(value);
+			a.add("a " + value);
 		for (int index = 0; index < a.size(); index++)
-			System.out.println(a.get(index));
+		{
+			int valeur = (int) a.get(index);
+			System.out.println(valeur);
+		}
 	}
 }
