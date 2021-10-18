@@ -1,4 +1,4 @@
-// Enlever cette instruction pour exÃ©cuter ce programme sans crÃ©er un projet
+// Enlever cette instruction pour exécuter ce programme sans créer un projet
 package introduction; 
 
 public class HelloWorld
