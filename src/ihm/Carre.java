@@ -13,7 +13,7 @@ public class Carre
 	{
 		try
 		{
-			int k = Integer.parseInt(operandTextField.getText());
+			long k = Long.parseLong(operandTextField.getText());
 			k *= k;
 			resultLabel.setText("" + k);
 		}
@@ -28,7 +28,7 @@ public class Carre
 		return new KeyAdapter()
 		{
 			@Override
-			public void keyReleased(KeyEvent e)
+			public void keyTyped(KeyEvent e)
 			{
 				afficheCarre();
 			}
