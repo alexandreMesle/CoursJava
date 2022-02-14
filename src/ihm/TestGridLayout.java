@@ -2,6 +2,8 @@ package ihm;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+
 
 public class TestGridLayout
 {
@@ -43,11 +45,16 @@ public class TestGridLayout
 	private JButton getBouton(String titre)
 	{
 		JButton bouton = new JButton(titre);
-		bouton.addActionListener((e) -> 
+		bouton.addActionListener(getBoutonAction(titre));
+		return bouton;
+	}
+
+	private ActionListener getBoutonAction(String titre) 
+	{
+		return (e) -> 
 		{
 			labelTitre.setText(titre);
-		});
-		return bouton;
+		};
 	}
 	
 	public TestGridLayout()
