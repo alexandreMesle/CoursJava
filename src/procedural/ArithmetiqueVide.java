@@ -1,6 +1,6 @@
 package procedural;
 
-class Arithmetique
+class ArithmetiqueVide
 {
 	/*
 	 * Retourne b élevé à la puissance n. 
@@ -8,10 +8,7 @@ class Arithmetique
 	
 	static long puissance(long b, int n)
 	{
-		long res = 1;
-		for (int i = 1; i <= n; i++)
-			res *= b;
-		return res;
+		return 0;
 	}
 
 	/*
@@ -20,7 +17,7 @@ class Arithmetique
 	
 	static int unites(long n)
 	{
-		return (int) (n % 10);
+		return 0;
 	}
 
 	/*
@@ -29,7 +26,7 @@ class Arithmetique
 	
 	static int dizaines(long n)
 	{
-		return unites(n / 10);
+		return 0;
 	}
 	
 	/*
@@ -40,7 +37,7 @@ class Arithmetique
 
 	static int extrait(long n, int p)
 	{
-		return (int)((n % puissance(10, p)) / puissance(10, p - 1));
+		return 0;
 	}
 
 	/*
@@ -49,13 +46,7 @@ class Arithmetique
 	
 	public static int nbChiffres(long n)
 	{
-		int res = 1;
-		while (n > 9)
-		{
-			res++;
-			n /= 10;
-		}
-		return res;
+		return 0;
 	}
 
 	/*
@@ -64,11 +55,7 @@ class Arithmetique
 	
 	static int sommeChiffres(long n)
 	{
-		int nbC = nbChiffres(n);
-		int somme = 0;
-		for (int i = 1; i <= nbC; i++)
-			somme += extrait(n, i);
-		return somme;
+		return 0;
 	}
 
 	/*
@@ -77,7 +64,7 @@ class Arithmetique
 	
 	static boolean divise(long a, long b)
 	{
-		return b % a == 0;
+		return true;
 	}
 
 	/*
@@ -89,11 +76,7 @@ class Arithmetique
 	
 	static int sommeDiviseursStricts(long n)
 	{
-		int somme = 0;
-		for (int i = 1; i < n; i++)
-			if (divise(i, n))
-				somme += i;
-		return somme;
+		return 0;
 	}
 
 	/*
@@ -104,7 +87,7 @@ class Arithmetique
 	
 	static boolean sontAmis(long a, long b)
 	{
-		return sommeDiviseursStricts(a) == b && a == sommeDiviseursStricts(b);
+		return true;
 	}
 
 	/*
@@ -114,7 +97,7 @@ class Arithmetique
 	
 	static boolean estParfait(long n)
 	{
-		return n == sommeDiviseursStricts(n);
+		return true;
 	}
 
 	/*
@@ -128,7 +111,7 @@ class Arithmetique
 	
 	static long sommeParties(long n, int p)
 	{
-		return n % puissance(10, p) + n / puissance(10, p);
+		return 0;
 	}
 
 	/*
@@ -141,12 +124,6 @@ class Arithmetique
 	
 	static boolean estKaprekar(long n)
 	{
-		long carre = n * n;
-		long nbc = nbChiffres(carre);
-		for (int i = 1 ; i < nbc ; i++)
-			if (n % puissance(10, i) != 0 
-				&& sommeParties(carre, i) == n)
-				return true;
-		return false;
+		return true;
 	}
 }
