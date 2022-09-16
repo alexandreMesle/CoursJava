@@ -53,7 +53,7 @@ public class RationnelVide
 	 *  sous forme irréductible. 
 	 */
 	
-	static int pgcd(int a, int b)
+	public static int pgcd(int a, int b)
 	{
 		return 0;
 	}
@@ -90,8 +90,10 @@ public class RationnelVide
 	 * Retourne vrai ssi this - autre vaut zéro.
 	 */
 	
-	public boolean egale(RationnelVide autre)
+	@Override
+	public boolean equals(Object object)
 	{
+		RationnelVide autre = (RationnelVide)object;
 		return true;
 	}
 	
@@ -105,25 +107,5 @@ public class RationnelVide
 	public int compareTo(RationnelVide autre)
 	{
 		return 0;
-	}
-
-	public static void main(String[] args)
-	{
-		RationnelVide a, b;
-		a = new RationnelVide();
-		b = new RationnelVide();
-		a.num = 1;
-		a.den = 2;
-		b.num = 4;
-		b.den = 3;
-		System.out.println("a = 1/2 = " + a);
-		System.out.println("b = 4/3 = " + b);
-		System.out.println("compareTo(" + a + ", " + b + ") = -1 = "
-				+ a.compareTo(b));
-		System.out.println("1/2 = " + a.copie());
-		System.out.println("-1/2 = " + a.oppose());
-		System.out.println("11/6 = " + a.plus(b));
-		System.out.println("2/3 = " + a.multiplie(b));
-		System.out.println("3/8 = " + a.divise(b));
 	}
 }

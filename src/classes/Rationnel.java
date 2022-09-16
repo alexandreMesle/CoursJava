@@ -33,7 +33,7 @@ public class Rationnel
 		return cree(den, num);
 	}
 
-	private static int pgcd(int a, int b)
+	public static int pgcd(int a, int b)
 	{
 		if (b == 0)
 			return a;
@@ -65,38 +65,20 @@ public class Rationnel
 		return multiplie(autre.inverse());
 	}
 
-	public boolean egale(Rationnel autre)
+	@Override
+	public boolean equals(Object object)
 	{
+		Rationnel autre = (Rationnel)object;
 		return num * autre.den == den * autre.num;
 	}
 	
 	public int compareTo(Rationnel autre)
 	{
-		if (egale(autre))
+		if (equals(autre))
 			return 0;
 		if (moins(autre).estPositif())
 			return 1;
 		else
 			return -1;
-	}
-
-	public static void main(String[] args)
-	{
-		Rationnel a, b;
-		a = new Rationnel();
-		b = new Rationnel();
-		a.num = 1;
-		a.den = 2;
-		b.num = 4;
-		b.den = 3;
-		System.out.println("a = 1/2 = " + a);
-		System.out.println("b = 4/3 = " + b);
-		System.out.println("compareTo(" + a + ", " + b + ") = -1 = "
-				+ a.compareTo(b));
-		System.out.println("1/2 = " + a.copie());
-		System.out.println("-1/2 = " + a.oppose());
-		System.out.println("11/6 = " + a.plus(b));
-		System.out.println("2/3 = " + a.multiplie(b));
-		System.out.println("3/8 = " + a.divise(b));
 	}
 }
