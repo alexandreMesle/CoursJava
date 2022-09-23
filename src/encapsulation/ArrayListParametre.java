@@ -10,6 +10,9 @@ public class ArrayListParametre
 		for (int value = 2; value < 50; value += 3)
 			a.add(value);
 		for (int index = 0; index < a.size(); index++)
-			System.out.println(a.get(index));
+		{
+			int value = a.get(index);
+			System.out.println(value);
+		}
 	}
 }

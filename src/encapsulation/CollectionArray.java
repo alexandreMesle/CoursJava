@@ -8,7 +8,7 @@ public class CollectionArray
 	{
 		ArrayList a = new ArrayList();
 		for (int value = 2; value < 50; value += 3)
-			a.add("a " + value);
+			a.add(value);
 		for (int index = 0; index < a.size(); index++)
 		{
 			int valeur = (int) a.get(index);
