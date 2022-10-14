@@ -31,7 +31,7 @@ public class Cercle extends Point
 	@Override
 	public String toString()
 	{
-		return "( centre = " + super.toString() +
+		return "(centre = " + super.toString() +
 				"; rayon = " + getRayon() + ")";
 	}
 	

@@ -7,7 +7,7 @@ public class Point
 
 	void presenteToi()
 	{
-		System.out.println("Je suis un point, mes coordonnees sont ("
+		System.out.println("Je suis un point, mes coordonnées sont ("
 				+ abscisse + ", " + ordonnee + ")");
 	}
 
