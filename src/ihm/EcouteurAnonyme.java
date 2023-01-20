@@ -71,11 +71,6 @@ public class EcouteurAnonyme
 		};
 	};
 	
-	private ActionListener getEcouteurDoubleColon()
-	{
-		return EcouteurAnonyme.this::autreEcouteurDoubleColon;
-	}
-	
 	private ActionListener getEcouteurLambda()
 	{
 		return (e) -> {System.out.println("click on Fifth JButton");};
@@ -85,6 +80,11 @@ public class EcouteurAnonyme
 	{
 		System.out.println("click on Sixth JButton");
 	};
+	
+	private ActionListener getEcouteurDoubleColon()
+	{
+		return EcouteurAnonyme.this::autreEcouteurDoubleColon;
+	}
 	
 	private void autreEcouteurDoubleColon(ActionEvent e)
 	{
