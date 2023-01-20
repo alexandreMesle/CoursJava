@@ -28,7 +28,7 @@ public class Carre
 		return new KeyAdapter()
 		{
 			@Override
-			public void keyTyped(KeyEvent e)
+			public void keyReleased(KeyEvent e)
 			{
 				afficheCarre();
 			}
