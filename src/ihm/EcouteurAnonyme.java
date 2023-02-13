@@ -43,7 +43,7 @@ public class EcouteurAnonyme
 		
 		/* Lambda expression */
 		jButtons.get(3).addActionListener(
-				(e) -> {System.out.println("click on Third JButton");}
+				(e) -> {System.out.println("click on Fourth JButton");}
 		);
 		
 		/* Lambda expression dans une fonction */
@@ -66,7 +66,7 @@ public class EcouteurAnonyme
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				System.out.println("click on Fourth JButton");
+				System.out.println("click on Third JButton");
 			}
 		};
 	};
