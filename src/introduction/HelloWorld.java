@@ -7,7 +7,8 @@ public class HelloWorld
 	{
 		/*
 		 Commentaire sur 
-		 plusieurs lignes
+		 trois
+		 lignes
 		 */
 		System.out.println("Hello World");
 		// Commentaire sur une ligne
