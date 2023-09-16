@@ -42,7 +42,7 @@ public class Rationnel
 
 	public boolean estPositif()
 	{
-		return num > 0 && den > 0 || num < 0 && den < 0;
+		return num >= 0 && den > 0 || num <= 0 && den < 0;
 	}
 
 	public Rationnel plus(Rationnel autre)

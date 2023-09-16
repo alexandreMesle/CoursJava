@@ -13,11 +13,17 @@ class TestRationnel
         r.den = den;
         return r;
     }
-    
+
     private boolean equals(Rationnel a, Rationnel b)
     {
         return a != null && b != null && a.num * b.den == a.den * b.num;
     }
+
+    private boolean hardEquals(Rationnel a, Rationnel b)
+    {
+        return a != null && b != null && a.num == b.num && a.den == b.den ;
+    }
+
     
 	@Test
 	void testToString()
@@ -30,7 +36,7 @@ class TestRationnel
 	void testCree()
 	{
 		assertEquals(3, Rationnel.cree(3, 4).num, "Numérateur de 3/4");
-		assertEquals(4, Rationnel.cree(3, -4).den, "Dénominateur de 3/-4");
+		assertEquals(6, Rationnel.cree(5, 6).den, "Dénominateur de 5/6");
 	}
 
 	@Test
@@ -58,11 +64,11 @@ class TestRationnel
 	@Test
 	void testEstPositif()
 	{
-		assertTrue(cree(4, 5).estPositif(), "4/5 > 0 ?");
-		assertFalse(cree(-4, 5).estPositif(), "-4/5 > 0 ?");
-		assertFalse(cree(4, -5).estPositif(), "4/-5 > 0 ?");
-		assertTrue(cree(-4, -5).estPositif(), "-4/-5 > 0 ?");
-		assertFalse(cree(0, 2).estPositif(), "0/2 > 0 ?");
+		assertTrue(cree(4, 5).estPositif(), "4/5 >= 0 ?");
+		assertFalse(cree(-4, 5).estPositif(), "-4/5 >= 0 ?");
+		assertFalse(cree(4, -5).estPositif(), "4/-5 >= 0 ?");
+		assertTrue(cree(-4, -5).estPositif(), "-4/-5 >= 0 ?");
+		assertTrue(cree(0, 2).estPositif(), "0/2 >= 0 ?");
 	}
 
 	@Test
@@ -96,6 +102,7 @@ class TestRationnel
 		assertFalse(cree(6, 5).equals(cree(6, 4)), "6/5 == 6/4");
 		assertTrue(cree(2, 1).equals(cree(2, 1)), "2/1 == 2/1");
 		assertTrue(cree(20, 1).equals(cree(20, 1)), "20/1 == 20/1");
+		assertTrue(cree(5, 2).equals(cree(15, 6)), "5/2 == 15/6");
 	}
 
 	@Test
@@ -111,5 +118,7 @@ class TestRationnel
 	{
 		assertEquals(1, Rationnel.pgcd(13, 21), "pgcd(13, 21)");
 		assertEquals(5, Rationnel.pgcd(35, 40), "pgcd(35, 40)");
+		assertTrue(hardEquals(cree(13, 21), Rationnel.cree(26, 42)), "26/42 doit être simplifié en 13/21");
+		assertTrue(hardEquals(cree(7, 8), Rationnel.cree(35, 40)), "35/40 doit être simplifié en 7/8");
 	}
 }
