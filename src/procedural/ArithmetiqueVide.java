@@ -81,8 +81,8 @@ class ArithmetiqueVide
 
 	/*
 	 * Retourne vrai ssi la somme des diviseurs stricts 
-	 * de a est égale à la somme des diviseurs stricst 
-	 * de b. 
+	 * de a est égale à b et la somme des diviseurs stricst 
+	 * de b est égale à a. 
 	 */
 	
 	static boolean sontAmis(long a, long b)
