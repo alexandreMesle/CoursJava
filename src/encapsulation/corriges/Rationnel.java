@@ -4,71 +4,95 @@ public class Rationnel
 {
 	private int num, den;
 
-	/*-----------------------------------------------*/
-
-	public Rationnel(int num, int den)
-	{
-		this.num = num;
-		this.den = den;
-	}
-
-	/*-----------------------------------------------*/
-
-	public int getNum()
-	{
-		return num;
-	}
-
-	/*-----------------------------------------------*/
-
-	public int getDen()
-	{
-		return den;
-	}
-
-	/*-----------------------------------------------*/
-
-	public void setNum(int num)
-	{
-		this.num = num;
-	}
-
-	/*-----------------------------------------------*/
-
-	public void setDen(int den)
-	{
-		if (den != 0)
-			this.den = den;
-		else
-			System.out.println("Division by Zero !!!");
-	}
-
-	/*-----------------------------------------------*/
+	/**
+	 * Retourne chaine de la forme num/den 
+	 */	
 
 	public String toString()
 	{
 		return getNum() + "/" + getDen();
 	}
 
-	/*-----------------------------------------------*/
-
-	public Rationnel copy()
+	public Rationnel(int num, int den)
 	{
-		Rationnel r = new Rationnel(getNum(), getDen());
-		return r;
+		this.num = num;
+		this.setDen(den);
+		this.reduit();
 	}
 
-	/*-----------------------------------------------*/
-
-	public Rationnel opposite()
+	/**
+	 * Retourne un Rationnel contenant un 1 au dénominateur
+	 */
+	
+	public Rationnel(int num)
 	{
-		Rationnel r = copy();
-		r.setNum(-r.getNum());
-		return r;
+		this(num, 1);
 	}
 
-	/*-----------------------------------------------*/
+	public int getNum()
+	{
+		return num;
+	}
 
+	public int getDen()
+	{
+		return den;
+	}
+
+	public void setNum(int num)
+	{
+		this.num = num;
+		this.reduit();
+	}
+
+	/**
+	 * Setter pour le dénominateur, 
+	 * ne fait rien si cela entraîne une division par zéro.
+	 */
+	
+	public void setDen(int den)
+	{
+		if (den != 0)
+		{
+			this.den = den;
+			this.reduit();
+		}
+		else
+			System.out.println("Division par Zero !!!");
+	}
+
+	public Rationnel copie()
+	{
+		return new Rationnel(getNum(), getDen());
+	}
+
+	/**
+	 * Retourne le rationnel qu'il faut additioner
+	 * à this pour obtenir 0.
+	 */
+	
+	public Rationnel oppose()
+	{
+		return new Rationnel(-getNum(), getDen());
+	}
+
+	/**
+	 * Retourne le rationnel par lequel il faut multiplier 
+	 * this pour obtenir 1.
+	 */
+
+	public Rationnel inverse()
+	{
+		return new Rationnel(getDen(), getNum());
+	}
+	
+	/**
+	 * Retourne le plus grand commun diviseur de a et b
+	 * Utilisez les propriétés suivantes :
+	 * pgcd(a, 0) = a
+	 * pgcd(a, b) = pgcd(b, a modulo b)
+	 */
+	
 	private static int pgcd(int a, int b)
 	{
 		if (b == 0)
@@ -76,86 +100,79 @@ public class Rationnel
 		return pgcd(b, a % b);
 	}
 
-	public void reduce()
+	/**
+	 * Met le rationnel courant sous forme irréductible.
+	 * 
+	 * Modifier ensuite constructeurs et setters   
+	 * pour que les rationnels soient toujours 
+	 * sous forme irréductible. 
+	 */
+	
+	private void reduit()
 	{
 		int p = pgcd(getNum(), getDen());
-		setNum(getNum() / p);
-		setDen(getDen() / p);
+		num = getNum() / p;
+		den = getDen() / p;
 	}
 
-	/*-----------------------------------------------*/
+	/**
+	 * Retourne vrai ssi le rationnel est positif.
+	 */
 
-	public boolean isPositive()
+	public boolean estPositif()
 	{
-		return num > 0 && den > 0 || num < 0 && den < 0;
+		return getNum() * getDen() >= 0;
 	}
 
-	/*-----------------------------------------------*/
 
-	public Rationnel add(Rationnel other)
+	public Rationnel plus(Rationnel other)
 	{
-		Rationnel res = new Rationnel(getNum() * other.getDen() + getDen()
+		return new Rationnel(getNum() * other.getDen() + getDen()
 				* other.getNum(), getDen() * other.getDen());
-		other.reduce();
-		return res;
 	}
 
-	/*-----------------------------------------------*/
-
-	public void addBis(Rationnel other)
+	public Rationnel moins(Rationnel other)
 	{
-		num = num * other.getDen() + den * other.getNum();
-		den = den * other.getDen();
-		reduce();
+		return plus(other.oppose());
+	}
+	
+	public Rationnel multiplie(Rationnel other)
+	{
+		return new Rationnel(getNum() * other.getNum(), 
+				getDen() * other.getDen());
 	}
 
-	/*-----------------------------------------------*/
-
-	public Rationnel multiply(Rationnel other)
+	public Rationnel divise(Rationnel other)
 	{
-		Rationnel res = new Rationnel(getNum() * other.getNum(), getDen()
-				* other.getDen());
-		other.reduce();
-		return res;
+		return multiplie(other.inverse());
 	}
 
-	/*-----------------------------------------------*/
-
-	public Rationnel divide(Rationnel other)
+	/**
+	 * Retourne vrai ssi this 
+	 * n'est ni supérieur ni inférieur à autre.
+	 */
+	
+	@Override
+	public boolean equals(Object object)
 	{
-		Rationnel res = new Rationnel(getNum() * other.getDen(), getDen()
-				* other.getNum());
-		other.reduce();
-		return res;
-	}
+		Rationnel autre = (Rationnel)object;
+		return getNum() * autre.getDen() == getDen() * autre.getNum();
+	}	
 
-	/*-----------------------------------------------*/
-
-	public int compareTo(Rationnel other)
+	/**
+	 * Retourne :
+	 * 1 si this > autre
+	 * 0 si this est égal à autre
+	 * -1 si this < autre 
+	 */
+	
+	public int compareTo(Rationnel autre)
 	{
-		Rationnel sub = add(other.opposite());
-		if (sub.isPositive())
+		if (equals(autre))
+			return 0;
+		if (moins(autre).estPositif())
 			return 1;
-		if (sub.opposite().isPositive())
+		else
 			return -1;
-		return 0;
-	}
-
-	/*-----------------------------------------------*/
-
-	public static void main(String[] args)
-	{
-		Rationnel a, b;
-		a = new Rationnel(1, 2);
-		b = new Rationnel(3, 4);
-		System.out.println("a = " + a);
-		System.out.println("b = " + b);
-		System.out.println("compareTo(" + a + ", " + b + ") = "
-				+ a.compareTo(b));
-		System.out.println(a.copy());
-		System.out.println(a.opposite());
-		System.out.println(a.add(b));
-		System.out.println(a.multiply(b));
-		System.out.println(a.divide(b));
 	}
 }
