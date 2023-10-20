@@ -1,4 +1,4 @@
-package heritage.tpPointCercle.corrige;
+package heritage.tp.pointCercle.corrige;
 
 import static org.junit.jupiter.api.Assertions.*;
 

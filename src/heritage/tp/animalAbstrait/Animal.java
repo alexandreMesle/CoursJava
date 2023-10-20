@@ -1,4 +1,4 @@
-package heritage.animalAbstrait;
+package heritage.tp.animalAbstrait;
 
 import java.util.ArrayList;
 

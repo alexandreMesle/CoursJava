@@ -1,4 +1,4 @@
-package heritage.tpPointCercle.corrige;
+package heritage.tp.pointCercle.corrige;
 
 public class Point
 {

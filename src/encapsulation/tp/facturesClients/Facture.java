@@ -1,4 +1,4 @@
-package encapsulation.facturesClients;
+package encapsulation.tp.facturesClients;
 
 import java.time.LocalDate;
 

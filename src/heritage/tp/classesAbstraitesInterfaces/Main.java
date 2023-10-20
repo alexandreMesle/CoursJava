@@ -1,4 +1,4 @@
-package heritage.classesAbstraitesInterfaces;
+package heritage.tp.classesAbstraitesInterfaces;
 
 import heritage.Comparable;
 import heritage.corriges.TableauComparable;

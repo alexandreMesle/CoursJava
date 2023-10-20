@@ -1,4 +1,4 @@
-package heritage.tpPointCercle.sujet;
+package heritage.tp.pointCercle.sujet;
 
 public class Point
 {

@@ -1,4 +1,4 @@
-package encapsulation.facturesClients;
+package encapsulation.tp.facturesClients;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package heritage.corriges;
+package heritage.tp.pile.corrige;
 
 import java.util.ArrayList;
 
