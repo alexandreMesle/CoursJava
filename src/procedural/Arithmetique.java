@@ -137,6 +137,8 @@ class Arithmetique
 	 * * a + b = n
 	 * * b != 0
 	 * * la concaténation de a et b vaut n     
+     * * par exemple, 297 est un nombre de kaprekar
+     * * car 297^2 = 88209, et 88 + 209 = 297.
 	 */
 	
 	static boolean estKaprekar(long n)
