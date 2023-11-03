@@ -1,19 +1,18 @@
-package heritage.corriges;
+package heritage.tp.triGenerique.sujet;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-import heritage.Comparable;
-
-public class TableauComparable
+public class TableauInt
 {
-	private ArrayList<Comparable> t;
+	private ArrayList<Integer> t;
 
-	public TableauComparable()
+	public TableauInt()
 	{
 		t = new ArrayList<>();
 	}
 
-	public TableauComparable(TableauComparable other)
+	public TableauInt(TableauInt other)
 	{
 		t = new ArrayList<>();
 		for (int i = 0 ; i < other.taille() ; i++)
@@ -25,9 +24,9 @@ public class TableauComparable
 		return t.size();
 	}
 
-	public TableauComparable copie()
+	public TableauInt copie()
 	{
-		return new TableauComparable(this);
+		return new TableauInt(this);
 	}
 
 	public String toString()
@@ -41,12 +40,12 @@ public class TableauComparable
 		return res;
 	}
 
-	public Comparable get(int index)
+	public int get(int index)
 	{
 		return t.get(index);
 	}
 
-	public void set(int index, Comparable value)
+	public void set(int index, int value)
 	{
 		int n = taille();
 		if (index < n)
@@ -59,7 +58,7 @@ public class TableauComparable
 
 	public void echange(int i, int j)
 	{
-		Comparable temp = get(i);
+		int temp = get(i);
 		set(i, get(j));
 		set(j, temp);
 	}
@@ -70,7 +69,7 @@ public class TableauComparable
 		{
 			int indiceMin = i;
 			for (int j = i + 1 ; j < taille() ; j++)
-				if (get(indiceMin).compareTo(get(j)) > 0)
+				if (get(indiceMin) > get(j))
 					indiceMin = j;
 			echange(i, indiceMin);
 		}

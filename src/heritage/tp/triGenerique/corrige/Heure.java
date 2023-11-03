@@ -1,6 +1,4 @@
-package heritage.corriges;
-
-import heritage.Comparable;
+package heritage.tp.triGenerique.corrige;
 
 import java.util.Random;
 

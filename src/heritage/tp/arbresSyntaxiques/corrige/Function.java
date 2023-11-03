@@ -1,4 +1,4 @@
-package heritage.corriges;
+package heritage.tp.arbresSyntaxiques.corrige;
 
 /**
  * Fonction d'une variable.

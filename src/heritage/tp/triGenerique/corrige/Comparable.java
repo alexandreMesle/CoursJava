@@ -1,4 +1,4 @@
-package heritage;
+package heritage.tp.triGenerique.corrige;
 
 public interface Comparable
 {

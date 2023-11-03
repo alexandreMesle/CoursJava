@@ -1,7 +1,4 @@
-package heritage.tp.classesAbstraitesInterfaces;
-
-import heritage.Comparable;
-import heritage.corriges.TableauComparable;
+package heritage.tp.triGenerique.corrige;
 
 public class Main
 {

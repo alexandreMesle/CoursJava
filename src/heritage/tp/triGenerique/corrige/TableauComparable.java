@@ -1,18 +1,17 @@
-package heritage;
+package heritage.tp.triGenerique.corrige;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-public class TableauInt
+public class TableauComparable
 {
-	private ArrayList<Integer> t;
+	private ArrayList<Comparable> t;
 
-	public TableauInt()
+	public TableauComparable()
 	{
 		t = new ArrayList<>();
 	}
 
-	public TableauInt(TableauInt other)
+	public TableauComparable(TableauComparable other)
 	{
 		t = new ArrayList<>();
 		for (int i = 0 ; i < other.taille() ; i++)
@@ -24,9 +23,9 @@ public class TableauInt
 		return t.size();
 	}
 
-	public TableauInt copie()
+	public TableauComparable copie()
 	{
-		return new TableauInt(this);
+		return new TableauComparable(this);
 	}
 
 	public String toString()
@@ -40,12 +39,12 @@ public class TableauInt
 		return res;
 	}
 
-	public int get(int index)
+	public Comparable get(int index)
 	{
 		return t.get(index);
 	}
 
-	public void set(int index, int value)
+	public void set(int index, Comparable value)
 	{
 		int n = taille();
 		if (index < n)
@@ -58,7 +57,7 @@ public class TableauInt
 
 	public void echange(int i, int j)
 	{
-		int temp = get(i);
+		Comparable temp = get(i);
 		set(i, get(j));
 		set(j, temp);
 	}
@@ -69,21 +68,9 @@ public class TableauInt
 		{
 			int indiceMin = i;
 			for (int j = i + 1 ; j < taille() ; j++)
-				if (get(indiceMin) > get(j))
+				if (get(indiceMin).compareTo(get(j)) > 0)
 					indiceMin = j;
 			echange(i, indiceMin);
 		}
 	}
-
-	public static void main(String[] args)
-	{
-		int n = 10 ;
-		Random r = new Random();
-		TableauInt tab = new TableauInt();
-		for (int i = 0; i < n; i++)
-			tab.set(i, r.nextInt() % 100);
-		System.out.println(tab);
-		tab.triSelection();
-		System.out.println(tab);
-	}	
 }

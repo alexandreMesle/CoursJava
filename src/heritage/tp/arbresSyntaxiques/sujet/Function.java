@@ -1,4 +1,4 @@
-package heritage;
+package heritage.tp.arbresSyntaxiques.sujet;
 
 /**
  * Fonction d'une variable.

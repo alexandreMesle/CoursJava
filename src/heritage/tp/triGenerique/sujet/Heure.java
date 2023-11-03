@@ -1,4 +1,4 @@
-package heritage;
+package heritage.tp.triGenerique.sujet;
 
 import java.util.Random;
 
