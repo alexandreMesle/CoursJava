@@ -1,12 +1,17 @@
-package heritage.tp.animalAbstrait;
+package heritage.tp.animalAbstrait.corrige;
 
-import java.util.ArrayList;
+interface Animal
+{
+	public void setNom(String nom);
+	public String getNom();
+	public String cri();
+}
 
-public abstract class Animal
+abstract class AbstractAnimal implements Animal
 {
 	private String nom;
 
-	public Animal(String nom)
+	public AbstractAnimal(String nom)
 	{
 		setNom(nom);
 	}
@@ -22,19 +27,9 @@ public abstract class Animal
 	}
 
 	public abstract String cri();
-
-	public static void main(String[] args)
-	{
-		ArrayList<Animal> animaux = new ArrayList<>();
-		animaux.add(new Chat("Ronron"));
-		animaux.add(new Chien("Médor"));
-		animaux.add(new Vache("Huguette"));
-		for (Animal animal : animaux)
-			System.out.println(animal.cri());
-	}
 }
 
-class Chat extends Animal
+class Chat extends AbstractAnimal
 {
 	public Chat(String nom)
 	{
@@ -49,7 +44,7 @@ class Chat extends Animal
 
 }
 
-class Chien extends Animal
+class Chien extends AbstractAnimal
 {
 	public Chien(String nom)
 	{
@@ -64,7 +59,7 @@ class Chien extends Animal
 
 }
 
-class Vache extends Animal
+class Vache extends AbstractAnimal
 {
 	public Vache(String nom)
 	{
