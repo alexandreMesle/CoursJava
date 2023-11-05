@@ -1,4 +1,4 @@
-package testsUnitaires.tp;
+package testsUnitaires.tp.pointsEtSegments.corrige;
 
 public class ImplementPoint implements InterfacePoint
 {

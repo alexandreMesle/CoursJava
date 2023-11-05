@@ -1,4 +1,4 @@
-package testsUnitaires.tp;
+package testsUnitaires.tp.pointsEtSegments.corrige;
 
 /**
  * Représente un object mobile dans le plan.
