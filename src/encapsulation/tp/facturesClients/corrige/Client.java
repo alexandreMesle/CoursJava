@@ -5,6 +5,12 @@ import java.util.List;
 
 public class Client
 {
+	// variables d'instances
+	private String nom;
+	private List<Facture> factures = new ArrayList<>();
+	// variable de classe
+	private static List<Client> clients = new ArrayList<>();
+	
 	/** 
 	 * Crée un client.
 	 * @param nom le nom du client. 
@@ -12,6 +18,8 @@ public class Client
 	
 	public Client(String nom)
 	{
+		clients.add(this);
+		this.nom = nom;
 	}
 
 	/**
@@ -21,7 +29,7 @@ public class Client
 	
 	public String getNom()
 	{
-		return null;
+		return nom;
 	}
 	
 	/**
@@ -31,6 +39,7 @@ public class Client
 	
 	public void setNom(String nom)
 	{
+		this.nom = nom;
 	}
 	
 	/**
@@ -41,7 +50,7 @@ public class Client
 	
 	public Facture createFacture(int montant)
 	{
-		return null;
+		return createFacture(montant, false);
 	}
 	
 	/**
@@ -51,7 +60,7 @@ public class Client
 
 	public List<Facture> getFactures()
 	{
-		return null;
+		return new ArrayList<>(factures);
 	}
 	
 	/**
@@ -61,7 +70,10 @@ public class Client
 	
 	public int sommeMontants()
 	{
-		return 0;
+		int somme = 0;
+		for (Facture facture : factures)
+			somme += facture.getMontant();
+		return somme;
 	}
 
 	/**
@@ -73,8 +85,15 @@ public class Client
 	
 	public Facture createFacture(int montant, boolean reglee)
 	{
-		return null;
+		Facture facture = new Facture(this, montant, reglee);
+		factures.add(facture);
+		return facture;
 	}	
+	
+	void remove(Facture facture)
+	{
+		factures.remove(facture);
+	}
 	
 	/**
 	 * Retourne la liste des factures reglées. 
@@ -83,7 +102,11 @@ public class Client
 
 	public List<Facture> facturesReglees()
 	{
-		return null;
+		List<Facture> facturesReglees = new ArrayList<>();
+		for (Facture facture : factures)
+			if(facture.estReglee())
+				facturesReglees.add(facture);
+		return facturesReglees;
 	}
 	
 
@@ -93,7 +116,7 @@ public class Client
 	 */
 	public static List<Client> tous()
 	{
-		return null;
+		return new ArrayList<>(clients);
 	}
 	
 	/**
@@ -102,5 +125,6 @@ public class Client
 	
 	public void delete()
 	{
+		clients.remove(this);
 	}
 }

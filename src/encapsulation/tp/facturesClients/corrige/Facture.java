@@ -4,14 +4,28 @@ import java.time.LocalDate;
 
 public class Facture
 {
+	private Client client;
+	private int montant;
+	private boolean reglee;
+	private LocalDate date = LocalDate.now();
+	
+	Facture(Client client, int montant, boolean reglee)
+	{
+		if (montant <= 0)
+			throw new IllegalArgumentException("Le montant d'une facture ne peut pas être négatif.");
+		this.montant = montant;
+		this.client = client;
+		this.reglee = reglee;
+	}
+	
 	/**
 	 * Retourne le client à qui est adressée la facture..
 	 * @return le client.
-	 */
+	 */		
 	
 	public Client getClient()
 	{
-		return null;
+		return client;
 	}
 
 	/**
@@ -21,7 +35,7 @@ public class Facture
 	
 	public int getMontant()
 	{
-		return 0;
+		return montant;
 	}
 
 	/**
@@ -31,7 +45,7 @@ public class Facture
 	
 	public boolean estReglee()
 	{
-		return true;
+		return reglee; 
 	}
 
 	/**
@@ -41,7 +55,7 @@ public class Facture
 	
 	public LocalDate getDate()
 	{
-		return null;
+		return date;
 	}
 
 	/**
@@ -50,6 +64,7 @@ public class Facture
 	
 	public void delete()
 	{
+		getClient().remove(this);
 	}
 	
 	/**
@@ -59,6 +74,6 @@ public class Facture
 	
 	public Facture copie()
 	{
-		return null;
+		return getClient().createFacture(getMontant(), estReglee());
 	}
 }
