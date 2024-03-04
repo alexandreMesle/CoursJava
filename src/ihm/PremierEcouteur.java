@@ -19,13 +19,14 @@ public class PremierEcouteur implements ActionListener
 		ArrayList<JButton> jButtons = new ArrayList<>();
 		frame.setTitle("My third window !");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new FlowLayout());
+		Container container = frame.getContentPane();
+		container.setLayout(new FlowLayout());
 		jButtons.add(new JButton("my First JButton"));
 		jButtons.add(new JButton("my Second JButton"));
 		jButtons.add(new JButton("my Third JButton"));
 		for (JButton jButton : jButtons)
 		{
-			frame.getContentPane().add(jButton);
+			container.add(jButton);
 			jButton.addActionListener(this);
 		}
 		frame.setVisible(true);
