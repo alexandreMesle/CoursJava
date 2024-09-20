@@ -69,31 +69,39 @@ class TestRationnel
 		assertFalse(cree(4, -5).estPositif(), "4/-5 >= 0 ?");
 		assertTrue(cree(-4, -5).estPositif(), "-4/-5 >= 0 ?");
 		assertTrue(cree(0, 2).estPositif(), "0/2 >= 0 ?");
-		assertTrue(cree(0, -1).estPositif(), "0/-1 >= 0 ?");
+		assertTrue(cree(0, -2).estPositif(), "0/-2 >= 0 ?");
 	}
 
 	@Test
 	void testPlus()
 	{
-		assertTrue(equals(cree(2, 1), cree(1, 2).plus(cree(6, 4))), "1/2 + 6/4 = 2/1");
+		assertTrue(equals(cree(2, 1), cree(1, 2).plus(cree(6, 4))), "1/2 + 6/4 != " + cree(1, 2).plus(cree(6, 4)));
+		assertTrue(equals(cree(17, 12), cree(3, 4).plus(cree(2, 3))), "3/4 + 2/3 != " + cree(3, 4).plus(cree(2, 3)));
+		assertTrue(equals(cree(235, 248), cree(13, 8).plus(cree(-21, 31))), "13/8 + -21/31 != " + cree(13, 8).plus(cree(-21, 31)));
 	}
 
 	@Test
 	void testMoins()
 	{
-		assertTrue(equals(cree(2, 1), cree(6, 2).moins(cree(1, 1))), "6/2 - 1/1 = 2/1");
+		assertTrue(equals(cree(-1, 1), cree(1, 2).moins(cree(6, 4))), "1/2 - 6/4 != " + cree(1, 2).moins(cree(6, 4)));
+		assertTrue(equals(cree(1, 12), cree(3, 4).moins(cree(2, 3))), "3/4 - 2/3 != " + cree(3, 4).moins(cree(2, 3)));
+		assertTrue(equals(cree(571, 248), cree(13, 8).moins(cree(-21, 31))), "13/8 - -21/31 != " + cree(13, 8).moins(cree(-21, 31)));
 	}
 
 	@Test
 	void testMultiplie()
 	{
-		assertTrue(equals(cree(40, 2), cree(10, 2).multiplie(cree(4, 1))), "10/2 * 4/1 = 40/2");
+		assertTrue(equals(cree(40, 2), cree(10, 2).multiplie(cree(4, 1))), "10/2 * 4/1 != " + cree(10, 2).multiplie(cree(4, 1)));
+		assertTrue(equals(cree(205, -117), cree(-5, 9).multiplie(cree(41, 13))), "10/2 * 4/1 != " + cree(-5, 9).multiplie(cree(41, 13)));
+		assertTrue(equals(cree(-13, 1050), cree(13, -21).multiplie(cree(-2, -100))), "10/2 * 4/1 != " + cree(13, -21).multiplie(cree(-2, -100)));
 	}
 
 	@Test
 	void testDivise()
 	{
-		assertTrue(equals(cree(10, 8), cree(10, 2).divise(cree(4, 1))), "(10/2) / (6/4) = 10/8");
+		assertTrue(equals(cree(5, 4), cree(10, 2).divise(cree(4, 1))), "10/2 / 4/1 != " + cree(10, 2).divise(cree(4, 1)));
+		assertTrue(equals(cree(65, -369), cree(-5, 9).divise(cree(41, 13))), "10/2 / 4/1 != " + cree(-5, 9).divise(cree(41, 13)));
+		assertTrue(equals(cree(-650, 21), cree(13, -21).divise(cree(-2, -100))), "10/2 / 4/1 != " + cree(13, -21).divise(cree(-2, -100)));
 	}
 
 	@Test
