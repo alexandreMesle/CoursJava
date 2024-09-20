@@ -5,7 +5,7 @@ public class RationnelVide
 	public int num, den;
 
 	/**
-	 * Retourne chaine de la forme num/den 
+	 * Retourne une chaine de la forme num/den 
 	 */
 	
 	public String toString()

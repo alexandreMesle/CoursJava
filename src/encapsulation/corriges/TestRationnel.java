@@ -94,6 +94,7 @@ class TestRationnel
 		assertFalse(cree(4, -5).estPositif(), "4/-5 >= 0 ?");
 		assertTrue(cree(-4, -5).estPositif(), "-4/-5 >= 0 ?");
 		assertTrue(cree(0, 2).estPositif(), "0/2 >= 0 ?");
+		assertTrue(cree(0, -1).estPositif(), "0/-1 >= 0 ?");
 	}
 
 	@Test
@@ -128,6 +129,8 @@ class TestRationnel
 		assertTrue(cree(2, 1).equals(cree(2, 1)), "2/1 == 2/1");
 		assertTrue(cree(20, 1).equals(cree(20, 1)), "20/1 == 20/1");
 		assertTrue(cree(5, 2).equals(cree(15, 6)), "5/2 == 15/6");
+		assertTrue(cree(1, Integer.MAX_VALUE).equals(cree(1, Integer.MAX_VALUE)), "1/" + Integer.MAX_VALUE + " == 1/" + Integer.MAX_VALUE);
+		assertFalse(cree(1, Integer.MAX_VALUE - 1).equals(cree(1, Integer.MAX_VALUE)), "(" + Integer.MAX_VALUE + " - 1)/" + Integer.MIN_VALUE + " == " + Integer.MAX_VALUE + "/" + Integer.MIN_VALUE);
 	}
 
 	@Test
@@ -136,6 +139,8 @@ class TestRationnel
 		assertTrue(cree(5, 7).compareTo(cree(10, 8)) < 0, "5/7 > 10/8 doit retourner un nombre négatif");
 		assertTrue(cree(5, 7).compareTo(cree(-10, 8)) > 0, "5/7 > -10/8 doit retourner un nombre positif");
 		assertTrue(cree(-5, 7).compareTo(cree(-5, 7)) == 0, "-5/7 > -5/7 doit retourner zéro");
+		assertTrue(cree(Integer.MAX_VALUE, Integer.MIN_VALUE).compareTo(cree(Integer.MAX_VALUE, Integer.MIN_VALUE)) == 0, Integer.MAX_VALUE + "/" + Integer.MIN_VALUE + " > " + Integer.MAX_VALUE + "/" + Integer.MIN_VALUE + " doit retouner zéro.");
+		assertFalse(cree(Integer.MAX_VALUE - 1, Integer.MIN_VALUE).compareTo(cree(Integer.MAX_VALUE, Integer.MIN_VALUE)) > 1, "(" + Integer.MAX_VALUE + " - 1)/" + Integer.MIN_VALUE + " == " + Integer.MAX_VALUE + "/" + Integer.MIN_VALUE + " doit retouner un nombre négatif.");
 	}
 	
 	@Test 
