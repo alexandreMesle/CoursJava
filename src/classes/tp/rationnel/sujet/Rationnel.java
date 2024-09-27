@@ -1,6 +1,6 @@
-package classes;
+package classes.tp.rationnel.sujet;
 
-public class RationnelVide
+public class Rationnel
 {
 	public int num, den;
 
@@ -13,12 +13,12 @@ public class RationnelVide
 		return null;
 	}
 	
-	static RationnelVide cree(int num, int den)
+	static Rationnel cree(int num, int den)
 	{
 		return null;
 	}
 	
-	public RationnelVide copie()
+	public Rationnel copie()
 	{
 		return null;
 	}
@@ -28,7 +28,7 @@ public class RationnelVide
 	 * à this pour obtenir 0.
 	 */
 	
-	public RationnelVide oppose()
+	public Rationnel oppose()
 	{
 		return null;
 	}
@@ -37,8 +37,7 @@ public class RationnelVide
 	 * Retourne le rationnel par lequel il faut multiplier 
 	 * this pour obtenir 1.
 	 */
-	
-	public RationnelVide inverse()
+	public Rationnel inverse()
 	{
 		return null;
 	}
@@ -60,43 +59,41 @@ public class RationnelVide
 	}
 
 	/**
-	 * Retourne vrai ssi le rationnel est positif.
+	 * Retourne vrai ssi le rationnel est positif ou nul.
 	 */
-	
 	public boolean estPositif()
 	{
 		return true;
 	}
 
-	public RationnelVide plus(RationnelVide autre)
+	public Rationnel plus(Rationnel autre)
 	{
 		return null;
 	}
 
-	public RationnelVide moins(RationnelVide autre)
+	public Rationnel moins(Rationnel autre)
 	{
 		return null;
 	}
 
-	public RationnelVide multiplie(RationnelVide autre)
+	public Rationnel multiplie(Rationnel autre)
 	{
 		return null;
 	}
 
-	public RationnelVide divise(RationnelVide autre)
+	public Rationnel divise(Rationnel autre)
 	{
 		return null;
 	}
 
 	/**
-	 * Retourne vrai ssi this 
-	 * n'est ni supérieur ni inférieur à autre.
+	 * Retourne vrai ssi this - autre vaut zéro.
 	 */
 	
 	@Override
 	public boolean equals(Object object)
 	{
-		RationnelVide autre = (RationnelVide)object;
+		Rationnel autre = (Rationnel)object;
 		return true;
 	}
 	
@@ -107,7 +104,7 @@ public class RationnelVide
 	 * -1 si this < autre 
 	 */
 	
-	public int compareTo(RationnelVide autre)
+	public int compareTo(Rationnel autre)
 	{
 		return 0;
 	}

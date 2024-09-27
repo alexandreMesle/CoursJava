@@ -1,4 +1,4 @@
-package classes;
+package classes.tp.rationnel.corrige;
 
 public class Rationnel
 {

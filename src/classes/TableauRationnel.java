@@ -1,8 +1,10 @@
 package classes;
 
 import java.util.Random;
+
+import classes.tp.rationnel.corrige.Rationnel;
+
 import java.lang.Math;
-import classes.Rationnel;
 
 public class TableauRationnel
 {

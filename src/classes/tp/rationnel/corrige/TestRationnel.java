@@ -1,4 +1,4 @@
-package classes;
+package classes.tp.rationnel.corrige;
 
 import static org.junit.jupiter.api.Assertions.*;
 
