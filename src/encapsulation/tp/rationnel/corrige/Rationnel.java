@@ -1,4 +1,4 @@
-package encapsulation.rationnel;
+package encapsulation.tp.rationnel.corrige;
 
 public class Rationnel
 {
