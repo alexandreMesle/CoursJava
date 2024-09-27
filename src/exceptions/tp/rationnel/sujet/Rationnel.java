@@ -1,4 +1,4 @@
-package exceptions.rationel;
+package exceptions.tp.rationnel.sujet;
 
 public class Rationnel
 {
@@ -14,14 +14,11 @@ public class Rationnel
 
 	public String toString()
 	{
-		return getNum() + "/" + getDen();
+		return null;
 	}
 
 	public Rationnel(int num, int den)
 	{
-		this.num = num;
-		this.setDen(den);
-		this.reduit();
 	}
 
 	/**
@@ -30,23 +27,20 @@ public class Rationnel
 	
 	public Rationnel(int num)
 	{
-		this(num, 1);
 	}
 
 	public int getNum()
 	{
-		return num;
+		return 0;
 	}
 
 	public int getDen()
 	{
-		return den;
+		return 0;
 	}
 
 	public void setNum(int num)
 	{
-		this.num = num;
-		this.reduit();
 	}
 
 	/**
@@ -56,18 +50,11 @@ public class Rationnel
 	
 	public void setDen(int den)
 	{
-		if (den != 0)
-		{
-			this.den = den;
-			this.reduit();
-		}
-		else
-			throw new CannotSetZeroToDenominator();
 	}
 
 	public Rationnel copie()
 	{
-		return new Rationnel(getNum(), getDen());
+		return null;
 	}
 
 	/**
@@ -77,7 +64,7 @@ public class Rationnel
 	
 	public Rationnel oppose()
 	{
-		return new Rationnel(-getNum(), getDen());
+		return null;
 	}
 
 	/**
@@ -87,7 +74,7 @@ public class Rationnel
 
 	public Rationnel inverse()
 	{
-		return new Rationnel(getDen(), getNum());
+		return null;
 	}
 	
 	/**
@@ -99,9 +86,7 @@ public class Rationnel
 	
 	private static int pgcd(int a, int b)
 	{
-		if (b == 0)
-			return a;
-		return pgcd(b, a % b);
+		return 0;
 	}
 
 	/**
@@ -114,9 +99,6 @@ public class Rationnel
 	
 	private void reduit()
 	{
-		int p = pgcd(getNum(), getDen());
-		num = getNum() / p;
-		den = getDen() / p;
 	}
 
 	/**
@@ -125,30 +107,28 @@ public class Rationnel
 
 	public boolean estPositif()
 	{
-		return getNum() * getDen() >= 0;
+		return true;
 	}
 
 
 	public Rationnel plus(Rationnel other)
 	{
-		return new Rationnel(getNum() * other.getDen() + getDen()
-				* other.getNum(), getDen() * other.getDen());
+		return null;
 	}
 
 	public Rationnel moins(Rationnel other)
 	{
-		return plus(other.oppose());
+		return null;
 	}
 	
 	public Rationnel multiplie(Rationnel other)
 	{
-		return new Rationnel(getNum() * other.getNum(), 
-				getDen() * other.getDen());
+		return null;
 	}
 
 	public Rationnel divise(Rationnel other)
 	{
-		return multiplie(other.inverse());
+		return null;
 	}
 
 	/**
@@ -159,8 +139,7 @@ public class Rationnel
 	@Override
 	public boolean equals(Object object)
 	{
-		Rationnel autre = (Rationnel)object;
-		return getNum() * autre.getDen() == getDen() * autre.getNum();
+        return true;
 	}	
 
 	/**
@@ -172,11 +151,6 @@ public class Rationnel
 	
 	public int compareTo(Rationnel autre)
 	{
-		if (equals(autre))
-			return 0;
-		if (moins(autre).estPositif())
-			return 1;
-		else
-			return -1;
+		return 0;
 	}
 }

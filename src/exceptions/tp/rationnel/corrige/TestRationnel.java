@@ -1,4 +1,4 @@
-package exceptions.rationel;
+package exceptions.tp.rationnel.corrige;
 
 import static org.junit.jupiter.api.Assertions.*;
 
