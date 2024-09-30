@@ -36,9 +36,10 @@ public class Age
 	 * @throws FormatInvalideException si l'année n'est pas un entier.
 	 */
 	
-	public static int getAge(String annee) 
+	public static int getAge(String anneeChaine) 
 		throws AnneeInvalideException, FormatInvalideException
 	{
+		int anneeInt = Integer.parseInt(anneeChaine);
 		int maintenant = LocalDate.now().getYear();
 		return 0;
 	}
