@@ -11,10 +11,10 @@ class TestAge
 	@Test
 	void testAge() throws AnneeInvalideException, FormatInvalideException
 	{
-		assertEquals(maintenant - 2010, Age.getAge("2010"), "Numérateur de 3/4");
-		assertEquals(maintenant - 2001, Age.getAge("2001"), "Numérateur de 3/4");
-		assertEquals(maintenant - 1920, Age.getAge("1920"), "Numérateur de 3/4");
-		assertEquals(maintenant - 500, Age.getAge("500"), "Numérateur de 3/4");
+		assertEquals(maintenant - 2010, Age.getAge("2010"), "L'âge d'une personne née en 2010 devrait être " + (maintenant - 2010));
+		assertEquals(maintenant - 2001, Age.getAge("2001"), "L'âge d'une personne née en 2001 devrait être " + (maintenant - 2001));
+		assertEquals(maintenant - 1920, Age.getAge("1920"), "L'âge d'une personne née en 1920 devrait être " + (maintenant - 1920));
+		assertEquals(maintenant - 500, Age.getAge("500"), "L'âge d'une personne née en 500 devrait être " + (maintenant - 500));
 	}
 
 	@Test
