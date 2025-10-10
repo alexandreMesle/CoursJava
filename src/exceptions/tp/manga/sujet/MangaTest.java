@@ -1,4 +1,4 @@
-package exceptions.tp.manga.corrige;
+package exceptions.tp.manga.sujet;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
