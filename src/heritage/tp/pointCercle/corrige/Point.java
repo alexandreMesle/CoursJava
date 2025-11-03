@@ -59,12 +59,12 @@ class Cercle extends Point
 		return rayon;
 	}
 
-	public void setRayon(double rayon)
-	{
-		if (rayon > 0)
-			this.rayon = rayon;
-	}
-
+    public void setRayon(double rayon)
+    {
+        if (rayon < 0) 
+            throw new IllegalArgumentException("Le rayon ne peut pas être négatif");
+        this.rayon = rayon;
+    }
 	@Override
 	public String toString()
 	{

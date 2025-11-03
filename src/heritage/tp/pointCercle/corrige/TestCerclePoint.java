@@ -53,15 +53,28 @@ class TestCerclePoint {
 		assertEquals(8, q.getRayon(), "rayon should be 8");
 	}
 
-	@Test
-	public void testRayonNegatif()
-	{
-		Cercle p = new Cercle(3, 4, 5);
-		p.setRayon(-1);
-		assertEquals(3, p.getAbs(), "abs should be 3");
-		assertEquals(4, p.getOrd(), "ord should be 4");
-		assertEquals(5, p.getRayon(), "rayon should be 5");
-	}
+	 @Test
+    public void testRayonNegatifConstructeur() {
+        RuntimeException ex = assertThrows(
+            RuntimeException.class,
+            () -> new Cercle(3, 4, -5),
+            "Un rayon négatif via le constructeur doit lever une RuntimeException"
+        );
+        assertEquals("Le rayon ne peut pas être négatif", ex.getMessage(),
+            "Le message d'erreur doit être EXACT");
+    }
+
+    @Test
+    public void testRayonNegatifSetter() {
+        Cercle c = new Cercle(3, 4, 5);
+        RuntimeException ex = assertThrows(
+            RuntimeException.class,
+            () -> c.setRayon(-1),
+            "Un rayon négatif via le setter doit lever une RuntimeException"
+        );
+        assertEquals("Le rayon ne peut pas être négatif", ex.getMessage(),
+            "Le message d'erreur doit être EXACT");
+    }
 
 	@Test
 	public void testSurchargeCercle()
