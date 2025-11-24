@@ -60,7 +60,7 @@ class TestCerclePoint {
             () -> new Cercle(3, 4, -5),
             "Un rayon négatif via le constructeur doit lever une RuntimeException"
         );
-        assertEquals("Le rayon ne peut pas être négatif", ex.getMessage(),
+        assertEquals("Le rayon ne peut pas être négatif : -5.0", ex.getMessage(),
             "Le message d'erreur doit être EXACT");
     }
 
@@ -72,7 +72,7 @@ class TestCerclePoint {
             () -> c.setRayon(-1),
             "Un rayon négatif via le setter doit lever une RuntimeException"
         );
-        assertEquals("Le rayon ne peut pas être négatif", ex.getMessage(),
+        assertEquals("Le rayon ne peut pas être négatif : -1.0", ex.getMessage(),
             "Le message d'erreur doit être EXACT");
     }
 

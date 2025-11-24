@@ -62,7 +62,7 @@ class Cercle extends Point
     public void setRayon(double rayon)
     {
         if (rayon < 0) 
-            throw new IllegalArgumentException("Le rayon ne peut pas être négatif");
+            throw new IllegalArgumentException("Le rayon ne peut pas être négatif : " + rayon);
         this.rayon = rayon;
     }
 	@Override
