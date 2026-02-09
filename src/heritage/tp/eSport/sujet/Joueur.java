@@ -135,7 +135,7 @@ class Guerrier extends Joueur
 	{
 	}
 
-	// Retourne niveau + (force + armure)
+	// Retourne niveau * (force + armure)
 	@Override
 	public int getPuissance()
 	{
