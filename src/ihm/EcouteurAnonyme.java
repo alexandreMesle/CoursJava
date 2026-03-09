@@ -29,14 +29,15 @@ public class EcouteurAnonyme
 		jButtons.get(0).addActionListener(new Ecouteur());
 		
 		/* Classe anonyme */
-		jButtons.get(1).addActionListener(new ActionListener() 
+		ActionListener actionListener = new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("click on Second JButton");
 			}
-		});
+		}; 
+		jButtons.get(1).addActionListener(actionListener);
 		
 		/* Classe anonyme dans une fonction */
 		jButtons.get(2).addActionListener(getEcouteur());

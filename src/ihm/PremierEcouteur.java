@@ -5,14 +5,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.*;
 
-public class PremierEcouteur implements ActionListener
+public class PremierEcouteur
 {
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		System.out.println("Click on " + ((JButton) e.getSource()).getText());
-	}
-
 	public PremierEcouteur()
 	{
 		JFrame frame = new JFrame();
@@ -27,7 +21,7 @@ public class PremierEcouteur implements ActionListener
 		for (JButton jButton : jButtons)
 		{
 			container.add(jButton);
-			jButton.addActionListener(this);
+			jButton.addActionListener(new MonEcouteur(jButton.getText()));
 		}
 		frame.setVisible(true);
 		frame.pack();
@@ -36,5 +30,21 @@ public class PremierEcouteur implements ActionListener
 	public static void main(String[] args)
 	{
 		new PremierEcouteur();
+	}
+}
+
+class MonEcouteur implements ActionListener
+{
+	String texte;
+	 
+	MonEcouteur(String texte)
+	{
+		this.texte = texte;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		System.out.println("Click sur le bouton " + texte + " !");
 	}
 }
